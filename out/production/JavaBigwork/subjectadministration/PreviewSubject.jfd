@@ -1,0 +1,311 @@
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			"title": "添加试题"
+			"font": new java.awt.Font( "Dialog", 1, 12 )
+			"resizable": false
+			"alwaysOnTop": true
+			"defaultCloseOperation": 2
+			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosed", "thisWindowClosed", true ) )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "试题编号(标题)："
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 50
+				"y": 20
+				"width": 175
+				"height": 35
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label3"
+				"text": "试题内容："
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 50
+				"y": 70
+				"width": 114
+				"height": 35
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "试题类型："
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 585
+				"y": 20
+				"width": 111
+				"height": 35
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "输入题目的选项，同时选择正确的选项"
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 50
+				"y": 335
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "labelA"
+				"text": "A："
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 55
+				"y": 410
+				"width": 42
+				"height": 30
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label9"
+				"text": "备注："
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 60
+				"y": 620
+				"width": 75
+				"height": 28
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "buttonSave"
+				"text": "保存"
+				"font": new java.awt.Font( "Dialog", 1, 20 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSaveMouseReleased", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 590
+				"y": 625
+				"width": 120
+				"height": 35
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "labelJudge"
+				"text": "判断题："
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 115
+				"y": 460
+				"width": 90
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldA"
+				"font": new java.awt.Font( "Dialog", 1, 18 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 100
+				"y": 380
+				"width": 290
+				"height": 90
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textAreaContent"
+					"font": new java.awt.Font( "Dialog", 1, 18 )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 170
+				"y": 70
+				"width": 655
+				"height": 255
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldNumber"
+				"font": new java.awt.Font( "Dialog", 1, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 225
+				"y": 20
+				"width": 305
+				"height": 35
+			} )
+			add( new FormComponent( "javax.swing.JComboBox" ) {
+				name: "comboBoxSubject"
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "comboBoxSubjectActionPerformed", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 720
+				"y": 20
+				"width": 105
+				"height": 35
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButtonTrue"
+				"text": "正确"
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 210
+				"y": 455
+				"width": 85
+				"height": 43
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "labelB"
+				"text": "B："
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 505
+				"y": 410
+				"width": 42
+				"height": 30
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "labelD"
+				"text": "D："
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 500
+				"y": 520
+				"width": 42
+				"height": 30
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "labelC"
+				"text": "C："
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 55
+				"y": 520
+				"width": 42
+				"height": 30
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldC"
+				"font": new java.awt.Font( "Dialog", 1, 18 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 100
+				"y": 490
+				"width": 290
+				"height": 85
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldD"
+				"font": new java.awt.Font( "Dialog", 1, 18 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 545
+				"y": 490
+				"width": 330
+				"height": 85
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldB"
+				"font": new java.awt.Font( "Dialog", 1, 18 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 545
+				"y": 380
+				"width": 330
+				"height": 90
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButtonD"
+				"text": "D"
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 885
+				"y": 520
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButtonC"
+				"text": "C"
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 395
+				"y": 515
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButtonB"
+				"text": "B"
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 885
+				"y": 410
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButtonA"
+				"text": "A"
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 395
+				"y": 410
+			} )
+			add( new FormComponent( "javax.swing.JRadioButton" ) {
+				name: "radioButtonFalse"
+				"text": "错误"
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 305
+				"y": 455
+				"width": 105
+				"height": 45
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane2"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textAreaRemarks"
+					"font": new java.awt.Font( "Dialog", 1, 18 )
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 150
+				"y": 620
+				"width": 330
+				"height": 130
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "buttonReset"
+				"text": "重置"
+				"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"font": new java.awt.Font( "Dialog", 1, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 120
+				"height": 35
+				"x": 590
+				"y": 700
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "checkBoxA"
+				"text": "A"
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 400
+				"y": 410
+				"width": 52
+				"height": 36
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "checkBoxB"
+				"text": "B"
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 52
+				"height": 36
+				"x": 885
+				"y": 410
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "checkBoxC"
+				"text": "C"
+				"font": new java.awt.Font( "Dialog", 0, 18 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 52
+				"height": 36
+				"x": 400
+				"y": 515
+			} )
+			add( new FormComponent( "javax.swing.JCheckBox" ) {
+				name: "checkBoxD"
+				"text": "D"
+				"font": new java.awt.Font( "Dialog", 0, 20 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 52
+				"height": 36
+				"x": 885
+				"y": 520
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 985, 810 )
+			"location": new java.awt.Point( 5, 550 )
+		} )
+	}
+}

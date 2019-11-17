@@ -1,0 +1,481 @@
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "this"
+			"title": "用户注册"
+			"$sizePolicy": 1
+			"defaultCloseOperation": 3
+			"background": new java.awt.Color( 0, 255, 51, 255 )
+			auxiliary() {
+				"JavaCodeGenerator.customCreate": true
+			}
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "labelLogin"
+				"text": "登录"
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 24 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "labelLoginMouseReleased", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 305
+				"y": 65
+				"width": 67
+				"height": 29
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "labelRegister"
+				"text": "注册"
+				"font": new java.awt.Font( "Microsoft YaHei UI", 0, 24 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "labelRegisterMouseReleased", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 460
+				"y": 65
+				"width": 60
+				"height": 29
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textArea1"
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 405
+				"y": 55
+				"width": 2
+				"height": 49
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane2"
+				add( new FormComponent( "javax.swing.JTextArea" ) {
+					name: "textArea2"
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 275
+				"y": 115
+				"width": 265
+				"height": 2
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
+				name: "cardPanel"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panelLogin"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelEmailL"
+						"text": "邮箱/手机号:"
+						"font": &Font0 new java.awt.Font( "Microsoft YaHei UI", 0, 22 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 150
+						"height": 30
+						"x": 48
+						"y": 20
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelPasswordL"
+						"text": "密   码:"
+						"font": &Font1 new java.awt.Font( "Microsoft YaHei UI", 0, 22 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 105
+						"height": 25
+						"x": 100
+						"y": 75
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelYZML"
+						"text": "验证码:"
+						"font": &Font2 new java.awt.Font( "Microsoft YaHei UI", 0, 22 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 105
+						"height": 25
+						"x": 100
+						"y": 135
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelDTYZML"
+						"text": "动态验证码："
+						"font": &Font3 new java.awt.Font( "Microsoft YaHei UI", 0, 22 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 150
+						"height": 30
+						"x": 55
+						"y": 195
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textFieldEmailL"
+						"foreground": sfield java.awt.Color lightGray
+						"text": "邮箱账号或手机号"
+						"font": &Font4 new java.awt.Font( "Microsoft YaHei UI", 0, 22 )
+						"border": &LineBorder0 new javax.swing.border.LineBorder( sfield java.awt.Color gray, 1, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 270
+						"height": 35
+						"x": 200
+						"y": 15
+					} )
+					add( new FormComponent( "javax.swing.JPasswordField" ) {
+						name: "passwordFieldL"
+						"font": &Font5 new java.awt.Font( "Monospaced", 0, 22 )
+						"border": &LineBorder1 new javax.swing.border.LineBorder( sfield java.awt.Color gray, 1, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 270
+						"height": 35
+						"x": 200
+						"y": 70
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textFieldTPYZML"
+						"font": &Font6 new java.awt.Font( "Microsoft YaHei UI", 0, 22 )
+						"foreground": sfield java.awt.Color lightGray
+						"text": "右侧验证码"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 115
+						"height": 35
+						"x": 200
+						"y": 130
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textFieldDTYZML"
+						"foreground": sfield java.awt.Color lightGray
+						"font": &Font7 new java.awt.Font( "Microsoft YaHei UI", 0, 22 )
+						"text": "动态验证码"
+						"border": &LineBorder2 new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 115
+						"height": 35
+						"x": 200
+						"y": 195
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelImageL"
+						"background": &Color0 new java.awt.Color( 255, 153, 0, 255 )
+						"border": &EtchedBorder0 new javax.swing.border.EtchedBorder( 1, null, null )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 120
+						"height": 45
+						"x": 380
+						"y": 125
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonDTYZML"
+						"text": "获取验证码"
+						"font": &Font8 new java.awt.Font( "微软雅黑", 0, 18 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonDTYZMLMouseReleased", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 160
+						"height": 34
+						"x": 370
+						"y": 195
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelUnClear2"
+						"text": "看不清楚？"
+						"foreground": sfield java.awt.Color red
+						"font": &SwingDerivedFont0 new com.jformdesigner.model.SwingDerivedFont( null, 1, 0, false )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "labelUnClearMousePressed", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "labelUnClearMouseReleased", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 80
+						"height": 27
+						"x": 525
+						"y": 140
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelHintL1"
+						"text": "请输入合法的邮箱或手机号"
+						"foreground": &Color1 new java.awt.Color( 255, 0, 0, 255 )
+						"visible": false
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 170
+						"height": 18
+						"x": 495
+						"y": 30
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "checkBoxL"
+						"text": "阅读并同意"
+						"font": new java.awt.Font( "Dialog", 1, 15 )
+						addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "checkBox1StateChanged", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 105
+						"height": 28
+						"x": 215
+						"y": 265
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelURLL"
+						"text": "《服务条款》"
+						"font": new java.awt.Font( "Dialog", 1, 15 )
+						"foreground": new java.awt.Color( 0, 0, 255, 255 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "labelURLMouseReleased", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 110
+						"height": 28
+						"x": 320
+						"y": 265
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonLogin"
+						"text": "登录"
+						"font": &Font9 new java.awt.Font( "Microsoft YaHei UI", 1, 22 )
+						"background": &Color2 new java.awt.Color( 51, 150, 193, 255 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonLoginMouseReleased", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 160
+						"height": 39
+						"x": 260
+						"y": 325
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card1"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panelRegister"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelUserNameR"
+						"text": "用户名:"
+						"font": new java.awt.Font( "Microsoft YaHei UI", 0, 22 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 100
+						"y": 20
+						"width": 105
+						"height": 25
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelPasswordR"
+						"text": "密   码:"
+						"font": #Font1
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 100
+						"y": 70
+						"width": 105
+						"height": 25
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelPasswordR2"
+						"text": "确认密码："
+						"font": #Font1
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 135
+						"height": 25
+						"x": 75
+						"y": 125
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelYZMR"
+						"text": "验证码:"
+						"font": #Font2
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 100
+						"y": 175
+						"width": 105
+						"height": 25
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelEmailR"
+						"text": "邮箱/手机号:"
+						"font": #Font0
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 50
+						"y": 230
+						"width": 150
+						"height": 30
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelDTYZMR"
+						"text": "动态验证码："
+						"font": #Font3
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 55
+						"y": 280
+						"width": 150
+						"height": 30
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textFieldUserNameR"
+						"font": new java.awt.Font( "Microsoft YaHei UI", 0, 22 )
+						"foreground": sfield java.awt.Color lightGray
+						"text": "登录用户名"
+						"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 200
+						"y": 15
+						"width": 270
+						"height": 35
+					} )
+					add( new FormComponent( "javax.swing.JPasswordField" ) {
+						name: "passwordFieldR"
+						"font": #Font5
+						"border": #LineBorder1
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 200
+						"y": 65
+						"width": 270
+						"height": 35
+					} )
+					add( new FormComponent( "javax.swing.JPasswordField" ) {
+						name: "passwordFieldR2"
+						"font": #Font5
+						"border": #LineBorder1
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 270
+						"height": 35
+						"x": 200
+						"y": 120
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textFieldTPYZMR"
+						"font": #Font6
+						"foreground": sfield java.awt.Color lightGray
+						"text": "右侧验证码"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 200
+						"y": 170
+						"width": 115
+						"height": 35
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textFieldEmailR"
+						"foreground": sfield java.awt.Color lightGray
+						"text": "邮箱账号或手机号"
+						"font": #Font4
+						"border": #LineBorder0
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 200
+						"y": 225
+						"width": 270
+						"height": 35
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textFieldDTYZMR"
+						"foreground": sfield java.awt.Color lightGray
+						"font": #Font7
+						"text": "动态验证码"
+						"border": #LineBorder2
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"width": 115
+						"height": 35
+						"x": 200
+						"y": 280
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelImageR"
+						"background": #Color0
+						"border": #EtchedBorder0
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 380
+						"y": 165
+						"width": 120
+						"height": 45
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelHintR1"
+						"text": "用户名已存在"
+						"foreground": new java.awt.Color( 255, 0, 0, 255 )
+						"visible": false
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 505
+						"y": 30
+						"width": 100
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelUnClearR"
+						"text": "看不清楚？"
+						"foreground": sfield java.awt.Color red
+						"font": #SwingDerivedFont0
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mousePressed", "labelUnClearMousePressed", true ) )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "labelUnClearMouseReleased", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 525
+						"y": 180
+						"width": 80
+						"height": 27
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelHintR2"
+						"text": "请输入合法的邮箱或手机号"
+						"foreground": #Color1
+						"visible": false
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 490
+						"y": 240
+						"width": 170
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonDTYZMR"
+						"text": "获取验证码"
+						"font": #Font8
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonDTYZMRMouseReleased", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 370
+						"y": 280
+						"width": 160
+						"height": 34
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelURLR"
+						"text": "《服务条款》"
+						"font": new java.awt.Font( "Dialog", 1, 15 )
+						"foreground": new java.awt.Color( 51, 0, 255, 255 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "labelURLMouseReleased", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 325
+						"y": 350
+						"width": 130
+						"height": 28
+					} )
+					add( new FormComponent( "javax.swing.JCheckBox" ) {
+						name: "checkBoxR"
+						"text": "阅读并同意"
+						"font": new java.awt.Font( "Dialog", 1, 15 )
+						addEvent( new FormEvent( "javax.swing.event.ChangeListener", "stateChanged", "checkBox1StateChanged", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 220
+						"y": 350
+						"width": 105
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonRegister"
+						"text": "注册"
+						"font": #Font9
+						"background": #Color2
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonRegisterMouseReleased", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 260
+						"y": 410
+						"width": 160
+						"height": 39
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card2"
+				} )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 70
+				"y": 150
+				"width": 680
+				"height": 520
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "panelRegisterUnder"
+				"background": &Color3 new java.awt.Color( 0, 255, 0, 255 )
+				"visible": false
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 420
+				"y": 110
+				"width": 120
+				"height": 5
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "panelLoginUnder"
+				"background": #Color3
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 120
+				"height": 5
+				"x": 275
+				"y": 110
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 15, 0 )
+			"size": new java.awt.Dimension( 825, 685 )
+		} )
+	}
+}

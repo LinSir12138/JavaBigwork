@@ -1,0 +1,37 @@
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "buttonSure"
+				"text": "确定"
+				"font": &Font0 new java.awt.Font( "Dialog", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSureMouseReleased", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 80
+				"y": 355
+				"width": 155
+				"height": 55
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "buttonCancle"
+				"text": "取消"
+				"font": #Font0
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonCancleMouseReleased", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 155
+				"height": 55
+				"x": 345
+				"y": 355
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 585, 480 )
+		} )
+	}
+}

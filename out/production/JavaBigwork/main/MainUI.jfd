@@ -1,0 +1,298 @@
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			"background": new java.awt.Color( 255, 255, 255, 255 )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "panelTop"
+				"background": new java.awt.Color( 66, 143, 185, 255 )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "labelTitle"
+					"text": " "
+					"font": new java.awt.Font( "Dialog", 1, 52 )
+					"foreground": sfield java.awt.Color white
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "West"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+					"vgap": 20
+				} ) {
+					name: "panel6"
+					"background": new java.awt.Color( 66, 143, 185, 255 )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonWelcome"
+						"text": "欢迎您！  林凯"
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonExit"
+						"text": "退出登录"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "East"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panelOther02"
+					"background": new java.awt.Color( 66, 143, 185, 255 )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panelOther01"
+					"background": new java.awt.Color( 66, 143, 185, 255 )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "North"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panelTime"
+					"background": new java.awt.Color( 66, 143, 185, 255 )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "labelTime"
+						"text": "时间"
+						"foreground": new java.awt.Color( 255, 255, 255, 255 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 105
+						"y": 30
+						"width": 100
+						"height": 30
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "North"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "panelLeft"
+				"border": new javax.swing.border.EtchedBorder( 1, null, null )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "buttonLeft01"
+					"text": "系统首页"
+					"font": new java.awt.Font( "Dialog", 1, 18 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonLeftMouseReleased", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 135
+					"height": 50
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "buttonLeft02"
+					"text": "学生管理"
+					"font": new java.awt.Font( "Dialog", 1, 18 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonLeftMouseReleased", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 135
+					"height": 50
+					"x": 0
+					"y": 55
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "buttonLeft03"
+					"text": "教师管理"
+					"font": new java.awt.Font( "Dialog", 1, 18 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonLeftMouseReleased", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 135
+					"height": 50
+					"x": 0
+					"y": 110
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "buttonLeft04"
+					"text": "试题管理"
+					"font": new java.awt.Font( "Dialog", 1, 18 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonLeftMouseReleased", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 135
+					"height": 50
+					"x": 0
+					"y": 165
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "butonLeft05"
+					"text": "试卷管理"
+					"font": new java.awt.Font( "Dialog", 1, 18 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonLeftMouseReleased", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 135
+					"height": 50
+					"x": 0
+					"y": 220
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "buttonLeft06"
+					"text": "考试管理"
+					"font": new java.awt.Font( "Dialog", 1, 18 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonLeftMouseReleased", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 135
+					"height": 50
+					"x": 0
+					"y": 275
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "West"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.CardLayout ) ) {
+				name: "panelCenter"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panelContent1"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label20"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/view3.png" )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "Center"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card1"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panelContent2"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label26"
+						"text": "card2"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 75
+						"y": 240
+						"width": 295
+						"height": 75
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card2"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panelContent3"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label25"
+						"text": "card3"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 265
+						"y": 100
+						"width": 135
+						"height": 80
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card3"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panelContentSubject"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 2
+						"hgap": 10
+						"vgap": 10
+					} ) {
+						name: "panel16"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonAddSubject"
+							"text": "添加试题"
+							"font": &Font0 new java.awt.Font( "Dialog", 1, 16 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonAddSubjectMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonDeleteSubject"
+							"text": "删除试题"
+							"font": &Font1 new java.awt.Font( "Dialog", 1, 16 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonDeleteSubjectMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonSearchSubject"
+							"text": "查找试题"
+							"font": &Font2 new java.awt.Font( "Dialog", 1, 16 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSearchSubjectMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonEditSubject"
+							"text": "编辑试题"
+							"font": &Font3 new java.awt.Font( "Dialog", 1, 16 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonEditSubjectMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonCheckSubject"
+							"text": "查看试题"
+							"font": &Font4 new java.awt.Font( "Dialog", 1, 16 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonCheckSubjectMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label27"
+							"text": " "
+							"font": &Font5 new java.awt.Font( "Dialog", 1, 36 )
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "North"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card4"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panleContentPaper"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 2
+						"hgap": 10
+						"vgap": 10
+					} ) {
+						name: "panel17"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonAddPaper"
+							"text": "新建试卷"
+							"font": #Font0
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonAddPaperMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonDeletePaper"
+							"text": "删除试卷"
+							"font": #Font1
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonDeletePaperMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonSearchPaper"
+							"text": "筛选试卷"
+							"font": #Font2
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSearchPaperMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonEditPaper"
+							"text": "编辑试卷"
+							"font": #Font3
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonEditPaperMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonPreviewPaper"
+							"text": "预览试卷"
+							"font": #Font4
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label28"
+							"text": " "
+							"font": #Font5
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "North"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card5"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panelContent6"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label23"
+						"text": "card6"
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 175
+						"y": 170
+						"width": 280
+						"height": 100
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card6"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 775, 595 )
+		} )
+	}
+}
