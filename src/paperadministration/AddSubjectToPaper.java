@@ -11,10 +11,13 @@ package paperadministration;
 * */
 
 import java.awt.event.*;
+
+import jdbc.PaperJDBC;
 import jdbc.SubjectJDBC;
 import subjectadministration.SearchSubject;
 
 import java.awt.*;
+import java.sql.Timestamp;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,8 +26,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AddSubjectToPaper extends JFrame {
     private JFrame fatherFrame;     // 父窗体的引用
-    private DefaultTableModel tableModelOfFather;       //  父窗体表格模型的引用
+    private DefaultTableModel tableModelOfEditPaper;       //  父窗体表格模型的引用( 对应的是  编辑试卷   的表格模型的引用)
+    private DefaultTableModel tableModelOfMainUI;       // MainUI  界面中的表格模型的引用
     private SubjectJDBC subjectJDBC;
+    private String editPaperTitle;      // 正在编辑的试卷的 Title
+    private int mainUISelectedRow;      // 在  MainUI  中选中的行数
+
 
     // 自己添加的控件（添加一些 JFormdesigner 不方便操作的空间）
     private JTable tableSubject;
@@ -32,9 +39,14 @@ public class AddSubjectToPaper extends JFrame {
     private DefaultTableModel tableModel;
 
 
-    public AddSubjectToPaper(JFrame fatherFrame, DefaultTableModel tableModelOfFather) {
+
+
+    public AddSubjectToPaper(JFrame fatherFrame, DefaultTableModel tableModelOfEditPaper, DefaultTableModel tableModelOfMainUI, int mainUISelectedRow) {
         this.fatherFrame = fatherFrame;
-        this.tableModelOfFather = tableModelOfFather;
+        this.tableModelOfEditPaper = tableModelOfEditPaper;
+        this.tableModelOfMainUI = tableModelOfMainUI;
+        this.mainUISelectedRow = mainUISelectedRow;
+        this.editPaperTitle = tableModelOfMainUI.getValueAt(mainUISelectedRow, 0).toString();
         initComponents();
         // 1.初始化面板中的表格，将所有的试题添加到面板中，让用户选择需要添加到试卷中的试题
         initJTable();
@@ -108,7 +120,84 @@ public class AddSubjectToPaper extends JFrame {
     */
     private void buttonAddSubjectMouseReleased(MouseEvent e) {
         // TODO add your code here
+        // 1. 首先获取已经选中了哪些试题
+        int[] selectedRows = tableSubject.getSelectedRows();
+        // 1.1. 获取选中试题的 Title
+        String[] chooseTitles = new String[selectedRows.length];
+        System.out.print("chooseTItles: ");
+        for (int i = 0; i < selectedRows.length; i++) {
+            chooseTitles[i] = tableModel.getValueAt(selectedRows[i], 0).toString();
+            System.out.print(chooseTitles[i] + "  ");
+        }
+        System.out.println("~~~~~");
 
+        // 2.判断用户选中的 Title 是否重复
+        String[] paperAlreadySubjectTitle = new String[tableModelOfEditPaper.getRowCount()];       // 试卷中已经存在的试题 Title
+        System.out.print("paperAlready:  ");
+        for (int i = 0; i < tableModelOfEditPaper.getRowCount(); i++) {
+            // 2.1 获取试卷中已经存在的 Title
+            paperAlreadySubjectTitle[i] = tableModelOfEditPaper.getValueAt(i, 0).toString();
+            System.out.print(paperAlreadySubjectTitle[i] + "  ");
+        }
+
+        System.out.println("#####");
+        // 2.2 检测是否存在相同的 Title
+        for (int i = 0; i < chooseTitles.length; i++) {
+            for (int j = 0; j < paperAlreadySubjectTitle.length; j++) {
+                if (chooseTitles[i].equals(paperAlreadySubjectTitle[j])) {
+                    JOptionPane.showMessageDialog(this, "部分试题已经添加到试卷中了！", "错误", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+        }
+
+        // 3.1 更新该试卷中数据库的  subjectTitle  字段，
+        String title = editPaperTitle;      // 获取正在编辑的试卷的 Title
+        StringBuilder subjectTitle = new StringBuilder();       // 更新之后该试卷对应的  subjectTitle 字段
+        for (int i = 0; i < paperAlreadySubjectTitle.length; i++) {
+            subjectTitle.append(paperAlreadySubjectTitle[i] + "-");
+        }
+        for (int i = 0; i < chooseTitles.length; i++) {
+            subjectTitle.append(chooseTitles[i] + "-");
+        }
+        System.out.println(subjectTitle.toString());
+        String subjectNumber = String.valueOf(paperAlreadySubjectTitle.length + chooseTitles.length);
+        Timestamp changeTime = new Timestamp(System.currentTimeMillis());
+        // 执行 JDBC 操作
+        PaperJDBC.updatePapers(subjectNumber, subjectTitle.toString(), changeTime, title);
+
+        // 3.2 更新 “编辑试卷” 窗口中的  表格中的信息，表格里面存储的是该试卷中已经添加的  试题信息
+        String[] subjectOfPaper = new String[11];       // 需要显示 11 列信息表示一道试题
+        String sql = setSQL(chooseTitles);
+        String[][] result = subjectJDBC.readSubject(sql);       // 获得需要添加的试题对应的 二维数组
+        for (int i = 0; i < chooseTitles.length; i++) {
+            tableModelOfEditPaper.addRow(result[i]);       // 添加的时候是添加 一维数组，所以只要添加得到的二维数组的一行
+        }
+
+        // 3.3 更新  MainUI  界面中表格的信息，表格里面存储的是  试卷
+        tableModelOfMainUI.setValueAt(subjectNumber, mainUISelectedRow, 1);
+        tableModelOfMainUI.setValueAt(subjectTitle.toString(), mainUISelectedRow, 2);
+        tableModelOfMainUI.setValueAt(changeTime.toString(), mainUISelectedRow, 3);
+
+
+    }
+
+    /**
+    * @Description: 根据传进来的题目的 Title  数组，生成查询的  SQL  语句
+    * @Param: [paperAlreadySubjectTitle]
+    * @return: java.lang.String
+    * @Author: 林凯
+    * @Date: 2019/11/18
+    */
+    private String setSQL(String[] paperAlreadySubjectTitle) {
+        // sql 语句中的字符串要用  ‘’  括起来
+        StringBuilder sql = new StringBuilder("select * from subject where title = '" + paperAlreadySubjectTitle[0] + "' ");
+
+        for (int i = 1; i < paperAlreadySubjectTitle.length; i++) {
+            sql.append("or title = '" + paperAlreadySubjectTitle[i] + "' ");
+        }
+        System.out.println(sql.toString());
+        return sql.toString();
     }
 
     private void initComponents() {
@@ -133,12 +222,12 @@ public class AddSubjectToPaper extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
-            .EmptyBorder(0,0,0,0), "JF\u006frmDes\u0069gner \u0045valua\u0074ion",javax.swing.border.TitledBorder.CENTER,javax
-            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("D\u0069alog",java.awt.Font.BOLD,
-            12),java.awt.Color.red),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans
-            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062order".equals(e.
-            getPropertyName()))throw new RuntimeException();}});
+            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
             panel1.setLayout(null);
 
             //---- label1 ----

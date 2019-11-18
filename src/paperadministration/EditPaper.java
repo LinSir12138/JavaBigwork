@@ -23,17 +23,17 @@ public class EditPaper extends JFrame {
     private JFrame fatherFrame;     // 父窗口的引用
     private DefaultTableModel tableModelOfFather;       // 父窗口的表格模型的引用
     private SubjectJDBC subjectJDBC;
-    int row;
+    int mainUISelectedRow;
 
     // 自己添加的控件（添加一些 JFormdesigner 不方便操作的空间）
     private JTable tableSubject;
     private JScrollPane scrollPaneSubject;
     private DefaultTableModel tableModel;
 
-    public EditPaper(JFrame fatherFrame, DefaultTableModel tableModelOfFather, int row) {
+    public EditPaper(JFrame fatherFrame, DefaultTableModel tableModelOfFather, int mainUISelectedRow) {
         this.fatherFrame = fatherFrame;
         this.tableModelOfFather = tableModelOfFather;
-        this.row = row;
+        this.mainUISelectedRow = mainUISelectedRow;
         subjectJDBC = new SubjectJDBC();
         initComponents();
         initJTabel();       // 初始化表格
@@ -48,7 +48,7 @@ public class EditPaper extends JFrame {
     */ 
     private void initJTabel() {
         String[] columNames = {"题目编号(标题)", "题目类型", "题目内容", "选项A", "选项B", "选项C", "选项D", "正确答案", "真假值", "题目备注", "最后修改时间"};
-        String tempTitle = tableModelOfFather.getValueAt(row, 2).toString();
+        String tempTitle = tableModelOfFather.getValueAt(mainUISelectedRow, 2).toString();
         System.out.println(tempTitle);
         // 由于是把所有包含的试题编号（标题）放在一个字符串里面，用 - 分隔，所以取出来的时候也要分隔取出
         String[] titles = tempTitle.split("-");
@@ -56,11 +56,11 @@ public class EditPaper extends JFrame {
             System.out.println(titles[i]);
         }
 
-        StringBuilder sql = new StringBuilder("select * from subject where title = " + titles[0] + " ");
+        StringBuilder sql = new StringBuilder("select * from subject where title = '" + titles[0] + "' ");
 
         // 这里的下标从 1 开始
         for (int i = 1; i < titles.length; i++) {
-            sql.append("or title = " + titles[i] + " ");
+            sql.append("or title = '" + titles[i] + "' ");
         }
 
         System.out.println(sql.toString());
@@ -118,7 +118,8 @@ public class EditPaper extends JFrame {
     */
     private void buttonAddMouseReleased(MouseEvent e) {
         // TODO add your code here
-        AddSubjectToPaper addSubjectToPaper = new AddSubjectToPaper(this, tableModel);
+        // 第3个参数传入的是  mainUI  界面中的  表格的引用，
+        AddSubjectToPaper addSubjectToPaper = new AddSubjectToPaper(this, tableModel, tableModelOfFather, mainUISelectedRow);
         addSubjectToPaper.setVisible(true);
         this.setEnabled(false);     // 设置当前窗口不可编辑
     }
@@ -155,11 +156,12 @@ public class EditPaper extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
             panel1.setLayout(null);
 
             //---- label1 ----

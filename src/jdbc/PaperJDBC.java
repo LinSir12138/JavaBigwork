@@ -159,6 +159,13 @@ public class PaperJDBC {
         return flag;
     }
 
+    /** 
+    * @Description: 根据传进来的   sql  语句执行查询操作，返回对应的 String二维数组 
+    * @Param: [sql] 
+    * @return: java.lang.String[][] 
+    * @Author: 林凯
+    * @Date: 2019/11/17 
+    */ 
     public static String[][] getAllPapers(String sql) {
         String[][] datas;
 
@@ -190,6 +197,37 @@ public class PaperJDBC {
             JDBCUtil.close(rs, ps, connection);     // 关闭连接
         }
     }
+    
+    /** 
+    * @Description: 更新试卷信息，传入的参数： 1~~~需要更新的试卷的 Title，  3~~~需要更新的 subjectNumber 字段,    2~~~更新之后的 subjectTitle 字段,
+    * @Param: [] 
+    * @return: void 
+    * @Author: 林凯
+    * @Date: 2019/11/17 
+    */ 
+    public static void updatePapers(String subjectNumber, String subjectTitle, Timestamp timestamp, String title) {
+        // 不要忘了字符要用 ‘’  括起来
+//        String sql = "update examinationpaper set subjectTitle = '" + subjectTitle + "' " + ", subjectNumber = '" + subjectNumber + ", " + " where title = '" + title + "'";
+        String sql = "update examinationpaper set subjectNumber = ? , subjectTitle = ? , changeTime = ? where title = ?";
+
+//        System.out.println(sql);
+
+        try {
+            connection = JDBCUtil.getMySqlConn("bigwork");
+            ps = connection.prepareStatement(sql);
+            ps.setObject(1, subjectNumber);
+            ps.setObject(2, subjectTitle);
+            ps.setObject(3, timestamp);
+            ps.setObject(4, title);
+            ps.execute();       // 执行
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(ps, connection);     // 关闭连接
+        }
+
+    }
+    
 
     public static void main(String[] args) {
         PaperJDBC.getAllPapers();

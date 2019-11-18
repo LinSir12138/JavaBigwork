@@ -248,6 +248,7 @@ public class SubjectJDBC {
 
     }
 
+
     public int getRows() {
         return rows;
     }

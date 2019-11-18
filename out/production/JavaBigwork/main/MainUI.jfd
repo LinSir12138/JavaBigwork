@@ -252,6 +252,11 @@ new FormModel {
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSearchPaperMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonRenamePaper"
+							"text": "重命名试卷"
+							"font": #Font3
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonEditPaper"
 							"text": "编辑试卷"
 							"font": #Font3
@@ -292,7 +297,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 775, 595 )
+			"size": new java.awt.Dimension( 970, 595 )
 		} )
 	}
 }

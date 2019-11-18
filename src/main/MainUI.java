@@ -497,6 +497,7 @@ public class MainUI extends JFrame {
         buttonAddPaper = new JButton();
         buttonDeletePaper = new JButton();
         buttonSearchPaper = new JButton();
+        buttonRenamePaper = new JButton();
         buttonEditPaper = new JButton();
         buttonPreviewPaper = new JButton();
         label28 = new JLabel();
@@ -512,13 +513,12 @@ public class MainUI extends JFrame {
         //======== panelTop ========
         {
             panelTop.setBackground(new Color(66, 143, 185));
-            panelTop.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax
-            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-            . awt .Font ( "Dialo\u0067", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,panelTop. getBorder () ) ); panelTop. addPropertyChangeListener( new java. beans .
-            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "borde\u0072" .
-            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            panelTop.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
+            border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER
+            ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font
+            . BOLD ,12 ) ,java . awt. Color .red ) ,panelTop. getBorder () ) ); panelTop. addPropertyChangeListener(
+            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r"
+            .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             panelTop.setLayout(new BorderLayout());
 
             //---- labelTitle ----
@@ -889,6 +889,11 @@ public class MainUI extends JFrame {
                     });
                     panel17.add(buttonSearchPaper);
 
+                    //---- buttonRenamePaper ----
+                    buttonRenamePaper.setText("\u91cd\u547d\u540d\u8bd5\u5377");
+                    buttonRenamePaper.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
+                    panel17.add(buttonRenamePaper);
+
                     //---- buttonEditPaper ----
                     buttonEditPaper.setText("\u7f16\u8f91\u8bd5\u5377");
                     buttonEditPaper.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
@@ -988,6 +993,7 @@ public class MainUI extends JFrame {
     private JButton buttonAddPaper;
     private JButton buttonDeletePaper;
     private JButton buttonSearchPaper;
+    private JButton buttonRenamePaper;
     private JButton buttonEditPaper;
     private JButton buttonPreviewPaper;
     private JLabel label28;

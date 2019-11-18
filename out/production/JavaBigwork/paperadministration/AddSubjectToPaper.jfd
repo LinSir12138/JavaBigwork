@@ -33,6 +33,7 @@ new FormModel {
 					name: "buttonAddSubject"
 					"text": "添加选中的试题到试卷中"
 					"font": new java.awt.Font( "Dialog", 1, 18 )
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonAddSubjectMouseReleased", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"x": 280
 					"y": 20
