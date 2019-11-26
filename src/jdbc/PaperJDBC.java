@@ -199,7 +199,8 @@ public class PaperJDBC {
     }
     
     /** 
-    * @Description: 更新试卷信息，传入的参数： 1~~~需要更新的试卷的 Title，  3~~~需要更新的 subjectNumber 字段,    2~~~更新之后的 subjectTitle 字段,
+    * @Description: 更新试卷信息，传入的参数： 1~~~需要更新的 subjectNumber 字段(试卷中更新之后的题目数量)  ，  2~~~需要更新的试卷的 subjectTitle 字段，用来表示
+     *                  试卷中存有哪些题目,    3~~~更新之后的 时间戳， 4 ~~~~ 需要更新试卷的试卷标题——
     * @Param: [] 
     * @return: void 
     * @Author: 林凯

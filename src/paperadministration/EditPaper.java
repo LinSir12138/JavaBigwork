@@ -11,10 +11,15 @@ package paperadministration;
 * */
 
 import java.awt.event.*;
+
+import jdbc.PaperJDBC;
 import jdbc.SubjectJDBC;
 import org.apache.commons.lang.text.StrBuilder;
 
 import java.awt.*;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -125,6 +130,58 @@ public class EditPaper extends JFrame {
         this.setEnabled(false);     // 设置当前窗口不可编辑
     }
 
+    /** 
+    * @Description: 点击   “从试卷删除选中的试题”  对应按钮的点击事件 ---》 将选中的题目从改试卷中删除
+    * @Param: [e] 
+    * @return: void 
+    * @Author: 林凯
+    * @Date: 2019/11/26 
+    */ 
+    private void buttonDeleteMouseReleased(MouseEvent e) {
+        // TODO add your code here
+        // 1. 首先得获得用户选中了哪些试题
+        ArrayList<String> titleList = new ArrayList<>();
+        int[] selectRows = tableSubject.getSelectedRows();
+
+        // 2. 获得试卷中所有题目的标题,通过父窗口的 subjectTitle 字段获取，也可以通过 数据库获取，都可以
+        String[] titles = tableModelOfFather.getValueAt(mainUISelectedRow, 2).toString().split("-");        // 获得的 title 是以 - 分割的
+        Collections.addAll(titleList, titles);       // 将试卷中所有的题目的标题添加到 ArrayList中临时保存
+
+        // 3.从保存所有题目标题的 ArrayList 中移除已经选中的题目
+        for (int i = 0; i < selectRows.length; i++) {
+            // 将选中的试题从中移出，那么剩下的就是试卷中还剩下的题目
+            titleList.remove(tableModel.getValueAt(selectRows[i], 0).toString());
+        }
+
+        // 4. 获得试卷中剩下的题目的数量,同时生成时间戳
+        int subjectNumber = titles.length - selectRows.length;
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());        // 以当前时间创建时间戳
+
+        // 5. 获得剩下题目对应的字符串（每个题目标题用 - 分割）
+        StringBuilder subjectTitle = new StringBuilder();
+        for (int i = 0; i < subjectNumber; i++) {
+            subjectTitle.append(titleList.get(i) + "-");
+        }
+
+        // 5. 按照得到的数据更新数据库以及 UI 界面
+        // 5.1 更新数据库
+        System.out.println(tableModelOfFather.getValueAt(mainUISelectedRow, 0).toString());
+        System.out.println(subjectTitle.toString());
+        PaperJDBC.updatePapers(String.valueOf(subjectNumber), subjectTitle.toString(), timestamp, tableModelOfFather.getValueAt(mainUISelectedRow, 0).toString());
+        /*
+        *       5.2 更新 UI 界面，需要更新本窗口的，同时也要更新父窗口的
+        *      特别注意：删除第时候要从后面进行删除，因为删除之后下标会发生变化
+        * */
+        System.out.println("selectRows.length = " + selectRows.length);
+        for (int i = selectRows.length - 1; i >= 0; i--) {      // 更新本窗口的 UI 界面
+            tableModel.removeRow(selectRows[i]);
+        }
+        // 更新父窗口的 subjectTitle字段，对应在第2列（下标从0开始）
+        tableModelOfFather.setValueAt(subjectTitle.toString(), mainUISelectedRow, 2);
+
+    }
+    
+
     /**
     * @Description: 初始化窗体，由 JFrameDesigner 自动生成
     * @Param: []
@@ -157,12 +214,11 @@ public class EditPaper extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
+            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+            , 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+            , new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+            panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             panel1.setLayout(null);
 
             //---- label1 ----
@@ -185,6 +241,12 @@ public class EditPaper extends JFrame {
             //---- buttonDelete ----
             buttonDelete.setText("\u4ece\u8bd5\u5377\u4e2d\u5220\u9664\u9009\u4e2d\u8bd5\u9898");
             buttonDelete.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+            buttonDelete.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    buttonDeleteMouseReleased(e);
+                }
+            });
             panel1.add(buttonDelete);
             buttonDelete.setBounds(620, 20, 235, 40);
 
