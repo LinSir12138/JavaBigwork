@@ -4,15 +4,17 @@
 
 package paperadministration;
 
+/*
+*       2019年11月26日14:02:42
+*       UI界面：对应的UI界面是在 试卷管理  界面中点击  “编辑试卷”  弹出的的UI
+*       调用关系：被 MainUI  所调用
+* */
+
 import java.awt.event.*;
-import javabean.Subject;
-import jdbc.PaperJDBC;
 import jdbc.SubjectJDBC;
 import org.apache.commons.lang.text.StrBuilder;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -63,9 +65,8 @@ public class EditPaper extends JFrame {
             sql.append("or title = '" + titles[i] + "' ");
         }
 
-        System.out.println(sql.toString());
-        String[][] datas = subjectJDBC.readSubject(sql.toString());
-        System.out.println("datas的长度" + datas.length + "  " + datas[0].length);
+        System.out.println(sql.toString());     // 打印一下 sql 语句（测试用）
+        String[][] datas = subjectJDBC.readSubject(sql.toString());     // 当试卷中试题数量为 0 是，返回一个空数组
 
         tableModel = new DefaultTableModel(datas, columNames);         // tableModel 对应有 11 列
         tableSubject = new JTable(tableModel);

@@ -255,6 +255,7 @@ new FormModel {
 							name: "buttonRenamePaper"
 							"text": "重命名试卷"
 							"font": #Font3
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonRenamePaperMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonEditPaper"

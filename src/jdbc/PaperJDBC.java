@@ -88,7 +88,7 @@ public class PaperJDBC {
     }
 
     /**
-    * @Description: 获得试卷数据库中的所有试卷标题，并返回一个Stringshuz
+    * @Description: 获得试卷数据库中的所有试卷标题，并返回一个String 数组
     * @Param: []
     * @return: java.lang.String[]
     * @Author: 林凯
@@ -227,7 +227,30 @@ public class PaperJDBC {
         }
 
     }
-    
+
+    /**
+    * @Description: 更新试卷的名字（标题）， 传入的参数：1 ~~~~~~需要更新的试卷的旧 Title，2 ~~~~~~~更新之后新的 Title
+    * @Param: []
+    * @return: void
+    * @Author: 林凯
+    * @Date: 2019/11/26
+    */
+    public static void updatePaperName(String oldPaperName, String newPaperName) {
+        String sql = "update examinationpaper set title = ? where title = ?";
+
+        try {
+            connection = JDBCUtil.getMySqlConn("bigwork");
+            ps = connection.prepareStatement(sql);
+            ps.setObject(1, newPaperName);
+            ps.setObject(2, oldPaperName);
+            ps.execute();       // 执行
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
 
     public static void main(String[] args) {
         PaperJDBC.getAllPapers();

@@ -303,6 +303,7 @@ public class AddPaper extends JFrame {
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
+
         /**
          * @Description: ######################################    下面是自己添加的代码       #######################3
          * @Param: []

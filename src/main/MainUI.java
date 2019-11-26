@@ -210,6 +210,61 @@ public class MainUI extends JFrame {
     }
 
     /**
+     * @Description: 在   “试卷管理”  界面点击   “重命名试卷”  按钮对应点击事件 ----》 重命名试卷的名字
+     * @Param: [e]
+     * @return: void
+     * @Author: 林凯
+     * @Date: 2019/11/26
+     */
+    private void buttonRenamePaperMouseReleased(MouseEvent e) {
+        // TODO add your code here
+
+        // 1. 首先判断用户是否已经选中了某张试卷，如果没有选中或者选中的多张试卷，则提示用户重新选择
+        int[] selectedRows =  tableSubject.getSelectedRows();
+        System.out.println(selectedRows.length);
+        if (selectedRows.length > 1) {
+            // 选中了多张试卷
+            JOptionPane.showMessageDialog(this, "一次只能重命名一张试卷！", "错误", JOptionPane.ERROR_MESSAGE);
+            return;
+        } else if (selectedRows.length == 0) {
+            // 没有选中试卷
+            JOptionPane.showMessageDialog(this, "请先选择需要重命名的试卷！", "错误", JOptionPane.ERROR_MESSAGE);
+            return;     // 直接返回，不继续执行下面
+        }
+
+        // 2. 然后把原来试卷的名称先保存起来
+//        String oldName = tableSubject.getSelectedRow();
+        String oldName = tableModel.getValueAt(tableSubject.getSelectedRow(), 0).toString();
+        System.out.println("oldName = " + oldName);
+
+        String newName = JOptionPane.showInputDialog(this,"请输入试卷名称","输入试卷名称",1);
+        System.out.println("newName = " + newName);
+
+        // 3. 首先判断该试卷名称是否合法（即不能存在两张试卷的试卷名称一样的情况）
+        String[] oldPaperNameList =  PaperJDBC.readPaperTitle();     // 首先获得已经存在的试卷名称
+        ArrayList<String> namelist = new ArrayList<>();     // 将 String数组存放的 ArrayList 中，方便后面检测是否存在相同的元素
+        Collections.addAll(namelist, oldPaperNameList);
+        namelist.remove(oldName);       // 将老的试卷的名字从列表中移除
+
+        if (newName.equals(oldName)) {
+            // 如果重命名的名字和原来的名字一样，这认为重命名成功
+            JOptionPane.showMessageDialog(this, "重命名成功！", "成功！", 1);
+        } else if (namelist.contains(newName)) {
+            JOptionPane.showMessageDialog(this, "重命名失败，可能存在重复名称，请修改之后再进行尝试！", "错误", JOptionPane.ERROR_MESSAGE);
+        } else {
+            // 如果新名字即不和原来的名字相同，在数据库中也不存在同名的，那么说明该名字可以使用
+            JOptionPane.showMessageDialog(this, "重命名成功！", "成功！", 1);
+
+            // 3. 接下来就是修改数据库中的信息，和UI界面中表格的信息
+            // 3.1 更新数据库中的信息
+            PaperJDBC.updatePaperName(oldName, newName);
+            // 3.2 更新UI界面表格中的信息
+            tableModel.setValueAt(newName, selectedRows[0], 0);
+        }
+    }
+
+
+    /**
      * @Description: 在   “试卷管理”  界面点击   “筛选试卷”   按钮对应的点击事件
      * @Param: [e]
      * @return: void
@@ -451,6 +506,8 @@ public class MainUI extends JFrame {
     }
 
 
+
+
     /** 
     * @Description: 初始化主界面  JFormdesigner 自动生成的 
     * @Param: [] 
@@ -513,12 +570,13 @@ public class MainUI extends JFrame {
         //======== panelTop ========
         {
             panelTop.setBackground(new Color(66, 143, 185));
-            panelTop.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
-            border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER
-            ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font
-            . BOLD ,12 ) ,java . awt. Color .red ) ,panelTop. getBorder () ) ); panelTop. addPropertyChangeListener(
-            new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r"
-            .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            panelTop.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+            . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder
+            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .
+            awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelTop. getBorder( )) )
+            ; panelTop. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+            ;
             panelTop.setLayout(new BorderLayout());
 
             //---- labelTitle ----
@@ -892,6 +950,12 @@ public class MainUI extends JFrame {
                     //---- buttonRenamePaper ----
                     buttonRenamePaper.setText("\u91cd\u547d\u540d\u8bd5\u5377");
                     buttonRenamePaper.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
+                    buttonRenamePaper.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            buttonRenamePaperMouseReleased(e);
+                        }
+                    });
                     panel17.add(buttonRenamePaper);
 
                     //---- buttonEditPaper ----
