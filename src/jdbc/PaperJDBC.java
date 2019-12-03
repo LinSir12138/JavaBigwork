@@ -6,6 +6,7 @@ package jdbc;
 * */
 
 import javabean.MyPaper;
+import jdk.nashorn.internal.scripts.JD;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -38,17 +39,17 @@ public class PaperJDBC {
             rs = ps.executeQuery();
 
             // 2.下面几行代码获取数据的 总行数，根据行数初始化二维数组
-            rs.last();
-            rows = rs.getRow();
+            rs.last();          // 将 “指针” 移动到最后一行
+            rows = rs.getRow();     // 返回当前行的行数（第一行对应的行数为1，即下标从1开始）
             datas = new String[rows][4];
-            rs.beforeFirst();
+            rs.beforeFirst();       // 将  “指针”  重新移动到第一行的前面
 
             while (rs.next()) {
                 for (int i = 0; i < 4; i++) {
                     // getRow(),第一行返回1，第二行返回2，为了和数组下标一致，所以要减一 （Ctrl + Q查看快捷文档）
                     // getObjec(index),index == 1 表示返回第一列
                     datas[rs.getRow() - 1][i] = rs.getObject(i + 1 + 1).toString();
-                    System.out.println(datas[rs.getRow() - 1][i]);
+//                    System.out.println(datas[rs.getRow() - 1][i]);
                 }
             }
             return datas;
@@ -123,6 +124,43 @@ public class PaperJDBC {
     }
 
     /**
+    * @Description: 获得指定试卷里面的所有题目，边将题目转换成一个 String 数组返回
+    * @Param: [paperTitle]
+    * @return: java.lang.String[]
+    * @Author: 林凯
+    * @Date: 2019/11/30
+    */
+    public static String[] getPaperSubjectTitles(String paperTitle) {
+        String sql = "select * from examinationpaper where title = ?";
+        String[] resultDatas;
+
+        try {
+            connection = JDBCUtil.getMySqlConn("bigwork");
+            ps = connection.prepareStatement(sql);
+            ps.setObject(1, paperTitle);
+            rs = ps.executeQuery();     // 执行 SQL  语句，获得结果集
+            // 获取列数
+            ResultSetMetaData rsmd = rs.getMetaData() ;             // 用到了 ResultSetMetaData 工具类，可以用来获得ResultSet的列数
+            int columnCount = rsmd.getColumnCount();        // 获取ResultSet的列数
+            resultDatas = new String[columnCount];      // 按照 列数初始化 String 数组
+
+            String tempTitles = null;
+            while (rs.next()) {
+                tempTitles = rs.getString(4);
+//                System.out.println(tempTitles);
+            }
+            resultDatas = tempTitles.split("-");
+
+
+            return resultDatas;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
     * @Description: 从数据库中删除选中的 试卷
     * @Param: []
     * @return: boolean
@@ -186,7 +224,7 @@ public class PaperJDBC {
                     // getRow(),第一行返回1，第二行返回2，为了和数组下标一致，所以要减一 （Ctrl + Q查看快捷文档）
                     // getObjec(index),index == 1 表示返回第一列
                     datas[rs.getRow() - 1][i] = rs.getObject(i + 1 + 1).toString();
-                    System.out.println(datas[rs.getRow() - 1][i]);
+//                    System.out.println(datas[rs.getRow() - 1][i]);
                 }
             }
             return datas;

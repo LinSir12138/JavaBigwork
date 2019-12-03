@@ -267,6 +267,7 @@ new FormModel {
 							name: "buttonPreviewPaper"
 							"text": "预览试卷"
 							"font": #Font4
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonPreviewPaperMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label28"
@@ -279,16 +280,39 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "card5"
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-					name: "panelContent6"
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label23"
-						"text": "card6"
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 175
-						"y": 170
-						"width": 280
-						"height": 100
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panelContentExam"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 2
+						"hgap": 10
+						"vgap": 10
+					} ) {
+						name: "panel18"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonAddExam"
+							"text": "发布考试"
+							"font": #Font4
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonAddExamMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonDeleteExam"
+							"text": "删除选中的考试"
+							"font": new java.awt.Font( "Dialog", 1, 16 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonDeleteExamMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonStartExam"
+							"text": "开始考试"
+							"font": new java.awt.Font( "Dialog", 1, 18 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonStartExamMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label29"
+							"text": " "
+							"font": #Font5
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "North"
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "card6"

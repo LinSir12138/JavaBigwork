@@ -112,7 +112,7 @@ public class AddSubjectToPaper extends JFrame {
     }
 
     /**
-    * @Description: 点击   “添加选中的试题到试卷中”  对应的点击事件
+    * @Description: 点击   “添加选中的试题到试卷中” ---> 试卷已经创建了，只要修改里面的 subjectTitle 字段等，就相当于添加了试题  对应的点击事件
     * @Param: [e]
     * @return: void
     * @Author: 林凯
@@ -163,6 +163,8 @@ public class AddSubjectToPaper extends JFrame {
         System.out.println(subjectTitle.toString());
         String subjectNumber = String.valueOf(paperAlreadySubjectTitle.length + chooseTitles.length);
         Timestamp changeTime = new Timestamp(System.currentTimeMillis());
+        System.out.println("~~~~~~~~~~~~~~~~~");
+        System.out.println(subjectNumber + " ## " +  subjectTitle.toString() + " ## " + changeTime + "  ##  " + title);
         // 执行 JDBC 操作
         PaperJDBC.updatePapers(subjectNumber, subjectTitle.toString(), changeTime, title);
 

@@ -47,33 +47,35 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 				name: "panelCenter"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+					name: "panel2"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": " "
+						"font": new java.awt.Font( "Dialog", 1, 48 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 0
+						"y": 0
+						"height": 67
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "buttonSure"
+						"text": "确认"
+						"font": new java.awt.Font( "Dialog", 1, 16 )
+						addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSureMouseReleased", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+						"x": 380
+						"y": 10
+						"width": 125
+						"height": 50
+					} )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 878
+					"x": 0
+					"y": 435
+				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"
-			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-				name: "panel2"
-				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "label2"
-					"text": " "
-					"font": new java.awt.Font( "Dialog", 1, 48 )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 0
-					"y": 0
-					"height": 67
-				} )
-				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "buttonSure"
-					"text": "确认"
-					"font": new java.awt.Font( "Dialog", 1, 16 )
-					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSureMouseReleased", true ) )
-				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-					"x": 380
-					"y": 10
-					"width": 125
-					"height": 50
-				} )
-			}, new FormLayoutConstraints( class java.lang.String ) {
-				"value": "South"
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

@@ -8,5 +8,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jar" level="project" />
+    <orderEntry type="library" name="JGoodies Forms" level="project" />
+    <orderEntry type="library" name="IntelliJ IDEA GridLayout" level="project" />
+    <orderEntry type="library" name="TableLayout" level="project" />
   </component>
 </module>

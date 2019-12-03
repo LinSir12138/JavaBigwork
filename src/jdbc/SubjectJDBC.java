@@ -6,6 +6,7 @@ package jdbc;
 * */
 
 import javabean.Subject;
+import org.apache.commons.lang.text.StrBuilder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -123,6 +124,78 @@ public class SubjectJDBC {
 //            }
 
             return tempDatas;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+    * @Description: 根据传进来的包含题目标题的一维数组，查询对应的题目信息，二维数组的形式返回
+    * @Param: [titles]
+    * @return: java.lang.String[][]
+    * @Author: 林凯
+    * @Date: 2019/11/30
+    */
+    public String[][] getSubjectByTitles(String[] titles) {
+        // 采用 拼接字符串的方式生成 SQL 语句
+        String sql = "select * from subject where title = ";
+//        String sql = "select * from subject where title = 'Test20' or title = 'Test19'";
+        String[][] tempDatas;       // 数据库中查询的结果保存到对应的二维数组中
+
+        // 构造 SQL 语句中的 条件表达式
+        StrBuilder strBuilder = new StrBuilder();
+        if (titles.length == 1) {
+            strBuilder.append(titles[0]);
+        } else {
+            strBuilder.append(" '" + titles[0] + "' ");
+            for (int i = 1; i < titles.length; i++) {
+                strBuilder.append(" or title = '" + titles[i] + "'");
+            }
+        }
+//        System.out.println("条件表达式为：" + strBuilder.toString());        测试用
+
+
+        try {
+            conn = JDBCUtil.getMySqlConn("bigwork");
+            ps = conn.prepareStatement(sql + strBuilder.toString());
+//            ps.setObject(1, strBuilder.toString());
+            rs = ps.executeQuery();     // 执行 SQL 语句，并获得结果集
+
+            // 获取列数
+            ResultSetMetaData rsmd = rs.getMetaData() ;             // 用到了 ResultSetMetaData 工具类，可以用来获得ResultSet的列数
+            int columnCount = rsmd.getColumnCount();        // 获取ResultSet的列数
+            // 获得总共的行数,用来创建需要返回的二维数组（下面几行代码就是为了获得结果集的行数）
+            rs.last();      // 将光标移动到最后一行
+            rows = rs.getRow();         // 返回当前行的行数（可以按 Ctrl + Q 查看快捷文档）
+            rs.beforeFirst();
+            tempDatas = new String[rows][columnCount];      // 初始化二维数组，包含结果集里面的所有字段
+
+
+
+            int i = 0;
+            while (rs.next()) {
+                for (int j = 0; j < columnCount; j++) {
+                    tempDatas[i][j] = rs.getObject(j + 1).toString();
+                }
+                i++;
+            }
+
+            //   测试用
+//            System.out.println("开始输出");
+//            System.out.println(sql);
+//
+//            System.out.println("row = " + rows + "," + "col =" + columnCount);
+//            for (int k = 0; k < tempDatas.length; k++) {
+//                for (int j = 0; j < tempDatas[0].length; j++) {
+//                    System.out.print(tempDatas[k][j] + ", ");
+//                }
+//                System.out.println(" ");
+//            }
+
+            return tempDatas;
+
+
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -253,14 +326,14 @@ public class SubjectJDBC {
         return rows;
     }
 
-    public static void main(String[] args) {
-        SubjectJDBC t1 = new SubjectJDBC();
-        String[][] temp = t1.readSubject("aaa");
-        for (int i = 0; i < temp.length; i++) {
-            for (int j = 0; j <temp[i].length; j++) {
-                System.out.println(temp[i][j]);
-            }
-        }
-
-    }
+//    public static void main(String[] args) {
+//        SubjectJDBC t1 = new SubjectJDBC();
+////        String[][] temp = t1.readSubject("aaa");
+//        for (int i = 0; i < temp.length; i++) {
+//            for (int j = 0; j <temp[i].length; j++) {
+//                System.out.println(temp[i][j]);
+//            }
+//        }
+//
+//    }
 }

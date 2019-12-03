@@ -184,13 +184,12 @@ public class AddPaper extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,panel1. getBorder
-            ( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             panel1.setLayout(null);
 
             //---- label1 ----
@@ -244,6 +243,46 @@ public class AddPaper extends JFrame {
         {
             panelCenter.setLayout(null);
 
+            //======== panel2 ========
+            {
+                panel2.setLayout(null);
+
+                //---- label2 ----
+                label2.setText(" ");
+                label2.setFont(new Font(Font.DIALOG, Font.BOLD, 48));
+                panel2.add(label2);
+                label2.setBounds(0, 0, label2.getPreferredSize().width, 67);
+
+                //---- buttonSure ----
+                buttonSure.setText("\u786e\u8ba4");
+                buttonSure.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
+                buttonSure.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseReleased(MouseEvent e) {
+                        buttonSureMouseReleased(e);
+                    }
+                });
+                panel2.add(buttonSure);
+                buttonSure.setBounds(380, 10, 125, 50);
+
+                {
+                    // compute preferred size
+                    Dimension preferredSize = new Dimension();
+                    for(int i = 0; i < panel2.getComponentCount(); i++) {
+                        Rectangle bounds = panel2.getComponent(i).getBounds();
+                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                    }
+                    Insets insets = panel2.getInsets();
+                    preferredSize.width += insets.right;
+                    preferredSize.height += insets.bottom;
+                    panel2.setMinimumSize(preferredSize);
+                    panel2.setPreferredSize(preferredSize);
+                }
+            }
+            panelCenter.add(panel2);
+            panel2.setBounds(0, 435, 878, panel2.getPreferredSize().height);
+
             {
                 // compute preferred size
                 Dimension preferredSize = new Dimension();
@@ -260,45 +299,6 @@ public class AddPaper extends JFrame {
             }
         }
         contentPane.add(panelCenter, BorderLayout.CENTER);
-
-        //======== panel2 ========
-        {
-            panel2.setLayout(null);
-
-            //---- label2 ----
-            label2.setText(" ");
-            label2.setFont(new Font(Font.DIALOG, Font.BOLD, 48));
-            panel2.add(label2);
-            label2.setBounds(0, 0, label2.getPreferredSize().width, 67);
-
-            //---- buttonSure ----
-            buttonSure.setText("\u786e\u8ba4");
-            buttonSure.setFont(new Font(Font.DIALOG, Font.BOLD, 16));
-            buttonSure.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseReleased(MouseEvent e) {
-                    buttonSureMouseReleased(e);
-                }
-            });
-            panel2.add(buttonSure);
-            buttonSure.setBounds(380, 10, 125, 50);
-
-            {
-                // compute preferred size
-                Dimension preferredSize = new Dimension();
-                for(int i = 0; i < panel2.getComponentCount(); i++) {
-                    Rectangle bounds = panel2.getComponent(i).getBounds();
-                    preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                    preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                }
-                Insets insets = panel2.getInsets();
-                preferredSize.width += insets.right;
-                preferredSize.height += insets.bottom;
-                panel2.setMinimumSize(preferredSize);
-                panel2.setPreferredSize(preferredSize);
-            }
-        }
-        contentPane.add(panel2, BorderLayout.SOUTH);
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents

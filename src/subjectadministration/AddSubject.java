@@ -32,7 +32,7 @@ public class AddSubject extends JFrame {
     private boolean flag;
     private String[] result;            // 数组中放11个元素，包括title，包括changetime，changeTime（最后一次修改时间）在进行JDBC操作时生成
     private ButtonGroup buttonGroup1;           // 单选按钮组
-    private ButtonGroup buttonGroup2;           // 复选按钮组
+    private ButtonGroup buttonGroup2;           // 判断对错 按钮组 （这里没有给复选按钮添加组）
 
 
 //    public AddSubject(int row) {

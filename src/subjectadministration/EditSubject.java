@@ -17,14 +17,15 @@ import javax.swing.table.DefaultTableModel;
  * @author Lin Kai
  */
 public class EditSubject extends JFrame {
-    JFrame fatherFrame;
-    DefaultTableModel tableModel;
-    int row;
+    private JFrame fatherFrame;
+    private DefaultTableModel tableModel;
+    private int row;
     private ButtonGroup buttonGroup1;           // 单选按钮组
     private ButtonGroup buttonGroup2;           // 复选按钮组
-    String oldTitle;
-    String[] result;        // 用来保存题目对应的数组，有10个元素，用来表示一道试题的具体内容
-    Timestamp timestamp;        //最后修改时间戳
+    private String oldTitle;
+    private String[] result;        // 用来保存题目对应的数组，有10个元素，用来表示一道试题的具体内容
+    private Timestamp timestamp;        //最后修改时间戳
+    private boolean ifClickSure;        // 是否点击的确定按钮，初始值为 false
 
     public EditSubject(JFrame fatherFrame, DefaultTableModel tableModel, int row) {
         this.fatherFrame = fatherFrame;
@@ -111,6 +112,8 @@ public class EditSubject extends JFrame {
         // 4.设置试题备注
         textAreaRemarks.setText(tableModel.getValueAt(row, 9).toString());
 
+        ifClickSure = false;
+
     }
 
     /**
@@ -125,19 +128,26 @@ public class EditSubject extends JFrame {
         // 设置父窗体看=可操作
         fatherFrame.setEnabled(true);
 
-        // 更改父窗口的表格里面的内容
-        tableModel.setValueAt(result[0], row, 0);
-        tableModel.setValueAt(result[1], row, 1);
-        tableModel.setValueAt(result[2], row, 2);
-        tableModel.setValueAt(result[3], row, 3);
-        tableModel.setValueAt(result[4], row, 4);
-        tableModel.setValueAt(result[5], row, 5);
-        tableModel.setValueAt(result[6], row, 6);
-        tableModel.setValueAt(result[7], row, 7);
-        tableModel.setValueAt(result[8], row, 8);
-        tableModel.setValueAt(result[9], row, 9);
-        tableModel.setValueAt(timestamp, row, 10);
-
+        /**
+         *      因为要设置父窗口可编辑之后才能更改父窗口里面的数据，所以需要放到这个方法里面执行
+         *      只有当点击了 “确定”  按钮之后，才需要更新数据，否则不需要分析。
+         *      如果强制更新的话，可能会抛异常
+         *
+         * */
+        if (ifClickSure) {
+            // 更改父窗口的表格里面的内容
+            tableModel.setValueAt(result[0], row, 0);
+            tableModel.setValueAt(result[1], row, 1);
+            tableModel.setValueAt(result[2], row, 2);
+            tableModel.setValueAt(result[3], row, 3);
+            tableModel.setValueAt(result[4], row, 4);
+            tableModel.setValueAt(result[5], row, 5);
+            tableModel.setValueAt(result[6], row, 6);
+            tableModel.setValueAt(result[7], row, 7);
+            tableModel.setValueAt(result[8], row, 8);
+            tableModel.setValueAt(result[9], row, 9);
+            tableModel.setValueAt(timestamp, row, 10);
+        }
     }
 
     /**
@@ -149,6 +159,7 @@ public class EditSubject extends JFrame {
     */
     private void buttonSaveMouseReleased(MouseEvent e) {
         // TODO add your code here
+        ifClickSure = true;     // 设置为true，说明点击了确定按钮
         SubjectJDBC subjectJDBC = new SubjectJDBC();
 
         // 1.首先判断用户输入的  题目编号（标题）是否合法
@@ -251,6 +262,8 @@ public class EditSubject extends JFrame {
 
         // 更新数据
         subjectJDBC.updateSubject(result, textFieldNumber.getText(), timestamp);
+
+
 
         this.dispose();     // 关闭当前窗口，关闭之前会调用 thisWindowCLosed() 方法
     }

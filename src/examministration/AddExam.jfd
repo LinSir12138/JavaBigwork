@@ -1,0 +1,128 @@
+JFDML JFormDesigner: "7.0.0.6.255" Java: "11.0.3" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
+			"autoSize": false
+		} ) {
+			name: "this"
+			"title": "发布考试"
+			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosed", "thisWindowClosed", true ) )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "考试名称："
+				"font": new java.awt.Font( "Dialog", 1, 18 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 130
+				"y": 25
+				"width": 95
+				"height": 55
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "对应试卷名称："
+				"font": &Font0 new java.awt.Font( "Dialog", 1, 18 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 90
+				"y": 105
+				"width": 160
+				"height": 60
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label4"
+				"text": "考试开始时间："
+				"font": #Font0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 155
+				"height": 65
+				"x": 90
+				"y": 185
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label5"
+				"text": "考试结束时间："
+				"font": #Font0
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 160
+				"height": 60
+				"x": 85
+				"y": 275
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldDateBegin"
+				"font": new java.awt.Font( "Dialog", 1, 18 )
+				"editable": false
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 205
+				"height": 40
+				"x": 255
+				"y": 200
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "buttonChooseTimeBegin"
+				"text": "选择时间"
+				"font": new java.awt.Font( "Dialog", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonChooseTimeBeginMouseReleased", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 110
+				"height": 35
+				"x": 505
+				"y": 205
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldDateEnd"
+				"font": new java.awt.Font( "Dialog", 1, 18 )
+				"editable": false
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 210
+				"height": 40
+				"x": 255
+				"y": 285
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "buttonChooseTimeEnd"
+				"text": "选择时间"
+				"font": new java.awt.Font( "Dialog", 1, 16 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonChooseTimeEndMouseReleased", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"width": 110
+				"height": 35
+				"x": 505
+				"y": 285
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldExamName"
+				"font": new java.awt.Font( "Dialog", 0, 18 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 255
+				"y": 35
+				"width": 195
+				"height": 45
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "textFieldExamPaperName"
+				"font": new java.awt.Font( "Dialog", 0, 18 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 255
+				"y": 115
+				"width": 195
+				"height": 45
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "buttonSure"
+				"text": "确定"
+				"font": new java.awt.Font( "Dialog", 1, 24 )
+				addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSureMouseReleased", true ) )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 270
+				"y": 370
+				"width": 155
+				"height": 55
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 690, 480 )
+		} )
+	}
+}
