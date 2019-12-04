@@ -12,7 +12,7 @@ package subjectadministration;
 * */
 
 import java.awt.event.*;
-import jdbc.MyJDBC;
+
 import mytest.DateChooserJButton;
 
 import java.awt.*;

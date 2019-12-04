@@ -6,6 +6,7 @@ package main;
 
 import examministration.AddExam;
 import examministration.StartExam;
+import facerecognition.WebcamCapture;
 import jdbc.ExamJDBC;
 import jdbc.PaperJDBC;
 import jdbc.SubjectJDBC;
@@ -684,9 +685,8 @@ public class MainUI extends JFrame {
             return;     // 直接返回
         }
 
-        // 2. 下面开始考试，首先
         /*
-         *       开始考试，需要获取一下信息
+         *       2. 开始考试，需要获取一下信息
          *         0.检查考试时间，查看当前时间是否符合考试开始时间
          *       1. 考试名称
          *       2.考试对应的试卷，试卷中的题目信息（构造一个 String 数组，用来保存试卷中有哪些题目，然后作为参数传递过去）
@@ -716,9 +716,22 @@ public class MainUI extends JFrame {
             JOptionPane.showMessageDialog(this, "考试已经结束！", "错误", JOptionPane.ERROR_MESSAGE);
             return;
         }
-//        System.out.println("开始时间:" + startTime );
-//        System.out.println("结束时间:" + endTime );
-//        System.out.println("当前时间:" + currentTime);
+
+        // 2.3.1   根据用户的选择，判断是否要进行人脸识别检测
+        int faceFlag = JOptionPane.showConfirmDialog(this, "是否要进行人脸识别验证？", "人脸识别验证", 0);
+        if (faceFlag == 0) {
+//            try {
+//                // 调用 摄像头 拍照
+////                WebcamCapture.takePhoto();
+//            } catch (InterruptedException ex) {
+//                ex.printStackTrace();
+//            }
+        } else {
+            // 选择了 否，不进行人脸识别
+        }
+
+
+
 
         // 2.4 如果在考试时间范围内，获得 考试名称，考试对应试卷名称，试卷里题目的标题数组
         examName = tableModel.getValueAt(tableSubject.getSelectedRow(), 0).toString();
@@ -729,29 +742,6 @@ public class MainUI extends JFrame {
         this.setEnabled(false);         // 设置当前窗体不可编辑
         startExam.setVisible(true);
 
-//        if (paperTitles == null) {
-//            System.out.println("ERROR");
-//        }
-//
-//        for (int i = 0; i < paperTitles.length; i++) {
-//            System.out.println(paperTitles[i]);
-//        }
-
-
-
-
-
-
-
-
-        // 宋体 3 号
-        /*
-         *       答案
-         *       楷体 小3
-         *       命名： 姓名 - 班级 -学号
-         *       每道题目 500 字
-         *
-         * */
 
     }
 
@@ -785,8 +775,19 @@ public class MainUI extends JFrame {
         panelCenter = new JPanel();
         panelContent1 = new JPanel();
         label20 = new JLabel();
-        panelContent2 = new JPanel();
-        label26 = new JLabel();
+        panelContentMyInformation = new JPanel();
+        panel1 = new JPanel();
+        label1 = new JLabel();
+        label2 = new JLabel();
+        label3 = new JLabel();
+        label4 = new JLabel();
+        label5 = new JLabel();
+        textField1 = new JTextField();
+        textField2 = new JTextField();
+        textField3 = new JTextField();
+        textField4 = new JTextField();
+        textField5 = new JTextField();
+        button1 = new JButton();
         panelContent3 = new JPanel();
         label25 = new JLabel();
         panelContentSubject = new JPanel();
@@ -943,7 +944,7 @@ public class MainUI extends JFrame {
             buttonLeft01.setBounds(0, 0, 135, 50);
 
             //---- buttonLeft02 ----
-            buttonLeft02.setText("\u5b66\u751f\u7ba1\u7406");
+            buttonLeft02.setText("\u4e2a\u4eba\u4fe1\u606f");
             buttonLeft02.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
             buttonLeft02.addMouseListener(new MouseAdapter() {
                 @Override
@@ -1033,31 +1034,98 @@ public class MainUI extends JFrame {
             }
             panelCenter.add(panelContent1, "card1");
 
-            //======== panelContent2 ========
+            //======== panelContentMyInformation ========
             {
-                panelContent2.setLayout(null);
+                panelContentMyInformation.setLayout(new BorderLayout());
 
-                //---- label26 ----
-                label26.setText("card2");
-                panelContent2.add(label26);
-                label26.setBounds(75, 240, 295, 75);
-
+                //======== panel1 ========
                 {
-                    // compute preferred size
-                    Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < panelContent2.getComponentCount(); i++) {
-                        Rectangle bounds = panelContent2.getComponent(i).getBounds();
-                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                    panel1.setLayout(null);
+
+                    //---- label1 ----
+                    label1.setText("\u59d3\u540d\uff1a");
+                    label1.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    panel1.add(label1);
+                    label1.setBounds(70, 90, 95, 40);
+
+                    //---- label2 ----
+                    label2.setText("\u5b66\u53f7\uff1a");
+                    label2.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    panel1.add(label2);
+                    label2.setBounds(70, 150, 100, 40);
+
+                    //---- label3 ----
+                    label3.setText("\u73ed\u7ea7\uff1a");
+                    label3.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    panel1.add(label3);
+                    label3.setBounds(70, 210, 100, 40);
+
+                    //---- label4 ----
+                    label4.setText("\u624b\u673a\u53f7\uff1a");
+                    label4.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    panel1.add(label4);
+                    label4.setBounds(70, 280, 95, 40);
+
+                    //---- label5 ----
+                    label5.setText("\u90ae\u7bb1\uff1a");
+                    label5.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    panel1.add(label5);
+                    label5.setBounds(70, 345, 95, 40);
+
+                    //---- textField1 ----
+                    textField1.setFont(new Font(Font.DIALOG, Font.PLAIN, 18));
+                    textField1.setEditable(false);
+                    panel1.add(textField1);
+                    textField1.setBounds(185, 90, 195, 40);
+
+                    //---- textField2 ----
+                    textField2.setFont(new Font(Font.DIALOG, Font.PLAIN, 18));
+                    textField2.setEditable(false);
+                    panel1.add(textField2);
+                    textField2.setBounds(185, 155, 280, 40);
+
+                    //---- textField3 ----
+                    textField3.setFont(new Font(Font.DIALOG, Font.PLAIN, 18));
+                    textField3.setEditable(false);
+                    panel1.add(textField3);
+                    textField3.setBounds(185, 215, 195, 40);
+
+                    //---- textField4 ----
+                    textField4.setFont(new Font(Font.DIALOG, Font.PLAIN, 18));
+                    textField4.setEditable(false);
+                    panel1.add(textField4);
+                    textField4.setBounds(185, 285, 280, 40);
+
+                    //---- textField5 ----
+                    textField5.setFont(new Font(Font.DIALOG, Font.PLAIN, 18));
+                    textField5.setEditable(false);
+                    panel1.add(textField5);
+                    textField5.setBounds(185, 345, 280, 40);
+
+                    //---- button1 ----
+                    button1.setText("\u7f16\u8f91\u4e2a\u4eba\u4fe1\u606f");
+                    button1.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    panel1.add(button1);
+                    button1.setBounds(650, 10, 180, 50);
+
+                    {
+                        // compute preferred size
+                        Dimension preferredSize = new Dimension();
+                        for(int i = 0; i < panel1.getComponentCount(); i++) {
+                            Rectangle bounds = panel1.getComponent(i).getBounds();
+                            preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
+                            preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
+                        }
+                        Insets insets = panel1.getInsets();
+                        preferredSize.width += insets.right;
+                        preferredSize.height += insets.bottom;
+                        panel1.setMinimumSize(preferredSize);
+                        panel1.setPreferredSize(preferredSize);
                     }
-                    Insets insets = panelContent2.getInsets();
-                    preferredSize.width += insets.right;
-                    preferredSize.height += insets.bottom;
-                    panelContent2.setMinimumSize(preferredSize);
-                    panelContent2.setPreferredSize(preferredSize);
                 }
+                panelContentMyInformation.add(panel1, BorderLayout.CENTER);
             }
-            panelCenter.add(panelContent2, "card2");
+            panelCenter.add(panelContentMyInformation, "card2");
 
             //======== panelContent3 ========
             {
@@ -1321,8 +1389,19 @@ public class MainUI extends JFrame {
     private JPanel panelCenter;
     private JPanel panelContent1;
     private JLabel label20;
-    private JPanel panelContent2;
-    private JLabel label26;
+    private JPanel panelContentMyInformation;
+    private JPanel panel1;
+    private JLabel label1;
+    private JLabel label2;
+    private JLabel label3;
+    private JLabel label4;
+    private JLabel label5;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JTextField textField5;
+    private JButton button1;
     private JPanel panelContent3;
     private JLabel label25;
     private JPanel panelContentSubject;
@@ -1349,6 +1428,7 @@ public class MainUI extends JFrame {
     private JButton buttonStartExam;
     private JLabel label29;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
 
     public static void main(String[] args) {
         MainUI test1 = new MainUI("test");

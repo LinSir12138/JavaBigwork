@@ -26,7 +26,7 @@ public class SendMessage {
         ZhenziSmsClient client = new ZhenziSmsClient("https://sms_developer.zhenzikj.com", "102961", "161f3454-3672-4675-9b94-c9dbf3141d03");
         randomNumber = myRandom();
         try {
-            String result = client.send("15970819628", "您的验证码是： " + randomNumber + "。您正在使用短信验证码登录/注册功能，该验证码10分钟输入有效，请勿泄漏给他人使用。\n");
+            String result = client.send(phoneNumber, "您的验证码是： " + randomNumber + "。您正在使用短信验证码登录/注册功能，该验证码10分钟输入有效，请勿泄漏给他人使用。\n");
             System.out.println(result);
             String balance = client.balance();
             System.out.println(balance);

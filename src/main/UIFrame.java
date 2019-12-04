@@ -9,13 +9,16 @@ package main;
 *       注意事项：
 *       1.避免空指针异常：最好写成  textFieldDTYZML.getText().equals(dynamicCode)
 *                       或者给 dynamicCode 设置初始值
+*       2. 为了方便测试，输入动态验证码是，输入666666就能够正确登录
+*           而且在初始化是初始化了 oldTime，正式上线时需要修改一下
 * d
 * */
 
 import javax.swing.event.*;
 
-import jdbc.MyJDBC;
+import jdbc.UserJDBC;
 import mytest.SendMessage;
+import slatMD5.SaltMd5Util;
 
 import java.awt.event.*;
 import javax.swing.*;
@@ -58,6 +61,7 @@ public class UIFrame extends JFrame {
     private long newTimeL;       // 点击 登录 时，记录的当前时间 （验证码10分钟有效）
     private long oldTimeR;       // 点击 登录 时，记录的当前时间 （验证码10分钟有效）----> 注册界面
     private long newTimeR;       // 点击 登录 时，记录的当前时间 （验证码10分钟有效）
+    private int minute;
 
 
     /**
@@ -73,6 +77,11 @@ public class UIFrame extends JFrame {
         emailOrPhoneFlagR = false;
         checkBoxFlagL = false;
         checkBoxFlagR = false;
+        minute = 10;        // 设置 验证码 的有效时间为10分钟
+        /**
+         *      方便测试，这里初始化了 oldTime，正式上线时需要删除
+         * */
+        oldTimeL = System.currentTimeMillis();
         initComponents();
     }
 
@@ -146,6 +155,35 @@ public class UIFrame extends JFrame {
     }
 
     /**
+     * @Description:  给 复选框 添加的 状态改变 监听事件
+     *                  这里做了类型判断，根据不同的复选框，执行不同操作
+     * @Param: [e]
+     * @return: void
+     * @Author: 林凯
+     * @Date: 2019/10/21
+     */
+    private void checkBox1StateChanged(ChangeEvent e) {
+        // TODO add your code here
+        JCheckBox checkBox = (JCheckBox) e.getSource();     // 通过类型转换获得对应组件
+        if (checkBox == checkBoxL) {
+            if (checkBox.isSelected()) {
+                checkBoxFlagL = true;
+            } else {
+                checkBoxFlagL = false;
+            }
+        } else {
+            if (checkBox.isSelected()) {
+                checkBoxFlagR = true;
+            } else {
+                checkBoxFlagR = false;
+            }
+        }
+
+    }
+
+//#########################################     登录界面    ###################################3
+
+    /**
     * @Description:  登录界面，点击 "获取验证码" 按钮 ----(动态验证码)---> 鼠标释放时的事件
     * @Param: [e]
     * @return: void
@@ -161,6 +199,28 @@ public class UIFrame extends JFrame {
         boolean emailFlag = CheckEmailOrPhone.checkEmail(textFieldEmailL.getText());
         boolean phoneFlag = CheckEmailOrPhone.checkPhoneNumber(textFieldEmailL.getText());
         if (emailFlag || phoneFlag) {
+
+            /**
+             *      首先检查手机号或者邮箱号是否已经注册过
+             * */
+            UserJDBC userJDBC = new UserJDBC();
+
+            if (phoneFlag) {
+                if (userJDBC.checkUserByPhoneNumber(textFieldEmailR.getText(), "0") == 2) {
+                    // 说明 手机号 在数据库中找不到
+                    JOptionPane.showMessageDialog(this, "手机号还未注册，请先注册后在登录！", "错误", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+
+            if (emailFlag) {
+                if (userJDBC.checkUserByEmail(textFieldEmailR.getText(), "0") == 2) {
+                    // 说明 邮箱账号 在数据库中找不到
+                    JOptionPane.showMessageDialog(this, "邮箱号还未注册，请先注册后在登录！", "错误", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+            }
+
             // 发送验证码的同时开始计时
             oldTimeL = System.currentTimeMillis();
             // 同时，按钮上进行倒计时60秒，在60秒之内，按钮不能点击，60秒时候，显示“重新发送（用到多线程）”
@@ -185,74 +245,6 @@ public class UIFrame extends JFrame {
             emailOrPhoneFlagL = false;
             JOptionPane.showMessageDialog(this, "请先输入正确的邮箱或手机号！", "错误", 0);
         }
-    }
-
-    /**
-    * @Description:  注册界面，点击 "获取验证码" 按钮 ----(动态验证码)---> 鼠标释放时的事件
-    * @Param: [e]
-    * @return: void
-    * @Author: 林凯
-    * @Date: 2019/10/21
-    */
-    private void buttonDTYZMRMouseReleased(MouseEvent e) {
-        if (buttonDTYZMR.isEnabled() == false) {
-            return;     // 如果组件为禁用状态，直接返回
-        }
-        // TODO add your code here
-        boolean emailFlag = CheckEmailOrPhone.checkEmail(textFieldEmailR.getText());
-        boolean phoneFlag = CheckEmailOrPhone.checkPhoneNumber(textFieldEmailR.getText());
-        if (emailFlag || phoneFlag) {
-            // 发送验证码的同时开始计时
-            oldTimeR = System.currentTimeMillis();
-            // 同时，按钮上进行倒计时60秒，在60秒之内，按钮不能点击，60秒时候，显示“重新发送（用到多线程）”
-            new Thread(new CountDown(buttonDTYZMR)).start();     //启动另一个线程
-            buttonDTYZMR.setEnabled(false);
-
-            if (emailFlag) {
-                JOptionPane.showMessageDialog(this, "验证码已经发送到您的邮箱！", "成功", JOptionPane.PLAIN_MESSAGE);
-                SendByThread emailThread = new SendByThread(2, textFieldEmailR.getText());
-                dynamicCode = String.valueOf(emailThread.getDynamicCode());       // 获得对应的验证码，转换成字符串保存
-            } else {
-                JOptionPane.showMessageDialog(this, "验证码已经发送到您的手机！", "成功", JOptionPane.PLAIN_MESSAGE);
-//                SendByThread messageThread = new SendByThread(2, textFieldEmailR.getText());
-//                new Thread(messageThread).start();
-                SendMessage sendMessage = new SendMessage(textFieldEmailR.getText());
-                sendMessage.send();
-                dynamicCode = String.valueOf(sendMessage.getRandomNumber());   // 获得对应的验证码，转换成字符串保存
-            }
-            emailOrPhoneFlagR = true;        // 最后在 checkInput() 方法中会用到
-        } else {
-            // 提示 “请先输入邮箱或者手机号”
-            emailOrPhoneFlagR = false;
-            JOptionPane.showMessageDialog(this, "请先输入正确的邮箱或手机号！", "错误", 0);
-        }
-    }
-
-    /**
-    * @Description:  给 复选框 添加的 状态改变 监听事件
-     *                  这里做了类型判断，根据不同的复选框，执行不同操作
-    * @Param: [e]
-    * @return: void
-    * @Author: 林凯
-    * @Date: 2019/10/21
-    */
-    private void checkBox1StateChanged(ChangeEvent e) {
-        // TODO add your code here
-        JCheckBox checkBox = (JCheckBox) e.getSource();     // 通过类型转换获得对应组件
-        if (checkBox == checkBoxL) {
-            if (checkBox.isSelected()) {
-                checkBoxFlagL = true;
-            } else {
-                checkBoxFlagL = false;
-            }
-        } else {
-            if (checkBox.isSelected()) {
-                checkBoxFlagR = true;
-            } else {
-                checkBoxFlagR = false;
-            }
-        }
-
     }
 
     /**
@@ -281,6 +273,139 @@ public class UIFrame extends JFrame {
     }
 
     /**
+     * @Description: 在登录界面点击 登录按钮
+     * @Param: [e]
+     * @return: void
+     * @Author: 林凯
+     * @Date: 2019/10/24
+     */
+    private void buttonLoginMouseReleased(MouseEvent e) {
+        // TODO add your code here
+        newTimeL = System.currentTimeMillis();
+        System.out.println("已用时间：" + (newTimeL - oldTimeL) / 1000);
+        if (checkInputLogin()) {
+            // 动态验证码10分钟有效
+            if ((newTimeL - oldTimeL) < (1000 * 60 * minute)) {
+
+                /**
+                 *      检测用户输入的密码是否正确
+                 * */
+                UserJDBC userJDBC = new UserJDBC();
+//                String pwdInDatabase =
+
+                System.out.println("登录成功");
+                JOptionPane.showMessageDialog(this, "登录成功！", "恭喜", JOptionPane.PLAIN_MESSAGE);
+
+
+                UserJDBC myJDBC = new UserJDBC();
+
+            }
+        }
+    }
+
+    /**
+     * @Description:  在登录界面统一检测用户输入是否正确
+     * @Param: []
+     * @return: boolean
+     * @Author: 林凯
+     * @Date: 2019/10/25
+     */
+    public boolean checkInputLogin() {
+        /**
+         *      注意：这里为了方便测试，动态验证码设置为输入 666666 也能登录
+         * */
+
+        // 检测用户是否输入登录信息
+        if (CheckEmailOrPhone.checkEmail(textFieldEmailL.getText()) == false && CheckEmailOrPhone.checkPhoneNumber(textFieldEmailL.getText()) == false) {
+            JOptionPane.showMessageDialog(this, "请先输入正确的邮箱或手机号！", "错误", 0);
+            return false;
+        } else if (textFieldEmailL.getText().equals("邮箱或手机号")) {
+            JOptionPane.showMessageDialog(this, "邮箱或手机号不能为空！", "错误", 0);
+            return false;
+        } else if (textFieldTPYZML.getText().equalsIgnoreCase(imageCode) == false) {
+            JOptionPane.showMessageDialog(this, "图片验证码输入错误！", "错误", 0);
+            return false;
+        } else if (textFieldDTYZML.getText().equals(dynamicCode)  == false && textFieldDTYZML.getText().equals("666666") == false) {
+            JOptionPane.showMessageDialog(this, "动态验证码输入错误！", "错误", 0);
+            return false;
+        } else if (checkBoxFlagL == false) {
+            JOptionPane.showMessageDialog(this, "请同意服务条款！", "错误", 0);
+            return false;
+        }
+
+        // 检测用户输入的登录信息是否正确
+        if (CheckEmailOrPhone.checkEmail(textFieldEmailL.getText())) {
+            System.out.println("电子邮箱！");
+
+        } else if (CheckEmailOrPhone.checkPhoneNumber(textFieldEmailL.getText())) {
+            // 如果是 手机号码
+            System.out.println("手机号码！");
+            UserJDBC userJDBC = new UserJDBC();
+
+            String userPwd = new String(passwordFieldL.getPassword());      // 获得用户输入的密码
+            /**
+             *      将 手机号 和 密码 作为参数传入，在方法内部会 自动将密码加盐和和数据库中的对比，判断是否正确
+             * */
+            int flag = userJDBC.checkUserByPhoneNumber(textFieldEmailL.getText(), userPwd);
+            if (flag == 2) {
+                // 手机号未注册
+                JOptionPane.showMessageDialog(this, "用户为注册，请先注册后再登录！", "错误", JOptionPane.ERROR_MESSAGE);
+
+                return false;
+            } else if (flag == 3) {
+                // 密码错误
+                JOptionPane.showMessageDialog(this, "密码错误，请检查密码后再次输入！", "错误", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+
+//########################################      注册界面    ######################################################
+
+    /**
+    * @Description:  注册界面，点击 "获取验证码" 按钮 ----(动态验证码)---> 鼠标释放时的事件
+    * @Param: [e]
+    * @return: void
+    * @Author: 林凯
+    * @Date: 2019/10/21
+    */
+    private void buttonDTYZMRMouseReleased(MouseEvent e) {
+        if (buttonDTYZMR.isEnabled() == false) {
+            return;     // 如果组件为禁用状态，直接返回
+        }
+        // TODO add your code here
+        boolean emailFlag = CheckEmailOrPhone.checkEmail(textFieldEmailR.getText());
+        boolean phoneFlag = CheckEmailOrPhone.checkPhoneNumber(textFieldEmailR.getText());
+        if (emailFlag || phoneFlag) {
+            // 发送验证码的同时开始计时
+            oldTimeR = System.currentTimeMillis();
+            // 同时，按钮上进行倒计时60秒，在60秒之内，按钮不能点击，60秒时候，显示“重新发送（用到多线程）”
+            new Thread(new CountDown(buttonDTYZMR)).start();     //启动另一个线程
+            buttonDTYZMR.setEnabled(false);
+
+            if (emailFlag) {
+                JOptionPane.showMessageDialog(this, "验证码已经发送到您的邮箱！", "成功", JOptionPane.PLAIN_MESSAGE);
+                SendByThread emailThread = new SendByThread(2, textFieldEmailR.getText());
+                dynamicCode = String.valueOf(emailThread.getDynamicCode());       // 获得对应的验证码，转换成字符串保存
+            } else {
+                JOptionPane.showMessageDialog(this, "验证码已经发送到您的手机！", "成功", JOptionPane.PLAIN_MESSAGE);
+                SendMessage sendMessage = new SendMessage(textFieldEmailR.getText());
+                System.out.println("手机号为：" + textFieldEmailR.getText());
+                sendMessage.send();
+                dynamicCode = String.valueOf(sendMessage.getRandomNumber());   // 获得对应的验证码，转换成字符串保存
+            }
+            emailOrPhoneFlagR = true;        // 最后在 checkInput() 方法中会用到
+        } else {
+            // 提示 “请先输入邮箱或者手机号”
+            emailOrPhoneFlagR = false;
+            JOptionPane.showMessageDialog(this, "请先输入正确的邮箱或手机号！", "错误", 0);
+        }
+    }
+
+    /**
     * @Description:  在注册界面 点击 注册按钮
     * @Param: [e]
     * @return: void
@@ -293,15 +418,23 @@ public class UIFrame extends JFrame {
         System.out.println("已用时间" + (newTimeR - oldTimeR) / 1000);
         if (checkInputRegister()) {
             // 动态验证码的有效时间为 10 分钟
-            if ((newTimeR - oldTimeR) < (1000 * 60 * 10)) {
+            if ((newTimeR - oldTimeR) < (1000 * 60 * minute)) {
                 System.out.println("注册");
                 JOptionPane.showMessageDialog(this, "注册成功！", "恭喜", JOptionPane.PLAIN_MESSAGE);
+
+
                 // 下面将数据存储到数据库中
-                MyJDBC myJDBC = new MyJDBC(textFieldUserNameR.getText(), password1, textFieldEmailR.getText());
+                String pwdHash = SaltMd5Util.MD5WithSalt2(password1);       // 获取 密码对应的 哈希值
+                UserJDBC myJDBC = new UserJDBC(textFieldUserNameR.getText(), pwdHash, textFieldEmailR.getText());
+
                 myJDBC.storeUser();
                 this.dispose();
-//                MainUI mainUI = new MainUI();
-//                mainUI.setVisible(true);
+
+                /**
+                 *      让主界面显示出来，传递的参数为用户名
+                 * */
+                MainUI mainUI = new MainUI(textFieldUserNameR.getText());
+                mainUI.setVisible(true);
             }
         }
     }
@@ -324,6 +457,9 @@ public class UIFrame extends JFrame {
         char[] ch2 = passwordFieldR2.getPassword();
         password1 = new String(ch1);
         password2 = new String(ch2);
+
+
+
         if (textFieldUserNameR.getText().equals("登录用户名")) {
             JOptionPane.showMessageDialog(this, "用户名不合法！", "错误", 0);
             return false;
@@ -349,54 +485,7 @@ public class UIFrame extends JFrame {
         return true;
     }
 
-    /**
-    * @Description: 在登录界面点击 登录按钮
-    * @Param: [e]
-    * @return: void
-    * @Author: 林凯
-    * @Date: 2019/10/24
-    */
-    private void buttonLoginMouseReleased(MouseEvent e) {
-        // TODO add your code here
-        newTimeL = System.currentTimeMillis();
-        System.out.println("已用时间：" + (newTimeL - oldTimeL) / 1000);
-        if (checkInputLogin()) {
-            // 动态验证码10分钟有效
-            if ((newTimeL - oldTimeL) < (1000 * 60 * 10)) {
-                System.out.println("登录成功");
-                JOptionPane.showMessageDialog(this, "登录成功！", "恭喜", JOptionPane.PLAIN_MESSAGE);
-                MyJDBC myJDBC = new MyJDBC();
 
-            }
-        }
-    }
-
-    /**
-    * @Description:  在登录界面统一检测用户输入是否正确
-    * @Param: []
-    * @return: boolean
-    * @Author: 林凯
-    * @Date: 2019/10/25
-    */
-    public boolean checkInputLogin() {
-        if (CheckEmailOrPhone.checkEmail(textFieldEmailL.getText()) == false && CheckEmailOrPhone.checkPhoneNumber(textFieldEmailL.getText()) == false) {
-            JOptionPane.showMessageDialog(this, "请先输入正确的邮箱或手机号！", "错误", 0);
-            return false;
-        } else if (textFieldEmailL.getText().equals("邮箱或手机号")) {
-            JOptionPane.showMessageDialog(this, "邮箱或手机号不能为空！", "错误", 0);
-            return false;
-        } else if (textFieldTPYZML.getText().equalsIgnoreCase(imageCode) == false) {
-            JOptionPane.showMessageDialog(this, "图片验证码输入错误！", "错误", 0);
-            return false;
-        } else if (textFieldDTYZML.getText().equals(dynamicCode)  == false) {
-            JOptionPane.showMessageDialog(this, "动态验证码输入错误！", "错误", 0);
-            return false;
-        } else if (checkBoxFlagL == false) {
-            JOptionPane.showMessageDialog(this, "请同意服务条款！", "错误", 0);
-            return false;
-        }
-        return true;
-    }
 
 
 
@@ -505,11 +594,11 @@ public class UIFrame extends JFrame {
 
         //======== cardPanel ========
         {
-            cardPanel.setBorder (new CompoundBorder( new TitledBorder (new EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", TitledBorder. CENTER, TitledBorder. BOTTOM, new Font ("Dia\u006cog"
-            , Font .BOLD ,12 ), Color. red) ,cardPanel. getBorder
-            ( )) ); cardPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            cardPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
+            0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
+            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
+            red) ,cardPanel. getBorder( )) ); cardPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
+            beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             cardPanel.setLayout(new CardLayout());
 
             //======== panelLogin ========
@@ -999,4 +1088,9 @@ public class UIFrame extends JFrame {
     private JPanel panelRegisterUnder;
     private JPanel panelLoginUnder;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+    public static void main(String[] args) {
+        UIFrame uiFrame = new UIFrame();
+        uiFrame.setVisible(true);
+    }
 }

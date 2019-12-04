@@ -22,7 +22,8 @@ public class CheckEmailOrPhone {
 
     // 利用正则表达式检测电话号码是否合法
     public static boolean checkPhoneNumber(String phoneNumber) {
-        String check = "^(13[4,5,6,7,8,9]|15[0,8,9,1,7]|188|187)\\d{8}$";
+        // 电话号码可以是188,187,199或者13~，15~开头的数字串
+        String check = "^(13[4,5,6,7,8,9]|15[0,8,9,1,7]|188|187|199)\\d{8}$";
         Pattern regex = Pattern.compile(check);
         Matcher matcher = regex.matcher(phoneNumber);
         boolean isMatched = matcher.matches();
