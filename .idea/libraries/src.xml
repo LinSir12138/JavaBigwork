@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="src">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/libs/bridj-0.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/gson-2.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/json.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/slf4j-api-1.7.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/libs/webcam-capture-0.3.12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src" />
+    </SOURCES>
+  </library>
+</component>

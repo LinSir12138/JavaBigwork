@@ -171,6 +171,7 @@ public class AddExam extends JFrame {
 
         //======== this ========
         setTitle("\u53d1\u5e03\u8003\u8bd5");
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {

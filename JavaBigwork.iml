@@ -11,6 +11,6 @@
     <orderEntry type="library" name="JGoodies Forms" level="project" />
     <orderEntry type="library" name="IntelliJ IDEA GridLayout" level="project" />
     <orderEntry type="library" name="TableLayout" level="project" />
-    <orderEntry type="library" name="webcam-capture-0.3.12" level="project" />
+    <orderEntry type="library" name="src" level="project" />
   </component>
 </module>

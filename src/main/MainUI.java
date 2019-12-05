@@ -720,12 +720,14 @@ public class MainUI extends JFrame {
         // 2.3.1   根据用户的选择，判断是否要进行人脸识别检测
         int faceFlag = JOptionPane.showConfirmDialog(this, "是否要进行人脸识别验证？", "人脸识别验证", 0);
         if (faceFlag == 0) {
-//            try {
-//                // 调用 摄像头 拍照
-////                WebcamCapture.takePhoto();
-//            } catch (InterruptedException ex) {
-//                ex.printStackTrace();
-//            }
+            try {
+                // 调用 摄像头 拍照
+                WebcamCapture.takePhote("林凯");
+                System.out.println("aaaaaa");
+
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
         } else {
             // 选择了 否，不进行人脸识别
         }

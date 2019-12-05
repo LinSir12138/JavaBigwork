@@ -8,6 +8,7 @@ new FormModel {
 		} ) {
 			name: "this"
 			"title": "发布考试"
+			"defaultCloseOperation": 2
 			addEvent( new FormEvent( "java.awt.event.WindowListener", "windowClosed", "thisWindowClosed", true ) )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"

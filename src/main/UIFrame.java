@@ -33,6 +33,7 @@ import java.net.URI;
  * @author Lin Kai
  */
 public class UIFrame extends JFrame {
+    private String userName;        // 用户名，登录时根据用户的手机号或者邮箱号来确定
     private String imageCode;       // 保存图片验证码对应的字符串
     private String dynamicCode;      // 动态验证码
     private String password1;
@@ -295,9 +296,9 @@ public class UIFrame extends JFrame {
 
                 System.out.println("登录成功");
                 JOptionPane.showMessageDialog(this, "登录成功！", "恭喜", JOptionPane.PLAIN_MESSAGE);
+//                MainUI mainUI = new MainUI();
 
-
-                UserJDBC myJDBC = new UserJDBC();
+//                UserJDBC myJDBC = new UserJDBC();
 
             }
         }

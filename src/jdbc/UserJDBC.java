@@ -159,4 +159,34 @@ public class UserJDBC {
 
     }
 
+    /**
+    * @Description: 通过传入的用户名获取在数据库中的id
+    * @Param: [userName]
+    * @return: java.lang.String
+    * @Author: 林凯
+    * @Date: 2019/12/5
+    */
+    public String readIdByUserName(String userName) {
+        String sql = "select * from user where userName = ?";
+        String resultID = null;
+
+        try {
+            conn = JDBCUtil.getMySqlConn("bigwork");
+            ps = conn.prepareStatement(sql);
+            ps.setObject(1, userName);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                resultID = rs.getString(1);
+            }
+            return resultID;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            JDBCUtil.close(rs, ps, conn);       // 关闭连接
+        }
+    }
+
 }
