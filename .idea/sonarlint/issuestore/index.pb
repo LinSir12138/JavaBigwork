@@ -1,0 +1,21 @@
+
+D
+src/main/MainUI.java,8\7\8779ed37a78f9774b9415fd34cd7e55b7085fb9c
+G
+src/jdbc/ImageJDBC.java,0\1\012b6911ce4bd8d6ae5ff0a67fbf8fb82c8f9307
+G
+src/TestALY/MyTest.java,c\2\c2086f77a378b195082ae38d255abb105dacf903
+V
+&src/facerecognition/WebcamCapture.java,c\6\c66bc09ccedddfa770eb686df45d6ccf6de2aa36
+9
+	ReadMe.md,a\2\a225a7e79496c5a1d847c78c3db651eb302ec867
+E
+src/main/UIFrame.java,2\c\2c87a0a99475aaf4eac342157ea89aad7ea9a299
+J
+src/TestALY/HttpUtils.java,a\1\a16f0a1ee52118c0e171c68ac1f47c023349a322
+R
+"src/TestALY/SendMessageByALBB.java,c\a\ca32cb98314d993d8b280a74bf3039176506aa1e
+W
+'src/examministration/ExamCountdown.java,6\2\628d8b56ca49874bbf40662a3de9fec9b6a3a576
+Q
+!src/examministration/AddExam.java,5\b\5b67932af0486207ee627e962f4ea1e3f4d4556e

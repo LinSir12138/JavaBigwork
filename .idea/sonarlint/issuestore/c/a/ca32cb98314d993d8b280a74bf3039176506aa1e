@@ -1,0 +1,18 @@
+
+\squid:S2184&"@Cast one of the operands of this addition operation to a "long".(‹àÜ—úÿÿÿÿ
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ºï³«ıÿÿÿÿ
+Ssquid:UselessImportCheck"/Remove this unused import 'mytest.SendMessage'.(À‚“
+?squid:S1148M"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+4squid:S2119%"Save and re-use this "Random".(¼İÅf
+T
+squid:S106'"9Replace this use of System.out or System.err by a logger.(ë˜š¥şÿÿÿÿ
+Xsquid:S1075."ARefactor your code to get this URI from a customizable parameter.(Ø—ôÊ
+psquid:S22931"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ä‚ÉÈ
+psquid:S22934"YReplace the type specification in this constructor call with the diamond operator ("<>").(ü“«§
+T
+squid:S1069"9Replace this use of System.out or System.err by a logger.(ÉŒÎêøÿÿÿÿ
+usquid:S2293<"YReplace the type specification in this constructor call with the diamond operator ("<>").(Óìƒäşÿÿÿÿ
+T
+squid:S106I"9Replace this use of System.out or System.err by a logger.(ĞÙÀ‰ıÿÿÿÿ
+bsquid:CommentedOutCodeLine7"<This block of commented-out lines of code should be removed.(ÄÌ¦—
+gsquid:CommentedOutCodeLineK"<This block of commented-out lines of code should be removed.( Î÷Âúÿÿÿÿ

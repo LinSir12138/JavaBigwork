@@ -8,6 +8,7 @@ import com.github.sarxos.webcam.util.ImageUtils;
 import com.sun.jna.platform.unix.X11;
 import jdbc.ImageJDBC;
 import jdbc.UserJDBC;
+import main.MainUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,33 +45,8 @@ public class WebcamCapture {
      *      在根据结果调用 MainUI里面的方法，在mainUI里面的方法弹出考试界面
      * */
 
-    private static void startRecognition(String userName, long randomNumber) {
-        //
-        // 参数：
-        //
-        // 1 ~~~~~~ userName ，用来在数据库中找到usreName对应的 id，然后根据id确定从数据库中读取的图片的名称
 
-        /**
-         *    拍照完毕，
-         *    参数：
-         *      （1） ~~~~~~ userName ，用来在数据库中找到usreName对应的 id，然后根据id确定从数据库中读取的图片的名称
-         *      （2）~~~~~ randomNumber   拍照生成的图片的名称
-         *    1.从数据库中读取用户的头像信息到本地
-         * */
-        UserJDBC userJDBC = new UserJDBC();
-        String id =  userJDBC.readIdByUserName(userName);           // 从数据库中通过用户名获得id
-        System.out.println("id = " + id);
-        ImageJDBC.readImageFromDatabase("src//images//", id);           // 从数据库中读取图片保存到本地
-
-        String filePath1 = "src//images//" +id + ".png";
-        String filePath2 = "src//images//" + randomNumber + ".png";
-        String result = FaceMatch.faceMatch(filePath1, filePath2);
-        System.out.println(result);
-
-
-    }
-
-    public static void takePhote(String userName) throws InterruptedException {
+    public static void takePhote(JFrame mainUIFrame, String userName) throws InterruptedException {
         /**
          *      循环判断条件，为false时，会一直停留在循环里面，方法不会执行完毕
          *      只有当按下拍照按钮时，拍照完成才结束方法
@@ -171,7 +147,7 @@ public class WebcamCapture {
                     {
                         JOptionPane.showMessageDialog(null, "拍照成功");
                         button.setEnabled(true);    //设置按钮可点击
-                        startRecognition(userName, randomNumber[0]);
+                        startRecognition(mainUIFrame ,userName, randomNumber[0]);
 
                         /**
                          *       // 释放资源，拍照摄像头关闭，窗口关闭
@@ -186,4 +162,64 @@ public class WebcamCapture {
         });
 
     }
+
+    private static void startRecognition(JFrame mainUIFrame, String userName, long randomNumber) {
+        //
+        // 参数：
+        //
+        // 1 ~~~~~~ userName ，用来在数据库中找到usreName对应的 id，然后根据id确定从数据库中读取的图片的名称
+
+        /**
+         *    拍照完毕，
+         *    参数：
+         *      （1） ~~~~~~ userName ，用来在数据库中找到usreName对应的 id，然后根据id确定从数据库中读取的图片的名称
+         *      （2）~~~~~ randomNumber   拍照生成的图片的名称
+         *    1.从数据库中读取用户的头像信息到本地
+         * */
+        UserJDBC userJDBC = new UserJDBC();
+        String id =  userJDBC.readIdByUserName(userName);           // 从数据库中通过用户名获得id
+        System.out.println("id = " + id);
+        ImageJDBC.readImageFromDatabase("src//images//", id);           // 从数据库中读取图片保存到本地
+
+        String filePath1 = "src//images//" +id + ".png";
+        String filePath2 = "src//images//" + randomNumber + ".png";
+        String result = FaceMatch.faceMatch(filePath1, filePath2);
+        System.out.println(result);
+
+        double score =  getScoreFromResult(result);
+        System.out.println("得分为：" + score);
+        MainUI mainUI = (MainUI) mainUIFrame;
+
+        if (score >= 80) {
+            mainUI.faceMatching(true);
+        } else {
+            mainUI.faceMatching(false);
+        }
+
+
+    }
+
+    /**
+    * @Description: 从人脸识别的结果中获得 得分，即score后面的一串数字
+    * @Param: []
+    * @return: int
+    * @Author: 林凯
+    * @Date: 2019/12/5
+    */
+    private static Double getScoreFromResult(String result) {
+        /**
+         *       返回的 result 字符串是以json格式返回的，如下：
+         *   {"error_code":0,"error_msg":"SUCCESS","log_id":2019910184201,"timestamp":1575526526,"cached":0,
+         *      "result":{"score":92.98625183,"face_list":[{"face_token":"76c01de52392ab95553295ab685f7c76"},
+         *      {"face_token":"76b0fb479b396bceb4d5a04d7868fa3c"}]}}
+         * */
+
+        int firstIndex = result.indexOf("score") + 7;
+        int lastIndex = result.indexOf("score") + 7 + 11;
+        String score = result.substring(firstIndex, lastIndex);
+
+        System.out.println("得分为：" + score);
+        return Double.valueOf(score);
+    }
+
 }

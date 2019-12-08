@@ -60,7 +60,7 @@ public class SubjectJDBC {
         System.out.println(sql);
 
         try {
-            conn = JDBCUtil.getMySqlConn("bigwork");
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = conn.prepareStatement(sql);
             ps.setObject(1, subject.getTitle());
             ps.setObject(2, subject.getType());
@@ -95,7 +95,7 @@ public class SubjectJDBC {
         System.out.println(sql);        // 保存都运行日志中
 
         try {
-            conn = JDBCUtil.getMySqlConn("bigwork");        // 连接数据库
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");        // 连接数据库
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -157,7 +157,7 @@ public class SubjectJDBC {
 
 
         try {
-            conn = JDBCUtil.getMySqlConn("bigwork");
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = conn.prepareStatement(sql + strBuilder.toString());
 //            ps.setObject(1, strBuilder.toString());
             rs = ps.executeQuery();     // 执行 SQL 语句，并获得结果集
@@ -216,7 +216,7 @@ public class SubjectJDBC {
         System.out.println(sql);
 
         try {
-            conn = JDBCUtil.getMySqlConn("bigwork");
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -255,7 +255,7 @@ public class SubjectJDBC {
         String sql = "delete from subject where title = ?";
 
         try {
-            conn = JDBCUtil.getMySqlConn("bigwork");
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
             conn.setAutoCommit(false);      // 设置自动提交为 flase
             ps = conn.prepareStatement(sql);
 
@@ -296,7 +296,7 @@ public class SubjectJDBC {
         String sql = "update subject set title = ?, type = ?, content = ?, optionA = ?, optionB = ?, optionC = ?, optionD = ?, answer = ?, judge = ?, remarks = ?, changeTime = ? where title = ?";
 
         try {
-            conn = JDBCUtil.getMySqlConn("bigwork");
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = conn.prepareStatement(sql);
             ps.setObject(1, datas[0]);
             ps.setObject(2, datas[1]);

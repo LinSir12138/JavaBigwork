@@ -31,7 +31,7 @@ public class UserJDBC {
 
     // 在构造方法中初始化 User 对象
     public UserJDBC(String userName, String pwd, String number) {
-        this.conn = JDBCUtil.getMySqlConn("bigwork");
+        this.conn = JDBCUtil.getMySqlConn("ALY_bigwork");
         user = new User(userName, pwd, number);
         if (CheckEmailOrPhone.checkPhoneNumber(number)) {
             this.isPhoneFlag = true;
@@ -94,7 +94,7 @@ public class UserJDBC {
         String sql = "select * from user where phoneNumber = ?";
 
         try {
-            conn = JDBCUtil.getMySqlConn("bigwork");
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps   = conn.prepareStatement(sql);
             ps.setObject(1, phoneNumber);
             rs = ps.executeQuery();
@@ -133,7 +133,7 @@ public class UserJDBC {
         String sql = "select * from user where emailNumber = ?";
 
         try {
-            conn = JDBCUtil.getMySqlConn("bigwork");
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps   = conn.prepareStatement(sql);
             ps.setObject(1, emailNumber);
             rs = ps.executeQuery();
@@ -171,7 +171,7 @@ public class UserJDBC {
         String resultID = null;
 
         try {
-            conn = JDBCUtil.getMySqlConn("bigwork");
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = conn.prepareStatement(sql);
             ps.setObject(1, userName);
             rs = ps.executeQuery();

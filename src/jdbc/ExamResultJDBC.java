@@ -25,7 +25,7 @@ public class ExamResultJDBC {
     * @Date: 2019/12/2
     */
 //    private static void initExamResultJDBC(int type) throws SQLException {
-//        connection = JDBCUtil.getMySqlConn("bigwork");
+//        connection = JDBCUtil.getMySqlConn("ALY_bigwork");
 //        ps = connection.prepareStatement(sql);
 //
 //    }
@@ -53,7 +53,7 @@ public class ExamResultJDBC {
         }
 
         try {
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             ps.setObject(1, userName);
             ps.setObject(2, examName);

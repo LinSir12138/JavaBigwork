@@ -257,6 +257,7 @@ public class UIFrame extends JFrame {
      * @Date: 2019/10/21
      */
     private void labelURLMouseReleased(MouseEvent e) {
+        System.out.println();
         // TODO add your code here
         // 首先判断当前平台是否支持桌面
         if (Desktop.isDesktopSupported()) {

@@ -722,29 +722,62 @@ public class MainUI extends JFrame {
         if (faceFlag == 0) {
             try {
                 // 调用 摄像头 拍照
-                WebcamCapture.takePhote("林凯");
-                System.out.println("aaaaaa");
+                WebcamCapture.takePhote(this, "林凯");
 
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
         } else {
-            // 选择了 否，不进行人脸识别
+            // 选择了 否，不进行人脸识别,直接开始考试
+            // 2.4 如果在考试时间范围内，获得 考试名称，考试对应试卷名称，试卷里题目的标题数组
+            examName = tableModel.getValueAt(tableSubject.getSelectedRow(), 0).toString();
+            examPaperName = tableModel.getValueAt(tableSubject.getSelectedRow(), 1).toString();
+            paperTitles = PaperJDBC.getPaperSubjectTitles(examPaperName);
+
+            StartExam startExam = new StartExam(this, examName, paperTitles, startTime, endTime);
+            this.setEnabled(false);         // 设置当前窗体不可编辑
+            startExam.setVisible(true);
         }
 
+    }
+
+    /** 
+    * @Description: 在 WebcamCapture 调用此方法，传入的参数为boolean类型，true说明人脸验证成功，flase说明人脸验证失败
+    * @Param: [flag] 
+    * @return: void 
+    * @Author: 林凯
+    * @Date: 2019/12/5 
+    */ 
+    public void faceMatching(boolean flag) {
+        if (flag) {
+            JOptionPane.showMessageDialog(this, "人脸验证成功！", "成功", JOptionPane.PLAIN_MESSAGE);
+
+            /**
+             *      下面执行开始考试的代码
+             * */
+            long startTime = 0;
+            long endTime = 0;
+            SimpleDateFormat tiemFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            try {
+                Date startDate = tiemFormat.parse(tableModel.getValueAt(tableSubject.getSelectedRow(), 3).toString());
+                Date endDate = tiemFormat.parse(tableModel.getValueAt(tableSubject.getSelectedRow(), 4).toString());
+                startTime = startDate.getTime();
+                endTime = endDate.getTime();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+            String examName = tableModel.getValueAt(tableSubject.getSelectedRow(), 0).toString();
+            String examPaperName = tableModel.getValueAt(tableSubject.getSelectedRow(), 1).toString();
+            String[] paperTitles = PaperJDBC.getPaperSubjectTitles(examPaperName);
+
+            StartExam startExam = new StartExam(this, examName, paperTitles, startTime, endTime);
+            this.setEnabled(false);         // 设置当前窗体不可编辑
+            startExam.setVisible(true);
 
 
-
-        // 2.4 如果在考试时间范围内，获得 考试名称，考试对应试卷名称，试卷里题目的标题数组
-        examName = tableModel.getValueAt(tableSubject.getSelectedRow(), 0).toString();
-        examPaperName = tableModel.getValueAt(tableSubject.getSelectedRow(), 1).toString();
-        paperTitles = PaperJDBC.getPaperSubjectTitles(examPaperName);
-
-        StartExam startExam = new StartExam(this, examName, paperTitles, startTime, endTime);
-        this.setEnabled(false);         // 设置当前窗体不可编辑
-        startExam.setVisible(true);
-
-
+        } else {
+            JOptionPane.showMessageDialog(this, "人脸验证失败!", "失败", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
 

@@ -1,0 +1,29 @@
+
+Lsquid:S1191"5Use classes from the Java API instead of Sun classes.(§à¾Ö
+^squid:UselessImportCheck":Remove this unused import 'com.sun.jna.platform.unix.X11'.(§à¾Ö
+;squid:S1148"#Use a logger to log this exception.(Ç’Çê
+squid:S1186d"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Šá® şÿÿÿÿ
+Zsquid:S1126Á"BReplace this if-then-else statement by a single method invocation.(üê
+squid:S1186P"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Š¿˜¶ûÿÿÿÿ
+?squid:S1604~"(Make this anonymous inner class a lambda(Èú†
+squid:S1186i"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ô—»ûÿÿÿÿ
+ksquid:S1192„"NDefine a constant instead of duplicating this literal "src//images//" 4 times.(¸Áªıÿÿÿÿ
+squid:S1186_"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(›ĞêÕûÿÿÿÿ
+U
+squid:S106µ"9Replace this use of System.out or System.err by a logger.(»«Åûÿÿÿÿ
+esquid:S3252E"IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".(ÁŞÃôüÿÿÿÿ
+U
+squid:S106»"9Replace this use of System.out or System.err by a logger.(®ıáëûÿÿÿÿ
+squid:S1186U"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(†§şıÿÿÿÿ
+˜squid:S1186n"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(£íÂ´
+­%squid:RedundantThrowsDeclarationCheck1"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(«Õ…¢úÿÿÿÿ
+P
+squid:S106…"9Replace this use of System.out or System.err by a logger.(ĞÒô
+csquid:S2142"FEither re-interrupt this method or rethrow the "InterruptedException".(è®ã¶øÿÿÿÿ
+U
+squid:S106İ"9Replace this use of System.out or System.err by a logger.(¶±€ƒúÿÿÿÿ
+U
+squid:S106¾"9Replace this use of System.out or System.err by a logger.(¶±€ƒúÿÿÿÿ
+3squid:S3626"Remove this redundant jump.(ûÁİ…
+Esquid:S1604"(Make this anonymous inner class a lambda(Ô¶µÿşÿÿÿÿ
+Qsquid:S1118)":Add a private constructor to hide the implicit public one.(Œõ¸Ü

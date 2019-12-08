@@ -59,7 +59,7 @@ public class ImageJDBC {
 
         try {
             in = new FileInputStream(path);
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             /**
              *      关键代码，利用字节流将图片写入数据库中
@@ -99,7 +99,7 @@ public class ImageJDBC {
         String sql = "select * from user where id = ?";
 
         try {
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             ps.setObject(1, id);
             rs = ps.executeQuery();
@@ -162,8 +162,8 @@ public class ImageJDBC {
         }
     }
 
-//    public static void main(String[] args) {
-//        ImageJDBC.saveImageToDatabase("D:\\Temp\\face.jpg", "1");
-//        ImageJDBC.readImageFromDatabase("src//images//", "1");
-//    }
+    public static void main(String[] args) {
+//        ImageJDBC.saveImageToDatabase("D:\\Temp\\face06.png", "7");
+        ImageJDBC.readImageFromDatabase("src//images//", "7");
+    }
 }

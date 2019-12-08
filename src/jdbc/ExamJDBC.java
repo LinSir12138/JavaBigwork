@@ -27,7 +27,7 @@ public class ExamJDBC {
         String sql = "select examName, paperName, studentNumber, startTime, endTime from exam";      // 查询所有记录的 sql 语句（除id以外）
 
         try {
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();         // 执行获得结果
 
@@ -79,7 +79,7 @@ public class ExamJDBC {
         String sql = "insert into exam (examName, paperName, studentNumber, startTime, endTime) values (?, ?, ?, ?, ?)";
 
         try {
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             ps.setObject(1, examName);
             ps.setObject(2, paperName);
@@ -106,7 +106,7 @@ public class ExamJDBC {
         String sql = "delete from exam where examName = ?";
 
         try {
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             ps.setObject(1, examName);
             ps.execute();       // 执行 SQL 语句

@@ -1,0 +1,37 @@
+
+]squid:S1192["FDefine a constant instead of duplicating this literal "utf-8" 4 times.(ÃèÆ•
+csquid:S001122"FDefine and throw a dedicated exception instead of using a generic one.(èİÎÑşÿÿÿÿ
+csquid:S00112M"FDefine and throw a dedicated exception instead of using a generic one.(èİÎÑşÿÿÿÿ
+csquid:S00112s"FDefine and throw a dedicated exception instead of using a generic one.(èİÎÑşÿÿÿÿ
+dsquid:S00112’"FDefine and throw a dedicated exception instead of using a generic one.(èİÎÑşÿÿÿÿ
+dsquid:S00112°"FDefine and throw a dedicated exception instead of using a generic one.(èİÎÑşÿÿÿÿ
+dsquid:S00112Î"FDefine and throw a dedicated exception instead of using a generic one.(èİÎÑşÿÿÿÿ
+dsquid:S00112ë"FDefine and throw a dedicated exception instead of using a generic one.(èİÎÑşÿÿÿÿ
+dsquid:S00112³"FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ
+dsquid:S00112µ"FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ
+wsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ºï³«ıÿÿÿÿ
+Qsquid:S1118"":Add a private constructor to hide the implicit public one.(„–Û
+Dsquid:S1172/"-Remove this unused method parameter "method".(îçâ
+Dsquid:S1172I"-Remove this unused method parameter "method".(ÂóŒ…
+usquid:S2293V"YReplace the type specification in this constructor call with the diamond operator ("<>").(Ÿ“æÿùÿÿÿÿ
+Ksquid:S2864X"4Iterate over the "entrySet" instead of the "keySet".(µÓÎ™
+Dsquid:S1172o"-Remove this unused method parameter "method".(ÂóŒ…
+Esquid:S1172"-Remove this unused method parameter "method".(ÂóŒ…
+Esquid:S1172¬"-Remove this unused method parameter "method".(¹¿Û™
+Esquid:S1172Ê"-Remove this unused method parameter "method".(¹¿Û™
+Jsquid:S1172è"-Remove this unused method parameter "method".(Î²®šşÿÿÿÿ
+osquid:S3776ö"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(¢“¼¥üÿÿÿÿ
+bsquid:CallToDeprecatedMethod–"9Remove this use of "DefaultHttpClient"; it is deprecated.(è—ÄŒ
+]squid:S2147´"ECombine this catch with the one at line 306, which has the same body.(¤·¿Ã
+™squid:S1186¥"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‰Ëœ¶
+squid:S1186¨"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯éƒàûÿÿÿÿ
+>squid:S1168£"&Return an empty array instead of null.(¥¹ï
+Csquid:S4424¥"+Change this method so it throws exceptions.(‰Ëœ¶
+Hsquid:S4424¨"+Change this method so it throws exceptions.(¯éƒàûÿÿÿÿ
+fsquid:CallToDeprecatedMethod­"8Remove this use of "SSLSocketFactory"; it is deprecated.(Ğ‚ÛÎøÿÿÿÿ
+fsquid:CallToDeprecatedMethod­"8Remove this use of "SSLSocketFactory"; it is deprecated.(Ğ‚ÛÎøÿÿÿÿ
+fsquid:CallToDeprecatedMethod®"8Remove this use of "SSLSocketFactory"; it is deprecated.(Å…Û„ıÿÿÿÿ
+msquid:CallToDeprecatedMethod¯"?Remove this use of "ClientConnectionManager"; it is deprecated.(¯æ¤µùÿÿÿÿ
+jsquid:CallToDeprecatedMethod¯"<Remove this use of "getConnectionManager"; it is deprecated.(¯æ¤µùÿÿÿÿ
+_squid:CallToDeprecatedMethod°"6Remove this use of "SchemeRegistry"; it is deprecated.(ñ³ÑŸ
+Wsquid:CallToDeprecatedMethod±".Remove this use of "Scheme"; it is deprecated.(Ú¹¨›

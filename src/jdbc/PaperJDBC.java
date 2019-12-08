@@ -34,7 +34,7 @@ public class PaperJDBC {
 
         try {
             // 1.获取数据库连接
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -72,7 +72,7 @@ public class PaperJDBC {
         String sql = "insert into examinationpaper (title, subjectNumber, subjectTitle, changeTime) values (?, ?, ?, ?)";
 
         try {
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             ps.setObject(1, data[0]);
             ps.setObject(2, data[1]);
@@ -102,7 +102,7 @@ public class PaperJDBC {
 
 
         try {
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();     // 执行
 
@@ -135,7 +135,7 @@ public class PaperJDBC {
         String[] resultDatas;
 
         try {
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             ps.setObject(1, paperTitle);
             rs = ps.executeQuery();     // 执行 SQL  语句，获得结果集
@@ -172,7 +172,7 @@ public class PaperJDBC {
         String sql = "delete from examinationpaper where title = ?";
 
         try {
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             connection.setAutoCommit(false);      // 设置自动提交为 flase
             ps = connection.prepareStatement(sql);
 
@@ -209,7 +209,7 @@ public class PaperJDBC {
 
         try {
             // 1.获取数据库连接
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -252,7 +252,7 @@ public class PaperJDBC {
 //        System.out.println(sql);
 
         try {
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             ps.setObject(1, subjectNumber);
             ps.setObject(2, subjectTitle);
@@ -278,7 +278,7 @@ public class PaperJDBC {
         String sql = "update examinationpaper set title = ? where title = ?";
 
         try {
-            connection = JDBCUtil.getMySqlConn("bigwork");
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
             ps = connection.prepareStatement(sql);
             ps.setObject(1, newPaperName);
             ps.setObject(2, oldPaperName);
