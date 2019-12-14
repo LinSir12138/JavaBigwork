@@ -1,0 +1,6 @@
+
+?squid:S1148B"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1068"&Remove this unused "rs" private field.(àî¯Ñ
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(–«Ëýÿÿÿÿ
+Vsquid:S1118":Add a private constructor to hide the implicit public one.(Ö‰˜ôùÿÿÿÿ
+gsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ

@@ -1,0 +1,24 @@
+
+@squid:S1148Ÿ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+=squid:S1168:"&Return an empty array instead of null.(¥¹ï
+hsquid:CommentedOutCodeLine–"<This block of commented-out lines of code should be removed.(¤„ıÿÿÿÿ
+?squid:S11489"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+@squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+asquid:CommentedOutCodeLine4"<This block of commented-out lines of code should be removed.(Ã€Å
+csquid:CommentedOutCodeLineü"<This block of commented-out lines of code should be removed.(€®”¬
+?squid:S1148T"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+osquid:S1192%"LDefine a constant instead of duplicating this literal "ALY_bigwork" 8 times.(£—ìÑÿÿÿÿÿ8š×ô î-
+Gsquid:S1068"+Remove this unused "myPaper" private field.(˜‰×¤ûÿÿÿÿ
+;squid:S1148Á"#Use a logger to log this exception.(Ç’Çê
+@squid:S1148½"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+@squid:S1148è"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+@squid:S1148‡"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?squid:S1148y"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+bsquid:CommentedOutCodeLineã"<This block of commented-out lines of code should be removed.(Ã€Å
+`squid:S2259˜"HA "NullPointerException" could be thrown; "tempTitles" is nullable here.(ÜÙè
+>squid:S1168Ÿ"&Return an empty array instead of null.(¥¹ï
+Dsquid:S1068"-Remove this unused "paperList" private field.(çŠ—›
+=squid:S1168{"&Return an empty array instead of null.(¥¹ï
+hsquid:CommentedOutCodeLineù"<This block of commented-out lines of code should be removed.(ˆëÑ½şÿÿÿÿ
+Wsquid:S1854‘"?Remove this useless assignment to local variable "resultDatas".(¤¢µ
+>squid:S1168é"&Return an empty array instead of null.(¥¹ï

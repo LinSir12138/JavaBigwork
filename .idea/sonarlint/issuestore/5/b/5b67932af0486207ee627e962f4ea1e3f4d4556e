@@ -1,19 +1,19 @@
 
-;squid:S1148€"#Use a logger to log this exception.(Ç’Çê
-jsquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(›Úè“üÿÿÿÿ
-rsquid:S1450–"URemove the "label4" field and declare it as a local variable in the relevant methods.(ª†´Œüÿÿÿÿ
-?squid:S1172."(Remove this unused method parameter "e".(¦°óð
-Jsquid:S1135™"2Complete the task associated to this TODO comment.(¿‰€ÿ
-rsquid:S1450•"URemove the "label2" field and declare it as a local variable in the relevant methods.(äÈ„Áûÿÿÿÿ
-@squid:S1172˜"(Remove this unused method parameter "e".( ÃÈ¶
-Isquid:S1135/"2Complete the task associated to this TODO comment.(¿‰€ÿ
-msquid:S1450”"URemove the "label1" field and declare it as a local variable in the relevant methods.(ÛŠ’Á
-Isquid:S1135<"2Complete the task associated to this TODO comment.(¿‰€ÿ
-@squid:S1125l")Remove the literal "false" boolean value.(ûÅŸ
-Isquid:S1135I"2Complete the task associated to this TODO comment.(¿‰€ÿ
-psquid:S1450ž"YRemove the "buttonSure" field and declare it as a local variable in the relevant methods.(Ö˜µ=
-?squid:S1172;"(Remove this unused method parameter "e".(Öš²ä
-squid:S1450™"dRemove the "buttonChooseTimeBegin" field and declare it as a local variable in the relevant methods.(©±•‘þÿÿÿÿ
-?squid:S1172H"(Remove this unused method parameter "e".(öÂ¿â
-msquid:S1450—"URemove the "label5" field and declare it as a local variable in the relevant methods.(—¡¸‘
 zsquid:S1450›"bRemove the "buttonChooseTimeEnd" field and declare it as a local variable in the relevant methods.(ñäÅ˜
+msquid:S1450”"URemove the "label1" field and declare it as a local variable in the relevant methods.(ÛŠ’Á
+rsquid:S1450•"URemove the "label2" field and declare it as a local variable in the relevant methods.(äÈ„Áûÿÿÿÿ
+Isquid:S1135<"2Complete the task associated to this TODO comment.(¿‰€ÿ
+@squid:S1172˜"(Remove this unused method parameter "e".( ÃÈ¶
+?squid:S1172."(Remove this unused method parameter "e".(¦°óð
+psquid:S1450ž"YRemove the "buttonSure" field and declare it as a local variable in the relevant methods.(Ö˜µ=
+Isquid:S1135/"2Complete the task associated to this TODO comment.(¿‰€ÿ
+Isquid:S1135I"2Complete the task associated to this TODO comment.(¿‰€ÿ
+Jsquid:S1135™"2Complete the task associated to this TODO comment.(¿‰€ÿ
+?squid:S1172H"(Remove this unused method parameter "e".(öÂ¿â
+jsquid:MaximumInheritanceDepth"<This class has 6 parents which is greater than 5 authorized.(›Úè“üÿÿÿÿ
+msquid:S1450—"URemove the "label5" field and declare it as a local variable in the relevant methods.(—¡¸‘
+@squid:S1125l")Remove the literal "false" boolean value.(ûÅŸ
+squid:S1450™"dRemove the "buttonChooseTimeBegin" field and declare it as a local variable in the relevant methods.(©±•‘þÿÿÿÿ
+?squid:S1172;"(Remove this unused method parameter "e".(Öš²ä
+rsquid:S1450–"URemove the "label4" field and declare it as a local variable in the relevant methods.(ª†´Œüÿÿÿÿ
+;squid:S1148€"#Use a logger to log this exception.(Ç’Çê

@@ -1,19 +1,19 @@
 
+@squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 ?squid:S1148K"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-Gsquid:S2093†"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+@squid:S1148˜"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+[squid:S2147H"DCombine this catch with the one at line 70, which has the same body.(É®£
 [squid:S2147J"DCombine this catch with the one at line 70, which has the same body.(ï­£Ä
-@squid:S1148’"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+@squid:S1148Ÿ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+Gsquid:S2093†"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
+?squid:S1148R"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+gsquid:CommentedOutCodeLine:"<This block of commented-out lines of code should be removed.(ÄÛÃôıÿÿÿÿ
+?squid:S1148G"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+?squid:S1148u"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 hsquid:S1450-"QRemove the "rs" field and declare it as a local variable in the relevant methods.(ûûº‚
-Fsquid:EmptyStatementUsageCheckC"Remove this empty statement.(’¦ï
 Fsquid:S2093<"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
 ?squid:S1148I"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-[squid:S2147H"DCombine this catch with the one at line 70, which has the same body.(É®£
-?squid:S1148G"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-?squid:S1148R"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-?squid:S1148u"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-@squid:S1148Ÿ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
-@squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+Fsquid:EmptyStatementUsageCheckC"Remove this empty statement.(’¦ï
+@squid:S1148’"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 ]squid:S2147‘"ECombine this catch with the one at line 143, which has the same body.(ï­£Ä
-gsquid:CommentedOutCodeLine:"<This block of commented-out lines of code should be removed.(ÄÛÃôıÿÿÿÿ
-@squid:S1148˜"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
 jsquid:CommentedOutCodeLine¦"<This block of commented-out lines of code should be removed.(·‘¶Í8é‰ÑÚí-

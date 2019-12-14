@@ -7,9 +7,8 @@ package main;
 import examministration.AddExam;
 import examministration.StartExam;
 import facerecognition.WebcamCapture;
-import jdbc.ExamJDBC;
-import jdbc.PaperJDBC;
-import jdbc.SubjectJDBC;
+import javabean.User;
+import jdbc.*;
 import paperadministration.EditPaper;
 import paperadministration.SearchPaper;
 import subjectadministration.AddSubject;
@@ -40,6 +39,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MainUI extends JFrame {
     private String userName;            // 对应的用户名，来识别那个用户登录了系统
+    private String userPhoneNumber;     // 用户名对应的手机号，在构造方法中初始化
     private SubjectJDBC subjectJDBC;        // 题目管理执行JDBC操作时，对应JDBC操作的对象
 
     // 自己添加的控件（添加一些 JFormdesigner 不方便操作的空间）
@@ -62,10 +62,42 @@ public class MainUI extends JFrame {
     private JTable table03;
     private JScrollPane scrollPane03;
     private DefaultTableModel tableModel03;
+    // 4. 下面的是 “用户管理” 和 “成绩查询” 界面的表格，滚动面板，表格模型（同样只能够创建一个对象）
+    private JTable table04, table05;
+    private JScrollPane scrollPane04, scrollPane05;
+    private DefaultTableModel tableModel04, tableModel05;
 
-    public MainUI(String userName) {
-        this.userName = userName;
+    public MainUI(String phoneNumber) {
+        this.userPhoneNumber = phoneNumber;     // 保存用户名对应的手机号
+        UserJDBC userJDBC = new UserJDBC();     // 创建 JDBC 对象，执行对应的 JDBC操作，可以封装成为工具类的
+        this.userName = userJDBC.readNameByPhoneNumber(phoneNumber);   // 根据手机号查找用户名
         initComponents();
+
+        // 初始化用户，根据用户类型（学生，教师）来更改界面的设计
+        initUser();
+    }
+
+    /**
+    * @Description: 根据不同的用户设置不同的权限
+    * @Param: []
+    * @return: void
+    * @Author: 林凯
+    * @Date: 2019/12/14
+    */
+    private void initUser() {
+        if (userName.equals("林凯")) {
+            /**
+             *      管理员用户，什么都不用做，直接返回即可（不继续执行后面的代码）
+             * */
+            return;
+        }
+
+        /**
+         *      如果是学生用户，那么只能进行考试，下面设置哪些界面是不可点击的
+         * */
+        buttonLeft03.setEnabled(false);     // 设置 “学生管理” 按钮不可点击
+        buttonLeft04.setEnabled(false);     // 设置 “试题管理” 按钮不可点击
+        buttonLeft05.setEnabled(false);     // 设置 “试卷管理” 按钮不可点击
     }
 
     /** 
@@ -81,25 +113,157 @@ public class MainUI extends JFrame {
         JButton button = (JButton) e.getSource();
         if (button.getText().equals("系统首页")) {
             cardLayout.show(panelCenter, "card1");
-        } else if (button.getText().equals("学生管理")) {
+        } else if (button.getText().equals("个人信息")) {
             cardLayout.show(panelCenter, "card2");
-        } else if (button.getText().equals("教师管理")) {
+        } else if (button.getText().equals("用户管理")) {
+            initUserControl();      //
             cardLayout.show(panelCenter, "card3");
         } else if (button.getText().equals("试题管理")) {
-            initSubject();     // 这里不需要传递参数
+            initSubject();     // 初始化 “试题管理” 界面，这里不需要传递参数
             cardLayout.show(panelCenter, "card4");
         } else if (button.getText().equals("试卷管理")) {
             initPaper();        // 初始化   “试卷管理”  界面
-            System.out.println("试卷管理");
             cardLayout.show(panelCenter, "card5");
         } else if (button.getText().equals("考试管理")) {
             initExam();     // 初始化   “考试管理”  界面
             cardLayout.show(panelCenter, "card6");
-        } else {
-
+        } else if (button.getText().equals("成绩查询")){
+            initExamResult();
+            cardLayout.show(panelCenter, "card7");
         }
     }
 
+    /**
+     * @Description: 在 WebcamCapture 调用此方法，传入的参数为boolean类型，true说明人脸验证成功，flase说明人脸验证失败
+     * @Param: [flag]
+     * @return: void
+     * @Author: 林凯
+     * @Date: 2019/12/5
+     */
+    public void faceMatching(boolean flag) {
+        if (flag) {
+            JOptionPane.showMessageDialog(this, "人脸验证成功！", "成功", JOptionPane.PLAIN_MESSAGE);
+
+            /**
+             *      下面执行开始考试的代码
+             * */
+            long startTime = 0;
+            long endTime = 0;
+            SimpleDateFormat tiemFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            try {
+                Date startDate = tiemFormat.parse(tableModel.getValueAt(tableSubject.getSelectedRow(), 3).toString());
+                Date endDate = tiemFormat.parse(tableModel.getValueAt(tableSubject.getSelectedRow(), 4).toString());
+                startTime = startDate.getTime();
+                endTime = endDate.getTime();
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+            String examName = tableModel.getValueAt(tableSubject.getSelectedRow(), 0).toString();
+            String examPaperName = tableModel.getValueAt(tableSubject.getSelectedRow(), 1).toString();
+            String[] paperTitles = PaperJDBC.getPaperSubjectTitles(examPaperName);
+
+            StartExam startExam = new StartExam(this, examName, paperTitles, startTime, endTime);
+            this.setEnabled(false);         // 设置当前窗体不可编辑
+            startExam.setVisible(true);
+
+
+        } else {
+            JOptionPane.showMessageDialog(this, "人脸验证失败!", "失败", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    /**
+    * @Description: (出了点下 BUG， 暂时注释掉)将 初始化化表格 的操作封装出来，给每个界面初始化的时候来调用
+    * @Param: []
+    * @return: void
+    * @Author: 林凯
+    * @Date: 2019/12/14
+    */
+//    public void initTable(String[] columnNames, String[][] datas, JTable table, JScrollPane scrollPane, DefaultTableModel tempTableModel, JPanel panel) {
+//
+//        /**
+//         *      保证界面中的表格，表格模型，滚动面板只有一个对象
+//         * */
+//        if (table == null && scrollPane == null && tempTableModel == null) {
+//            System.out.println("new 了一个对象");
+//            tempTableModel = new DefaultTableModel(datas, columnNames);
+//            table = new JTable(tempTableModel);     // 通过 表格模型 来创建 表格 对象
+//            tempTableModel.setRowCount(datas.length);       // 设置表格行数
+//            table.setRowHeight(50);     // 设置行高50像素
+//            scrollPane = new JScrollPane(table);        //注意，向JScrollPane中添加控件只能在初始化的时候添加
+//            panel.add(scrollPane);         // 将   表格  添加到对应的面板中，这里使用的是  BorderLayout   ，添加到中间即可
+//            for (int row = 0; row < datas.length; row++) {
+//                for (int column = 0; column< datas[0].length; column++) {
+//                    table.setValueAt(datas[row][column], row, column);     // 注： Swing 表格组件中，行列都是从0开始的
+//                }
+//            }
+//            tempTableModel.fireTableDataChanged();      // 更新表格的信息，十分必要，否则可能显示错误
+//        }
+//
+//        // 重新赋值引用
+//        tableSubject = table;
+//        tableModel = tempTableModel;
+//        scrollPaneSubject = scrollPane05;
+//
+//    }
+
+// ######################################    下面是 “用户管理” 界面
+
+    /**
+     * @Description: 初始化  “用户管理”  界面，类似于一个小型的学生信息管理系统
+     * @Param: []
+     * @return: void
+     * @Author: 林凯
+     * @Date: 2019/12/11
+     */
+    private void initUserControl() {
+        /**
+         *       注：这里可能用时比较多（快的话用 1 秒，慢的话要2秒），%98 的时间都花在的链接数据库上，
+         *       因为数据库放在云上，所以连接的时候和网络有关系。
+         **/
+
+        String[] columNames = {"用户名", "手机号", "邮箱账号", "注册日期"};
+
+        UserJDBC userJDBC = new UserJDBC();
+        // 获得数据，存放到 datas 二维数组里面
+        String[][] tempDates = userJDBC.readAllInformation();     // 从数据库中获取全部的信息（不包含图片哪一列），保存到一个二维数组中
+        /**
+         *      上面的只是一个临时的数据，包含了处理图片以外的所有数据
+         *      下面的二维数组要从临时数据里面选取需要的数据，因为不展示 id，和 pwd，所以列数还有减2
+         * */
+        String[][] datas = new String[tempDates.length][4];
+        for (int i = 0; i < datas.length; i++) {
+            datas[i][0] = tempDates[i][1];
+            datas[i][1] = tempDates[i][3];
+            datas[i][2] = tempDates[i][4];
+            datas[i][3] = tempDates[i][5];
+        }
+
+        /**
+         *      保证界面中的表格，表格模型，滚动面板只有一个对象
+         * */
+        if (table04 == null && scrollPane04 == null && tableModel04 == null) {
+            System.out.println("重新 new 了一个对象");
+            tableModel04 = new DefaultTableModel(datas, columNames);
+            table04 = new JTable(tableModel04);
+            tableModel04.setRowCount(datas.length);     // 设置表格行数
+            table04.setRowHeight(50);       // 设置行高50像素
+            scrollPane04 = new JScrollPane(table04);        // 注意，向JScrollPane中添加控件只能在初始化的时候添加
+            panelContentStudent.add(scrollPane04);      // 将   表格  添加到对应的面板中，这里使用的是  BorderLayout   ，添加到中间即可
+            for (int row = 0; row < datas.length; row++) {
+                for (int column = 0; column< datas[0].length; column++) {
+                    table04.setValueAt(datas[row][column], row, column);     // 注： Swing 表格组件中，行列都是从0开始的
+                }
+            }
+            tableModel04.fireTableDataChanged();      // 更新表格的信息，十分必要，否则可能显示错误
+        }
+
+        // 重新赋值引用
+        tableSubject = table04;
+        tableModel = tableModel04;
+        scrollPaneSubject = scrollPane04;
+
+    }
 
 //#####################################################################  下面是   试题管理    ##########################
 
@@ -611,6 +775,7 @@ public class MainUI extends JFrame {
 
     /**
      * @Description: 在   “考试管理”  界面点击  “发布考试”  按钮对应的点击事件     ———》  发布新的考试
+     *                同时还要调用 UserJDBC 类的 addColmn() 方法，动态得在 User 表中添加 1 列数据
      * @Param: [e]
      * @return: void
      * @Author: 林凯
@@ -722,7 +887,8 @@ public class MainUI extends JFrame {
         if (faceFlag == 0) {
             try {
                 // 调用 摄像头 拍照
-                WebcamCapture.takePhote(this, "林凯");
+                System.out.println("当前用户为：" + userName);
+                WebcamCapture.takePhote(this, userName);
 
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
@@ -741,44 +907,83 @@ public class MainUI extends JFrame {
 
     }
 
-    /** 
-    * @Description: 在 WebcamCapture 调用此方法，传入的参数为boolean类型，true说明人脸验证成功，flase说明人脸验证失败
-    * @Param: [flag] 
-    * @return: void 
-    * @Author: 林凯
-    * @Date: 2019/12/5 
-    */ 
-    public void faceMatching(boolean flag) {
-        if (flag) {
-            JOptionPane.showMessageDialog(this, "人脸验证成功！", "成功", JOptionPane.PLAIN_MESSAGE);
+// ###################################    下面是 “成绩查询”  界面 ###############################################
 
-            /**
-             *      下面执行开始考试的代码
-             * */
-            long startTime = 0;
-            long endTime = 0;
-            SimpleDateFormat tiemFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-            try {
-                Date startDate = tiemFormat.parse(tableModel.getValueAt(tableSubject.getSelectedRow(), 3).toString());
-                Date endDate = tiemFormat.parse(tableModel.getValueAt(tableSubject.getSelectedRow(), 4).toString());
-                startTime = startDate.getTime();
-                endTime = endDate.getTime();
-            } catch (ParseException ex) {
-                ex.printStackTrace();
+    /**
+     * @Description: 初始化 “成绩查询” 界面
+     * @Param: []
+     * @return: void
+     * @Author: 林凯
+     * @Date: 2019/12/14
+     */
+    private void initExamResult() {
+        // 1. 设置每一列的 标题
+        String[] columnNames = {"用户名称", "考试名称", "用户答案", "标准答案", "用户得分", "总分"};
+        String[][] datas = ExamResultJDBC.readAllExamResult();      // 2. 获得需要展示的数据
+        // 3. 调用封装好的方法，将数据展示在表格中
+        /**
+         *      保证界面中的表格，表格模型，滚动面板只有一个对象
+         * */
+        if (table05 == null && scrollPane05 == null && tableModel05 == null) {
+            System.out.println("new 了一个对象");
+            tableModel05 = new DefaultTableModel(datas, columnNames);
+            table05 = new JTable(tableModel05);     // 通过 表格模型 来创建 表格 对象
+            tableModel05.setRowCount(datas.length);       // 设置表格行数
+            table05.setRowHeight(50);     // 设置行高50像素
+            scrollPane05 = new JScrollPane(table05);        //注意，向JScrollPane中添加控件只能在初始化的时候添加
+            panelContentExamResult.add(scrollPane05);         // 将   表格  添加到对应的面板中，这里使用的是  BorderLayout   ，添加到中间即可
+            for (int row = 0; row < datas.length; row++) {
+                for (int column = 0; column< datas[0].length; column++) {
+                    table05.setValueAt(datas[row][column], row, column);     // 注： Swing 表格组件中，行列都是从0开始的
+                }
             }
-            String examName = tableModel.getValueAt(tableSubject.getSelectedRow(), 0).toString();
-            String examPaperName = tableModel.getValueAt(tableSubject.getSelectedRow(), 1).toString();
-            String[] paperTitles = PaperJDBC.getPaperSubjectTitles(examPaperName);
-
-            StartExam startExam = new StartExam(this, examName, paperTitles, startTime, endTime);
-            this.setEnabled(false);         // 设置当前窗体不可编辑
-            startExam.setVisible(true);
-
-
-        } else {
-            JOptionPane.showMessageDialog(this, "人脸验证失败!", "失败", JOptionPane.ERROR_MESSAGE);
+            tableModel05.fireTableDataChanged();      // 更新表格的信息，十分必要，否则可能显示错误
         }
+
+        // 重新赋值引用
+        tableSubject = table05;
+        tableModel = tableModel05;
+        scrollPaneSubject = scrollPane05;
     }
+
+    private void buttonSearchExamResultMouseReleased(MouseEvent e) {
+        // TODO add your code here
+        JButton tempButton = (JButton) e.getSource();
+        String[][] newDatas = null;
+        if (tempButton.getText().equals("成绩查询（按姓名）")) {
+            String userName = JOptionPane.showInputDialog(this, "请输入学生姓名：", "输入学生姓名");
+            if (userName == null) {
+                return;     // 如果用户点击了 “取消” 按钮，则直接返回，不执行后面的代码
+            }
+            System.out.println(userName);
+            newDatas = ExamResultJDBC.selectExamResultByUserName(userName);
+        } else if (tempButton.getText().equals("成绩查询（按考试名称）")){
+            String examName = JOptionPane.showInputDialog(this, "请输入数据名称：", "输入试卷名称");
+            if (examName == null) {
+                return;     // 如果用户点击了 “取消” 按钮，则直接返回，不执行后面的代码
+            }
+            newDatas = ExamResultJDBC.selectExamResultByExamName(examName);
+        } else {
+            // 如果点击
+            newDatas = ExamResultJDBC.readAllExamResult();
+        }
+
+        // 将数组中的内容设置到表格当中
+        tableModel.setRowCount(newDatas.length);       // 重新设置表格的行数
+
+        for (int row = 0; row < newDatas.length; row++) {
+            for (int column = 0; column< newDatas[0].length; column++) {
+                tableModel.setValueAt(newDatas[row][column], row, column);     // 注： Swing 表格组件中，行列都是从0开始的
+            }
+        }
+        tableModel.fireTableDataChanged();      // 更新表格的信息，十分必要，否则可能显示错误
+    }
+
+// #####################################    下面是  “JFormDesigner 自动生成的代码”  #############################
+
+
+
+
 
 
     /** 
@@ -805,8 +1010,9 @@ public class MainUI extends JFrame {
         buttonLeft02 = new JButton();
         buttonLeft03 = new JButton();
         buttonLeft04 = new JButton();
-        butonLeft05 = new JButton();
+        buttonLeft05 = new JButton();
         buttonLeft06 = new JButton();
+        buttonLeft7 = new JButton();
         panelCenter = new JPanel();
         panelContent1 = new JPanel();
         label20 = new JLabel();
@@ -823,8 +1029,10 @@ public class MainUI extends JFrame {
         textField4 = new JTextField();
         textField5 = new JTextField();
         button1 = new JButton();
-        panelContent3 = new JPanel();
-        label25 = new JLabel();
+        panelContentStudent = new JPanel();
+        panel19 = new JPanel();
+        buttonSearchStudent = new JButton();
+        label30 = new JLabel();
         panelContentSubject = new JPanel();
         panel16 = new JPanel();
         buttonAddSubject = new JButton();
@@ -848,6 +1056,12 @@ public class MainUI extends JFrame {
         buttonDeleteExam = new JButton();
         buttonStartExam = new JButton();
         label29 = new JLabel();
+        panelContentExamResult = new JPanel();
+        panel20 = new JPanel();
+        buttonSearchExamResult = new JButton();
+        label31 = new JLabel();
+        buttonSearchExamResult2 = new JButton();
+        buttonSearchExamResult3 = new JButton();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -858,12 +1072,12 @@ public class MainUI extends JFrame {
         //======== panelTop ========
         {
             panelTop.setBackground(new Color(66, 143, 185));
-            panelTop.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,panelTop. getBorder( )) ); panelTop. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            panelTop.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,panelTop. getBorder( )) ); panelTop. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
             panelTop.setLayout(new BorderLayout());
 
             //---- labelTitle ----
@@ -878,7 +1092,7 @@ public class MainUI extends JFrame {
                 panel6.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 20));
 
                 //---- buttonWelcome ----
-                buttonWelcome.setText("\u6b22\u8fce\u60a8\uff01  \u6797\u51ef");
+                buttonWelcome.setText("\u6b22\u8fce\u60a8\uff01  ");
                 panel6.add(buttonWelcome);
 
                 //---- buttonExit ----
@@ -991,7 +1205,7 @@ public class MainUI extends JFrame {
             buttonLeft02.setBounds(0, 55, 135, 50);
 
             //---- buttonLeft03 ----
-            buttonLeft03.setText("\u6559\u5e08\u7ba1\u7406");
+            buttonLeft03.setText("\u7528\u6237\u7ba1\u7406");
             buttonLeft03.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
             buttonLeft03.addMouseListener(new MouseAdapter() {
                 @Override
@@ -1014,17 +1228,17 @@ public class MainUI extends JFrame {
             panelLeft.add(buttonLeft04);
             buttonLeft04.setBounds(0, 165, 135, 50);
 
-            //---- butonLeft05 ----
-            butonLeft05.setText("\u8bd5\u5377\u7ba1\u7406");
-            butonLeft05.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
-            butonLeft05.addMouseListener(new MouseAdapter() {
+            //---- buttonLeft05 ----
+            buttonLeft05.setText("\u8bd5\u5377\u7ba1\u7406");
+            buttonLeft05.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+            buttonLeft05.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseReleased(MouseEvent e) {
                     buttonLeftMouseReleased(e);
                 }
             });
-            panelLeft.add(butonLeft05);
-            butonLeft05.setBounds(0, 220, 135, 50);
+            panelLeft.add(buttonLeft05);
+            buttonLeft05.setBounds(0, 220, 135, 50);
 
             //---- buttonLeft06 ----
             buttonLeft06.setText("\u8003\u8bd5\u7ba1\u7406");
@@ -1037,6 +1251,18 @@ public class MainUI extends JFrame {
             });
             panelLeft.add(buttonLeft06);
             buttonLeft06.setBounds(0, 275, 135, 50);
+
+            //---- buttonLeft7 ----
+            buttonLeft7.setText("\u6210\u7ee9\u67e5\u8be2");
+            buttonLeft7.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+            buttonLeft7.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    buttonLeftMouseReleased(e);
+                }
+            });
+            panelLeft.add(buttonLeft7);
+            buttonLeft7.setBounds(0, 330, 135, 50);
 
             {
                 // compute preferred size
@@ -1162,31 +1388,33 @@ public class MainUI extends JFrame {
             }
             panelCenter.add(panelContentMyInformation, "card2");
 
-            //======== panelContent3 ========
+            //======== panelContentStudent ========
             {
-                panelContent3.setLayout(null);
+                panelContentStudent.setLayout(new BorderLayout());
 
-                //---- label25 ----
-                label25.setText("card3");
-                panelContent3.add(label25);
-                label25.setBounds(265, 100, 135, 80);
-
+                //======== panel19 ========
                 {
-                    // compute preferred size
-                    Dimension preferredSize = new Dimension();
-                    for(int i = 0; i < panelContent3.getComponentCount(); i++) {
-                        Rectangle bounds = panelContent3.getComponent(i).getBounds();
-                        preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                        preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                    }
-                    Insets insets = panelContent3.getInsets();
-                    preferredSize.width += insets.right;
-                    preferredSize.height += insets.bottom;
-                    panelContent3.setMinimumSize(preferredSize);
-                    panelContent3.setPreferredSize(preferredSize);
+                    panel19.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 10));
+
+                    //---- buttonSearchStudent ----
+                    buttonSearchStudent.setText("\u67e5\u627e\u5b66\u751f");
+                    buttonSearchStudent.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    buttonSearchStudent.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            buttonCheckSubjectMouseReleased(e);
+                        }
+                    });
+                    panel19.add(buttonSearchStudent);
+
+                    //---- label30 ----
+                    label30.setText(" ");
+                    label30.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
+                    panel19.add(label30);
                 }
+                panelContentStudent.add(panel19, BorderLayout.NORTH);
             }
-            panelCenter.add(panelContent3, "card3");
+            panelCenter.add(panelContentStudent, "card3");
 
             //======== panelContentSubject ========
             {
@@ -1392,15 +1620,66 @@ public class MainUI extends JFrame {
                 panelContentExam.add(panel18, BorderLayout.NORTH);
             }
             panelCenter.add(panelContentExam, "card6");
+
+            //======== panelContentExamResult ========
+            {
+                panelContentExamResult.setLayout(new BorderLayout());
+
+                //======== panel20 ========
+                {
+                    panel20.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 10));
+
+                    //---- buttonSearchExamResult ----
+                    buttonSearchExamResult.setText("\u6210\u7ee9\u67e5\u8be2\uff08\u6309\u59d3\u540d\uff09");
+                    buttonSearchExamResult.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    buttonSearchExamResult.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            buttonSearchExamResultMouseReleased(e);
+                        }
+                    });
+                    panel20.add(buttonSearchExamResult);
+
+                    //---- label31 ----
+                    label31.setText(" ");
+                    label31.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
+                    panel20.add(label31);
+
+                    //---- buttonSearchExamResult2 ----
+                    buttonSearchExamResult2.setText("\u6210\u7ee9\u67e5\u8be2\uff08\u6309\u8003\u8bd5\u540d\u79f0\uff09");
+                    buttonSearchExamResult2.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    buttonSearchExamResult2.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            buttonSearchExamResultMouseReleased(e);
+                        }
+                    });
+                    panel20.add(buttonSearchExamResult2);
+
+                    //---- buttonSearchExamResult3 ----
+                    buttonSearchExamResult3.setText("\u663e\u793a\u5168\u90e8\u6210\u7ee9");
+                    buttonSearchExamResult3.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    buttonSearchExamResult3.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            buttonSearchExamResultMouseReleased(e);
+                        }
+                    });
+                    panel20.add(buttonSearchExamResult3);
+                }
+                panelContentExamResult.add(panel20, BorderLayout.NORTH);
+            }
+            panelCenter.add(panelContentExamResult, "card7");
         }
         contentPane.add(panelCenter, BorderLayout.CENTER);
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
-        // ######################    以下是自己添加的代码    #################
-//        initSubjectTabel(table1);
-
+        /**
+         *   ##############################3下面是自己添加的代码##################################################
+         * */
+        buttonWelcome.setText("欢迎您，" + userName);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -1419,8 +1698,9 @@ public class MainUI extends JFrame {
     private JButton buttonLeft02;
     private JButton buttonLeft03;
     private JButton buttonLeft04;
-    private JButton butonLeft05;
+    private JButton buttonLeft05;
     private JButton buttonLeft06;
+    private JButton buttonLeft7;
     private JPanel panelCenter;
     private JPanel panelContent1;
     private JLabel label20;
@@ -1437,8 +1717,10 @@ public class MainUI extends JFrame {
     private JTextField textField4;
     private JTextField textField5;
     private JButton button1;
-    private JPanel panelContent3;
-    private JLabel label25;
+    private JPanel panelContentStudent;
+    private JPanel panel19;
+    private JButton buttonSearchStudent;
+    private JLabel label30;
     private JPanel panelContentSubject;
     private JPanel panel16;
     private JButton buttonAddSubject;
@@ -1462,11 +1744,17 @@ public class MainUI extends JFrame {
     private JButton buttonDeleteExam;
     private JButton buttonStartExam;
     private JLabel label29;
+    private JPanel panelContentExamResult;
+    private JPanel panel20;
+    private JButton buttonSearchExamResult;
+    private JLabel label31;
+    private JButton buttonSearchExamResult2;
+    private JButton buttonSearchExamResult3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 
     public static void main(String[] args) {
-        MainUI test1 = new MainUI("test");
+        MainUI test1 = new MainUI("18170098712");
         test1.setVisible(true);
     }
 }

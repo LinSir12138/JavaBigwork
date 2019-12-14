@@ -25,7 +25,7 @@ new FormModel {
 					"background": new java.awt.Color( 66, 143, 185, 255 )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "buttonWelcome"
-						"text": "欢迎您！  林凯"
+						"text": "欢迎您！  "
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "buttonExit"
@@ -90,7 +90,7 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "buttonLeft03"
-					"text": "教师管理"
+					"text": "用户管理"
 					"font": new java.awt.Font( "Dialog", 1, 18 )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonLeftMouseReleased", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
@@ -111,7 +111,7 @@ new FormModel {
 					"y": 165
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "butonLeft05"
+					name: "buttonLeft05"
 					"text": "试卷管理"
 					"font": new java.awt.Font( "Dialog", 1, 18 )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonLeftMouseReleased", true ) )
@@ -124,13 +124,24 @@ new FormModel {
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "buttonLeft06"
 					"text": "考试管理"
-					"font": new java.awt.Font( "Dialog", 1, 18 )
+					"font": &Font0 new java.awt.Font( "Dialog", 1, 18 )
 					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonLeftMouseReleased", true ) )
 				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 					"width": 135
 					"height": 50
 					"x": 0
 					"y": 275
+				} )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "buttonLeft7"
+					"text": "成绩查询"
+					"font": #Font0
+					addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonLeftMouseReleased", true ) )
+				}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+					"width": 135
+					"height": 50
+					"x": 0
+					"y": 330
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "West"
@@ -204,7 +215,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "textField1"
-							"font": &Font0 new java.awt.Font( "Dialog", 0, 18 )
+							"font": &Font1 new java.awt.Font( "Dialog", 0, 18 )
 							"editable": false
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"x": 185
@@ -214,7 +225,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "textField2"
-							"font": #Font0
+							"font": #Font1
 							"editable": false
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"width": 280
@@ -224,7 +235,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "textField3"
-							"font": #Font0
+							"font": #Font1
 							"editable": false
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"width": 195
@@ -234,7 +245,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "textField4"
-							"font": #Font0
+							"font": #Font1
 							"editable": false
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"width": 280
@@ -244,7 +255,7 @@ new FormModel {
 						} )
 						add( new FormComponent( "javax.swing.JTextField" ) {
 							name: "textField5"
-							"font": #Font0
+							"font": #Font1
 							"editable": false
 						}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 							"width": 280
@@ -268,16 +279,27 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "card2"
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-					name: "panelContent3"
-					add( new FormComponent( "javax.swing.JLabel" ) {
-						name: "label25"
-						"text": "card3"
-					}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-						"x": 265
-						"y": 100
-						"width": 135
-						"height": 80
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panelContentStudent"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 2
+						"hgap": 10
+						"vgap": 10
+					} ) {
+						name: "panel19"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonSearchStudent"
+							"text": "查找学生"
+							"font": new java.awt.Font( "Dialog", 1, 18 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonCheckSubjectMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label30"
+							"text": " "
+							"font": &Font2 new java.awt.Font( "Dialog", 1, 36 )
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "North"
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "card3"
@@ -293,37 +315,37 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonAddSubject"
 							"text": "添加试题"
-							"font": &Font1 new java.awt.Font( "Dialog", 1, 16 )
+							"font": &Font3 new java.awt.Font( "Dialog", 1, 16 )
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonAddSubjectMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonDeleteSubject"
 							"text": "删除试题"
-							"font": &Font2 new java.awt.Font( "Dialog", 1, 16 )
+							"font": &Font4 new java.awt.Font( "Dialog", 1, 16 )
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonDeleteSubjectMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonSearchSubject"
 							"text": "查找试题"
-							"font": &Font3 new java.awt.Font( "Dialog", 1, 16 )
+							"font": &Font5 new java.awt.Font( "Dialog", 1, 16 )
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSearchSubjectMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonEditSubject"
 							"text": "编辑试题"
-							"font": &Font4 new java.awt.Font( "Dialog", 1, 16 )
+							"font": &Font6 new java.awt.Font( "Dialog", 1, 16 )
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonEditSubjectMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonCheckSubject"
 							"text": "查看试题"
-							"font": &Font5 new java.awt.Font( "Dialog", 1, 16 )
+							"font": &Font7 new java.awt.Font( "Dialog", 1, 16 )
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonCheckSubjectMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label27"
 							"text": " "
-							"font": &Font6 new java.awt.Font( "Dialog", 1, 36 )
+							"font": #Font2
 						} )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "North"
@@ -342,43 +364,43 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonAddPaper"
 							"text": "新建试卷"
-							"font": #Font1
+							"font": #Font3
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonAddPaperMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonDeletePaper"
 							"text": "删除试卷"
-							"font": #Font2
+							"font": #Font4
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonDeletePaperMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonSearchPaper"
 							"text": "筛选试卷"
-							"font": #Font3
+							"font": #Font5
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSearchPaperMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonRenamePaper"
 							"text": "重命名试卷"
-							"font": #Font4
+							"font": #Font6
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonRenamePaperMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonEditPaper"
 							"text": "编辑试卷"
-							"font": #Font4
+							"font": #Font6
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonEditPaperMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonPreviewPaper"
 							"text": "预览试卷"
-							"font": #Font5
+							"font": #Font7
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonPreviewPaperMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label28"
 							"text": " "
-							"font": #Font6
+							"font": #Font2
 						} )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "North"
@@ -397,7 +419,7 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonAddExam"
 							"text": "发布考试"
-							"font": #Font5
+							"font": #Font7
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonAddExamMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JButton" ) {
@@ -409,19 +431,56 @@ new FormModel {
 						add( new FormComponent( "javax.swing.JButton" ) {
 							name: "buttonStartExam"
 							"text": "开始考试"
-							"font": new java.awt.Font( "Dialog", 1, 18 )
+							"font": &Font8 new java.awt.Font( "Dialog", 1, 18 )
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonStartExamMouseReleased", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label29"
 							"text": " "
-							"font": #Font6
+							"font": #Font2
 						} )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "North"
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "card6"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+					name: "panelContentExamResult"
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) {
+						"alignment": 2
+						"hgap": 10
+						"vgap": 10
+					} ) {
+						name: "panel20"
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonSearchExamResult"
+							"text": "成绩查询（按姓名）"
+							"font": #Font8
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSearchExamResultMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label31"
+							"text": " "
+							"font": #Font2
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonSearchExamResult2"
+							"text": "成绩查询（按考试名称）"
+							"font": #Font8
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSearchExamResultMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonSearchExamResult3"
+							"text": "显示全部成绩"
+							"font": #Font8
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSearchExamResultMouseReleased", true ) )
+						} )
+					}, new FormLayoutConstraints( class java.lang.String ) {
+						"value": "North"
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "card7"
 				} )
 			}, new FormLayoutConstraints( class java.lang.String ) {
 				"value": "Center"

@@ -46,6 +46,13 @@ public class WebcamCapture {
      * */
 
 
+    /**
+    * @Description: 调用摄像头进行拍照 ，然后将拍照完成的图片保存到本地（利用到了IO流）
+    * @Param: [mainUIFrame, userName]
+    * @return: void
+    * @Author: 林凯
+    * @Date: 2019/12/13
+    */
     public static void takePhote(JFrame mainUIFrame, String userName) throws InterruptedException {
         /**
          *      循环判断条件，为false时，会一直停留在循环里面，方法不会执行完毕
@@ -163,6 +170,15 @@ public class WebcamCapture {
 
     }
 
+    /**
+    * @Description: 拍照完成之后，将本地图片和从数据库中读取的标准人脸进行比对，获得返回值，并对返回值
+     *              进行分析，得到评判的得分。
+     *              功能2： 从 数据库中获取图片到本地
+    * @Param: [mainUIFrame, userName, randomNumber]
+    * @return: void
+    * @Author: 林凯
+    * @Date: 2019/12/13
+    */
     private static void startRecognition(JFrame mainUIFrame, String userName, long randomNumber) {
         //
         // 参数：
@@ -170,11 +186,11 @@ public class WebcamCapture {
         // 1 ~~~~~~ userName ，用来在数据库中找到usreName对应的 id，然后根据id确定从数据库中读取的图片的名称
 
         /**
-         *    拍照完毕，
+         *    拍照完毕，从数据库中读取用户的头像信息到本地
          *    参数：
          *      （1） ~~~~~~ userName ，用来在数据库中找到usreName对应的 id，然后根据id确定从数据库中读取的图片的名称
          *      （2）~~~~~ randomNumber   拍照生成的图片的名称
-         *    1.从数据库中读取用户的头像信息到本地
+         *
          * */
         UserJDBC userJDBC = new UserJDBC();
         String id =  userJDBC.readIdByUserName(userName);           // 从数据库中通过用户名获得id
@@ -182,9 +198,11 @@ public class WebcamCapture {
         ImageJDBC.readImageFromDatabase("src//images//", id);           // 从数据库中读取图片保存到本地
 
         String filePath1 = "src//images//" +id + ".png";
+        System.out.println("file1:" + filePath1);
         String filePath2 = "src//images//" + randomNumber + ".png";
+        System.out.println("file2:" + filePath2);
         String result = FaceMatch.faceMatch(filePath1, filePath2);
-        System.out.println(result);
+//        System.out.println(result);
 
         double score =  getScoreFromResult(result);
         System.out.println("得分为：" + score);
@@ -212,12 +230,29 @@ public class WebcamCapture {
          *   {"error_code":0,"error_msg":"SUCCESS","log_id":2019910184201,"timestamp":1575526526,"cached":0,
          *      "result":{"score":92.98625183,"face_list":[{"face_token":"76c01de52392ab95553295ab685f7c76"},
          *      {"face_token":"76b0fb479b396bceb4d5a04d7868fa3c"}]}}
+         *
+         *      完全检测不到人脸是，返回的 score 里面的值为 0，返回的 json 格式如下：
+         *      {"error_code":0,"error_msg":"SUCCESS","log_id":9989791520179,"timestamp":1576239669,"cached":0,
+         *      "result":{"score":0,"face_list":[{"face_token":"76c01de52392ab95553295ab685f7c76"},
+         *      {"face_token":"a1ff0cef1a6470bbbb32c53aa9224753"}]}}
+         *
+         *      当是其他人脸的时候，返回的 score 值特别低(例如这里的就是)，返回的 json 格式如下：
+         *      {"error_code":0,"error_msg":"SUCCESS","log_id":9425059425253,"timestamp":1576239859,"cached":0,
+         *      "result":{"score":76.13053131,"face_list":[{"face_token":"76c01de52392ab95553295ab685f7c76"},
+         *      {"face_token":"37dfe52754865fbd5b0e282a093cc348"}]}}
+         *
          * */
 
         int firstIndex = result.indexOf("score") + 7;
         int lastIndex = result.indexOf("score") + 7 + 11;
         String score = result.substring(firstIndex, lastIndex);
 
+        /**
+         *      如果未检测到人脸，则score == 0，那么就会截取到其他英文字母，用Double.valueOf() 时会抛出异常，这里要先处理一下
+         * */
+        if (score.charAt(0) == '0') {
+            return 0.0;
+        }
         System.out.println("得分为：" + score);
         return Double.valueOf(score);
     }

@@ -1,0 +1,17 @@
+
+T
+squid:S1066"9Replace this use of System.out or System.err by a logger.(´‹¹öþÿÿÿÿ
+T
+squid:S1069"9Replace this use of System.out or System.err by a logger.(í¹ß†þÿÿÿÿ
+?squid:S1148r"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+bsquid:CommentedOutCodeLine,"<This block of commented-out lines of code should be removed.(„‰Ç
+=squid:S1168A"&Return an empty array instead of null.(¥¹ï
+?squid:S1148["#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+?squid:S1068"(Remove this unused "exam" private field.(êÔ›Ë
+?squid:S1148@"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+bsquid:CommentedOutCodeLine0"<This block of commented-out lines of code should be removed.(¹ßýâ
+T
+squid:S1067"9Replace this use of System.out or System.err by a logger.(Ã”…ªûÿÿÿÿ
+O
+squid:S1064"9Replace this use of System.out or System.err by a logger.(ª¡éá
+osquid:S1192"LDefine a constant instead of duplicating this literal "ALY_bigwork" 3 times.(£—ìÑÿÿÿÿÿ8ùð î-

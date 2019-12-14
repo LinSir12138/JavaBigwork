@@ -1,0 +1,36 @@
+
+;squid:S1148”"#Use a logger to log this exception.(Ç’Çê
+O
+squid:S106_"9Replace this use of System.out or System.err by a logger.(Œò„
+?squid:S1148N"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+bsquid:CommentedOutCodeLine."<This block of commented-out lines of code should be removed.(´ùÜÁ
+O
+squid:S106\"9Replace this use of System.out or System.err by a logger.(´Ÿ°‚
+jsquid:S1192?"LDefine a constant instead of duplicating this literal "ALY_bigwork" 6 times.(ÉŒë8şáö î-
+csquid:CommentedOutCodeLine¼"<This block of commented-out lines of code should be removed.(¬µò
+P
+squid:S106Ø"9Replace this use of System.out or System.err by a logger.(Â–‘ö
+bsquid:CommentedOutCodeLine%"<This block of commented-out lines of code should be removed.(´ùÜÁ
+O
+squid:S106<"9Replace this use of System.out or System.err by a logger.(Â–‘ö
+P
+squid:S106î"9Replace this use of System.out or System.err by a logger.(÷°Œ×
+Zsquid:S00107""BConstructor has 11 parameters, which is greater than 7 authorized.(Ø®¬š
+asquid:CommentedOutCodeLinex"<This block of commented-out lines of code should be removed.(³ü
+O
+squid:S106¥"9Replace this use of System.out or System.err by a logger.(ƒÚáB
+hsquid:CommentedOutCodeLine¹"<This block of commented-out lines of code should be removed.(¶µ¥Óÿÿÿÿÿ
+gsquid:CommentedOutCodeLine("<This block of commented-out lines of code should be removed.(õšÀ¢øÿÿÿÿ
+@squid:S1148¼"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+hsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Ø°áşÿÿÿÿ
+csquid:CommentedOutCodeLine¢"<This block of commented-out lines of code should be removed.(ò¬Óş
+>squid:S1168"&Return an empty array instead of null.(¥¹ï
+hsquid:CommentedOutCodeLineÒ"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ
+@squid:S1148È"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>squid:S1168É"&Return an empty array instead of null.(¥¹ï
+gsquid:CommentedOutCodeLine+"<This block of commented-out lines of code should be removed.(€ï½¿üÿÿÿÿ
+hsquid:CommentedOutCodeLineÉ"<This block of commented-out lines of code should be removed.(»•ûÿÿÿÿ
+@squid:S1148€"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+@squid:S1148"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+>squid:S1168ò"&Return an empty array instead of null.(¥¹ï
+@squid:S1148ñ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ

@@ -285,21 +285,27 @@ public class UIFrame extends JFrame {
         // TODO add your code here
         newTimeL = System.currentTimeMillis();
         System.out.println("已用时间：" + (newTimeL - oldTimeL) / 1000);
+
+        /**
+         *      调用 checkInputLogin()  方法检查用户密码是否输入正确
+         * */
         if (checkInputLogin()) {
             // 动态验证码10分钟有效
             if ((newTimeL - oldTimeL) < (1000 * 60 * minute)) {
 
-                /**
-                 *      检测用户输入的密码是否正确
-                 * */
                 UserJDBC userJDBC = new UserJDBC();
-//                String pwdInDatabase =
+
+
 
                 System.out.println("登录成功");
                 JOptionPane.showMessageDialog(this, "登录成功！", "恭喜", JOptionPane.PLAIN_MESSAGE);
-//                MainUI mainUI = new MainUI();
 
-//                UserJDBC myJDBC = new UserJDBC();
+                /**
+                 *      启动主界面，传入的参数为用户输入的 手机号（每个用户只有唯一的一个手机号）
+                 * */
+                MainUI mainUI = new MainUI(textFieldEmailL.getText().toString());
+                mainUI.setVisible(true);
+                this.dispose();
 
             }
         }
@@ -338,7 +344,10 @@ public class UIFrame extends JFrame {
         // 检测用户输入的登录信息是否正确
         if (CheckEmailOrPhone.checkEmail(textFieldEmailL.getText())) {
             System.out.println("电子邮箱！");
-
+            /**
+             *      邮箱比较麻烦，需要设置 POP3/SMTP 服务，而且有时间限制，得反复开启
+             *      所以这里暂时不写
+             * */
         } else if (CheckEmailOrPhone.checkPhoneNumber(textFieldEmailL.getText())) {
             // 如果是 手机号码
             System.out.println("手机号码！");

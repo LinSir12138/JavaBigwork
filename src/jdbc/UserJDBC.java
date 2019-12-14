@@ -8,13 +8,11 @@ package jdbc;
 * */
 
 import javabean.User;
+import jdk.nashorn.internal.scripts.JD;
 import main.CheckEmailOrPhone;
 import slatMD5.SaltMd5Util;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -189,4 +187,112 @@ public class UserJDBC {
         }
     }
 
+    /**
+    * @Description: 根据传入的 手机号 或者 邮箱账号，获得对应账户的 用户名 并返回
+    * @Param: [phoneNumber]
+    * @return: java.lang.String
+    * @Author: 林凯
+    * @Date: 2019/12/11
+    */
+    public String readNameByPhoneNumber(String phoneNumber) {
+        String resultName = null;      // 需要返回的用户名
+        String sql = null;
+        if (CheckEmailOrPhone.checkPhoneNumber(phoneNumber)) {
+            sql = "select * from user where phoneNumber = ?";
+        } else {
+            sql = "select * from user where phoneNumber = ?";
+        }
+
+        try {
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
+            ps = conn.prepareStatement(sql);
+            ps.setObject(1, phoneNumber);
+            rs = ps.executeQuery();     // 执行 SQL 语句
+
+            while (rs.next()) {
+                resultName = rs.getString("userName");      // 获得用户名
+            }
+            return resultName;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+    * @Description: 读取全部的用户信息，并以二维数组的形式返回（不包含最后一列的图片）
+    * @Param: []
+    * @return: java.lang.String[][]
+    * @Author: 林凯
+    * @Date: 2019/12/11
+    */
+    public String[][] readAllInformation() {
+        String[][] result = null;
+        int rows;
+        int columnCount;
+        String sql = "select * from user";
+
+        try {
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();     // 执行 SQL 语句
+
+            // 获得总共的行数,用来创建需要返回的二维数组（下面几行代码就是为了获得结果集的行数）
+            rows = JDBCUtil.getRows(rs);
+
+            // 获取列数，调用已经封装好了的方法
+            columnCount = JDBCUtil.getColumns(rs);
+            result = new String[rows][columnCount - 1];      // 返回的数组不包含图片那一列
+
+            // 将 结果集 的数据转换成为 二维数组 返回
+            int index = 0;
+            while (rs.next()) {
+                /**
+                 *      这里的 columnCount - 1 的原因是最后面的图片不能转换成为 String 字符串，所以不需要返回
+                 * */
+                for (int i = 0; i < columnCount - 1; i++) {
+                    result[index][i] = rs.getObject(i + 1).toString();
+                }
+                index++;
+            }
+
+
+            return result;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /** 
+    * @Description: ( 用不到， User 表中不存放考试成绩，专门新建一张表来存放考试成绩)
+     *              在 User 表中添加一列数据到末尾，用来记录学生们的考试成绩
+     *              传入的参数为这次考试的  考试名称，在数据库中存储的内容为学生这堂考试的  考试成绩
+    * @Param: [] 
+    * @return: void 
+    * @Author: 林凯
+    * @Date: 2019/12/14 
+    */ 
+    public void addColmn(String examName) {
+        /**
+         *      根据传入的 考试名称 ，动态得生成 SQL 语句，本来是想用占位符 ？ 的，后来发现好像实现不了
+         * */
+        String sql = "alter table user add column " + examName + " varchar(100) not null";
+
+        try {
+            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
+            ps = conn.prepareStatement(sql);
+            ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUtil.close(ps, conn);
+        }
+    }
+
+    public static void main(String[] args) {
+        UserJDBC userJDBC = new UserJDBC();
+        userJDBC.addColmn("test1");
+    }
 }

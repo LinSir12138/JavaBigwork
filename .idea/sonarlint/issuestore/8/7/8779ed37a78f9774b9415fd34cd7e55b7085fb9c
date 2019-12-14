@@ -1,162 +1,163 @@
 
-vsquid:S1450¶"_Remove the "buttonDeleteExam" field and declare it as a local variable in the relevant methods.(ÙËş
-csquid:CommentedOutCodeLine×"<This block of commented-out lines of code should be removed.(ßÑ•Û
-Jsquid:S1135Ÿ"2Complete the task associated to this TODO comment.(¿‰€ÿ
-Jsquid:S1135Œ"2Complete the task associated to this TODO comment.(¿‰€ÿ
-Jsquid:S1135³"2Complete the task associated to this TODO comment.(¿‰€ÿ
-@squid:S1172ù"(Remove this unused method parameter "e".(èÀñ¤
-csquid:CommentedOutCodeLineØ"<This block of commented-out lines of code should be removed.(¦ÂîÖ
-dsquid:S3973á"GUse indentation to denote the code conditionally executed by this "if".(Õ‚„ğûÿÿÿÿ
-Jsquid:S1135™"2Complete the task associated to this TODO comment.(¿‰€ÿ
-vsquid:S1450·"^Remove the "buttonStartExam" field and declare it as a local variable in the relevant methods.(õÕ¼·
-Esquid:S1604à"(Make this anonymous inner class a lambda(©ËÎÅûÿÿÿÿ
-bsquid:S1192W"FDefine a constant instead of duplicating this literal "card3" 3 times.(¦ŠÊãüÿÿÿÿ
-hsquid:CommentedOutCodeLineü"<This block of commented-out lines of code should be removed.(ˆø‰ùÿÿÿÿ
-µsquid:S1192º"œDefine a constant instead of duplicating this literal "æ²¡æœ‰é€‰ä¸­é¢˜ç›®ï¼ï¼å¯ä»¥å®‰è£…Ctrl + é¼ æ ‡å·¦é”®é€‰æ‹©å¤šä¸ªéœ€è¦åˆ é™¤çš„é¢˜ç›®ï¼" 3 times.(†¹Şì
-nsquid:S1450’"VRemove the "label20" field and declare it as a local variable in the relevant methods.(Ø¼€ù
-Esquid:S1172‹"(Remove this unused method parameter "e".(ºûë¢üÿÿÿÿ
-@squid:S1172ß"(Remove this unused method parameter "e".(Àİ»
-ssquid:S1450¸"VRemove the "label29" field and declare it as a local variable in the relevant methods.(õş»•ùÿÿÿÿ
-hsquid:CommentedOutCodeLine²"<This block of commented-out lines of code should be removed.(‰Õ°«ûÿÿÿÿ
-Jsquid:S1199Ç
-"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-Jsquid:S1199±"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-Jsquid:S1199Å"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-msquid:S1450™"URemove the "label5" field and declare it as a local variable in the relevant methods.(—¡¸‘
-Isquid:S1135O"2Complete the task associated to this TODO comment.(¿‰€ÿ
-O
-squid:S106"9Replace this use of System.out or System.err by a logger.(‡İ_
-asquid:CommentedOutCodeLinet"<This block of commented-out lines of code should be removed.(ŸôÎk
-Nsquid:S1481¶"1Remove this unused "subjectTitle" local variable.(—µ±ìüÿÿÿÿ
-rsquid:S1450‚"URemove the "panel6" field and declare it as a local variable in the relevant methods.(¯­Ï¿ıÿÿÿÿ
-msquid:S1450•"URemove the "label1" field and declare it as a local variable in the relevant methods.(ÛŠ’Á
-‚squid:S1192‡"eDefine a constant instead of duplicating this literal "ä¸€æ¬¡åªèƒ½ç¼–è¾‘ä¸€é“é¢˜ç›®ï¼ï¼" 3 times.(ñœ‰üÿÿÿÿ
-Esquid:S1172Å"(Remove this unused method parameter "e".(·¢Ş°ùÿÿÿÿ
-;squid:S1148ÿ"#Use a logger to log this exception.(Ç’Çê
-tsquid:S1450 "\Remove the "panelContent3" field and declare it as a local variable in the relevant methods.(˜ä¥Ä
-xsquid:S1450‹"[Remove the "buttonLeft02" field and declare it as a local variable in the relevant methods.(¯°İ…øÿÿÿÿ
-csquid:CommentedOutCodeLine€"<This block of commented-out lines of code should be removed.(†ğ‡Æ
-Jsquid:S1199ú"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-}squid:S1450­"`Remove the "buttonDeletePaper" field and declare it as a local variable in the relevant methods.(¡Öÿşÿÿÿÿ
-msquid:S1192¿"PDefine a constant instead of duplicating this literal "é¡¹æ•°æ®å—ï¼Ÿ" 3 times.(›Áú”øÿÿÿÿ
-xsquid:S1450"[Remove the "buttonLeft04" field and declare it as a local variable in the relevant methods.(‰ÃÃØùÿÿÿÿ
-nsquid:S1450¡"VRemove the "label25" field and declare it as a local variable in the relevant methods.(‡£‹¡
-Jsquid:S1199£"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-squid:S1450¦"bRemove the "buttonSearchSubject" field and declare it as a local variable in the relevant methods.(Ò‚›¾üÿÿÿÿ
-;squid:S1148Å"#Use a logger to log this exception.(Ç’Çê
-@squid:S1172ü"(Remove this unused method parameter "e".(´«ÿç
-Jsquid:S1135à"2Complete the task associated to this TODO comment.(¿‰€ÿ
-csquid:S2142×"FEither re-interrupt this method or rethrow the "InterruptedException".(è®ã¶øÿÿÿÿ
-xsquid:S1450Œ"[Remove the "buttonLeft03" field and declare it as a local variable in the relevant methods.(Ëö¢åûÿÿÿÿ
-nsquid:S1450²"VRemove the "label28" field and declare it as a local variable in the relevant methods.(ûÃñÓ
-csquid:CommentedOutCodeLineÖ"<This block of commented-out lines of code should be removed.(›¥Ïà
-Jsquid:S1199±"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-Hsquid:S1068*",Remove this unused "userName" private field.(œåÖúÿÿÿÿ
-Jsquid:S1199§"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-msquid:S1450—"URemove the "label3" field and declare it as a local variable in the relevant methods.(æøÕÄ
-T
-squid:S106r"9Replace this use of System.out or System.err by a logger.(Íš€ñùÿÿÿÿ
-Jsquid:S1135ı"2Complete the task associated to this TODO comment.(¿‰€ÿ
-Jsquid:S1199µ"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-ssquid:S1450"[Remove the "buttonLeft06" field and declare it as a local variable in the relevant methods.(›üØ‹
-tsquid:S1450€"WRemove the "panelTop" field and declare it as a local variable in the relevant methods.(äı“şÿÿÿÿ
-Jsquid:S1135ì"2Complete the task associated to this TODO comment.(¿‰€ÿ
-ssquid:S1450£"VRemove the "panel16" field and declare it as a local variable in the relevant methods.(¸³¤°øÿÿÿÿ
-hsquid:CommentedOutCodeLineÍ"<This block of commented-out lines of code should be removed.(¸Çµ´ùÿÿÿÿ
-ssquid:S1450…"[Remove the "panelOther02" field and declare it as a local variable in the relevant methods.(Ğâ€½
-Jsquid:S1199‘"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-rsquid:S1450–"URemove the "label2" field and declare it as a local variable in the relevant methods.(äÈ„Áûÿÿÿÿ
-}squid:S1450®"`Remove the "buttonSearchPaper" field and declare it as a local variable in the relevant methods.(à¡Å‡úÿÿÿÿ
-Esquid:S1172‹"(Remove this unused method parameter "e".(›‹Ğ´úÿÿÿÿ
-|squid:S1450¤"_Remove the "buttonAddSubject" field and declare it as a local variable in the relevant methods.(‡Îòâıÿÿÿÿ
-U
-squid:S106Å"9Replace this use of System.out or System.err by a logger.(™Á€ôûÿÿÿÿ
-Jsquid:S1199ô	"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-hsquid:CommentedOutCodeLine£"<This block of commented-out lines of code should be removed.(ş¾ìõÿÿÿÿÿ
-csquid:CommentedOutCodeLineÊ"<This block of commented-out lines of code should be removed.(«íÛ´
-Asquid:S00108b")Either remove or fill this block of code.(å¥‡
-csquid:CommentedOutCodeLineÛ"<This block of commented-out lines of code should be removed.(»Ò×
-Jsquid:S1199–	"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-T
-squid:S106]"9Replace this use of System.out or System.err by a logger.(Õº¿‡üÿÿÿÿ
-vsquid:S1450œ"YRemove the "textField3" field and declare it as a local variable in the relevant methods.(”€†ğşÿÿÿÿ
-jsquid:MaximumInheritanceDepth)"<This class has 6 parents which is greater than 5 authorized.(§ÅĞ€úÿÿÿÿ
-Jsquid:S1135š"2Complete the task associated to this TODO comment.(¿‰€ÿ
-csquid:CommentedOutCodeLineú
-"<This block of commented-out lines of code should be removed.(Û­¸
-qsquid:S1450"YRemove the "labelTitle" field and declare it as a local variable in the relevant methods.(‚¸—
-ysquid:S1450µ"\Remove the "buttonAddExam" field and declare it as a local variable in the relevant methods.(°™ãúÿÿÿÿ
-`squid:S2259Ñ"CA "NullPointerException" could be thrown; "datas" is nullable here.(õÂçŒúÿÿÿÿ
-]squid:S1854¶"@Remove this useless assignment to local variable "subjectTitle".(—µ±ìüÿÿÿÿ
-Jsquid:S1135¨"2Complete the task associated to this TODO comment.(¿‰€ÿ
-tsquid:S1450‘"\Remove the "panelContent1" field and declare it as a local variable in the relevant methods.(—¡ïğ
-Jsquid:S1135ú"2Complete the task associated to this TODO comment.(¿‰€ÿ
-qsquid:S1450š"YRemove the "textField1" field and declare it as a local variable in the relevant methods.(×ŒàÌ
-hsquid:CommentedOutCodeLineÙ"<This block of commented-out lines of code should be removed.(‰Õ°«ûÿÿÿÿ
-Jsquid:S1135›"2Complete the task associated to this TODO comment.(¿‰€ÿ
-ssquid:S1450©"VRemove the "label27" field and declare it as a local variable in the relevant methods.(®ÛŞ»ùÿÿÿÿ
-ssquid:S1450´"VRemove the "panel18" field and declare it as a local variable in the relevant methods.(á•ŞËıÿÿÿÿ
-hsquid:CommentedOutCodeLineË"<This block of commented-out lines of code should be removed.(´Æòúıÿÿÿÿ
-Jsquid:S1135ı"2Complete the task associated to this TODO comment.(¿‰€ÿ
-xsquid:S1450¯"`Remove the "buttonRenamePaper" field and declare it as a local variable in the relevant methods.(êØß¹
-@squid:S1172ü"(Remove this unused method parameter "e".(±Å¦™
-rsquid:S1450˜"URemove the "label4" field and declare it as a local variable in the relevant methods.(ª†´Œüÿÿÿÿ
-U
-squid:S106»"9Replace this use of System.out or System.err by a logger.(ĞÁÔ—üÿÿÿÿ
-dsquid:S00112â"FDefine and throw a dedicated exception instead of using a generic one.(¸¥Ê«ùÿÿÿÿ
-ssquid:S1450«"VRemove the "panel17" field and declare it as a local variable in the relevant methods.(ºÀÏİşÿÿÿÿ
-Esquid:S1172§"(Remove this unused method parameter "e".(¶æòúÿÿÿÿ
-rsquid:S1450Š"[Remove the "buttonLeft01" field and declare it as a local variable in the relevant methods.(Øéä!
-;squid:S1148Ø"#Use a logger to log this exception.(Ç’Çê
-@squid:S1172"(Remove this unused method parameter "e".(¸ÕëÙ
-Jsquid:S1135Æ"2Complete the task associated to this TODO comment.(¿‰€ÿ
-@squid:S1172ë"(Remove this unused method parameter "e".(Ïûøö
-€squid:S1450“"hRemove the "panelContentMyInformation" field and declare it as a local variable in the relevant methods.(ÈĞïŞ
-Jsquid:S1199§"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-vsquid:S1450"YRemove the "textField5" field and declare it as a local variable in the relevant methods.(ó²ÀÁşÿÿÿÿ
-@squid:S1172ë"(Remove this unused method parameter "e".(Ï®®Ú
-P
-squid:S106"9Replace this use of System.out or System.err by a logger.(³‰°Ä
-vsquid:S1450›"YRemove the "textField2" field and declare it as a local variable in the relevant methods.(ˆûÓ‘ûÿÿÿÿ
-Qsquid:S10685"5Remove this unused "scrollPaneSubject" private field.(¶óˆıûÿÿÿÿ
-usquid:S1450‡"XRemove the "panelTime" field and declare it as a local variable in the relevant methods.(Šşµ•úÿÿÿÿ
-csquid:CommentedOutCodeLineî"<This block of commented-out lines of code should be removed.(Å°Æè
-Jsquid:S1199ì"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-Jsquid:S1199ğ	"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-Jsquid:S1199•"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-}squid:S1450§"`Remove the "buttonEditSubject" field and declare it as a local variable in the relevant methods.(Û®îñùÿÿÿÿ
-{squid:S1450°"^Remove the "buttonEditPaper" field and declare it as a local variable in the relevant methods.(Æ…œÒûÿÿÿÿ
-csquid:CommentedOutCodeLine°"<This block of commented-out lines of code should be removed.(ßÑ•Û
-ysquid:S1450ƒ"\Remove the "buttonWelcome" field and declare it as a local variable in the relevant methods.(˜–ô¹ıÿÿÿÿ
-nsquid:S1450Ÿ"VRemove the "button1" field and declare it as a local variable in the relevant methods.(İ¢ÈÒ
-Esquid:S1172˜"(Remove this unused method parameter "e".(Ö‹È§øÿÿÿÿ
-Jsquid:S1199‘"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-Jsquid:S1199Ã
-"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-Jsquid:S1135ì"2Complete the task associated to this TODO comment.(¿‰€ÿ
-zsquid:S1450¬"]Remove the "buttonAddPaper" field and declare it as a local variable in the relevant methods.(ÊÇ‰¢ıÿÿÿÿ
-csquid:CommentedOutCodeLineÏ"<This block of commented-out lines of code should be removed.(¢¡§
-rsquid:S1450†"[Remove the "panelOther01" field and declare it as a local variable in the relevant methods.(©Í‰"
-Jsquid:S1199¨	"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-ysquid:S1450¨"aRemove the "buttonCheckSubject" field and declare it as a local variable in the relevant methods.(½‘ãÜ
-Jsquid:S1199¬	"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-zsquid:S1450¥"bRemove the "buttonDeleteSubject" field and declare it as a local variable in the relevant methods.(çÍáí
-msquid:S1192¿"PDefine a constant instead of duplicating this literal "ç¡®å®šè¦åˆ é™¤" 3 times.(›Áú”øÿÿÿÿ
-psquid:S1450ˆ"XRemove the "labelTime" field and declare it as a local variable in the relevant methods.(¶Ğ©œ
-Jsquid:S1199û"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-Jsquid:S1199ÿ"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-vsquid:S1450"YRemove the "textField4" field and declare it as a local variable in the relevant methods.(ÌÁ¿Šúÿÿÿÿ
-Isquid:S1948+"-Make "subjectJDBC" transient or serializable.(º¤ÖÓûÿÿÿÿ
-—squid:S1192„"zDefine a constant instead of duplicating this literal "æ²¡æœ‰é€‰ä¸­é¢˜ç›®ï¼ï¼è¯·å…ˆé€‰ä¸­éœ€è¦ç¼–è¾‘çš„é¢˜ç›®" 4 times.(ÿÑ°Şûÿÿÿÿ
-vsquid:S1450„"YRemove the "buttonExit" field and declare it as a local variable in the relevant methods.(Ÿœæ úÿÿÿÿ
-msquid:S1450”"URemove the "panel1" field and declare it as a local variable in the relevant methods.(–¾Ê‰
-~squid:S1450±"aRemove the "buttonPreviewPaper" field and declare it as a local variable in the relevant methods.(­–²«üÿÿÿÿ
-@squid:S1172²"(Remove this unused method parameter "e".(½Çâˆ
-Jsquid:S1135Œ"2Complete the task associated to this TODO comment.(¿‰€ÿ
-Jsquid:S1199	"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-hsquid:CommentedOutCodeLine¦"<This block of commented-out lines of code should be removed.(¸Çµ´ùÿÿÿÿ
-usquid:S1450‰"XRemove the "panelLeft" field and declare it as a local variable in the relevant methods.(°İ˜ıùÿÿÿÿ
-Jsquid:S1199Û"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
-wsquid:S1450"ZRemove the "butonLeft05" field and declare it as a local variable in the relevant methods.(å³ğĞøÿÿÿÿ
-@squid:S1172™"(Remove this unused method parameter "e".(¤¹¢
-hsquid:CommentedOutCodeLine¾"<This block of commented-out lines of code should be removed.(¥¶ûıÿÿÿÿ
+Qsquid:S1135‹"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+fsquid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(Ö÷œ¤8£¥‘­ï-
+osquid:CommentedOutCodeLineİ"<This block of commented-out lines of code should be removed.(‰Õ°«ûÿÿÿÿ8Õ‰ş¬ï-
+jsquid:MaximumInheritanceDepth+"<This class has 6 parents which is greater than 5 authorized.(§ÅĞ€úÿÿÿÿ
+¼squid:S1192å"œDefine a constant instead of duplicating this literal "æ²¡æœ‰é€‰ä¸­é¢˜ç›®ï¼ï¼å¯ä»¥å®‰è£…Ctrl + é¼ æ ‡å·¦é”®é€‰æ‹©å¤šä¸ªéœ€è¦åˆ é™¤çš„é¢˜ç›®ï¼" 3 times.(†¹Şì8Õ‰ş¬ï-
+ysquid:S1450¸"[Remove the "panelOther01" field and declare it as a local variable in the relevant methods.(©Í‰"8éîí¬ï-
+squid:S1450ã"`Remove the "buttonRenamePaper" field and declare it as a local variable in the relevant methods.(êØß¹8Õ‰ş¬ï-
+}squid:S1450Ï"YRemove the "textField4" field and declare it as a local variable in the relevant methods.(ÌÁ¿Šúÿÿÿÿ8éîí¬ï-
+†squid:S1450Ú"bRemove the "buttonSearchSubject" field and declare it as a local variable in the relevant methods.(Ò‚›¾üÿÿÿÿ8Õ‰ş¬ï-
+}squid:S1450ê"_Remove the "buttonDeleteExam" field and declare it as a local variable in the relevant methods.(ÙËş8Õ‰ş¬ï-
+Qsquid:S1199à"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8¾Ğı¬ï-
+Qsquid:S1135Æ"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+Gsquid:S1172§"(Remove this unused method parameter "e".(±Å¦™8Õ‰ş¬ï-
+nsquid:S1450Ñ"VRemove the "button1" field and declare it as a local variable in the relevant methods.(İ¢ÈÒ
+Qsquid:S1135—"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+Gsquid:S1172É"(Remove this unused method parameter "e".(¸ÕëÙ8Õ‰ş¬ï-
+Bsquid:S1148ƒ"#Use a logger to log this exception.(Ç’Çê8Õ‰ş¬ï-
+rsquid:S1450Ê"URemove the "label4" field and declare it as a local variable in the relevant methods.(ª†´Œüÿÿÿÿ
+jsquid:CommentedOutCodeLine†"<This block of commented-out lines of code should be removed.(»Ò×8Õ‰ş¬ï-
+ƒsquid:S1450Ø"_Remove the "buttonAddSubject" field and declare it as a local variable in the relevant methods.(‡Îòâıÿÿÿÿ8›ğı¬ï-
+Qsquid:S1199Ö"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Æİÿ¬ï-
+{squid:S1450²"WRemove the "panelTop" field and declare it as a local variable in the relevant methods.(äı“şÿÿÿÿ8›ğı¬ï-
+usquid:S1450Ä"VRemove the "label20" field and declare it as a local variable in the relevant methods.(Ø¼€ù8Õ‰ş¬ï-
+Qsquid:S10688"5Remove this unused "scrollPaneSubject" private field.(¶óˆıûÿÿÿÿ
+Lsquid:S1172ğ"(Remove this unused method parameter "e".(·¢Ş°ùÿÿÿÿ8Õ‰ş¬ï-
+Qsquid:S1199Ù	"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8¾Ğı¬ï-
+Qsquid:S1199İ	"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Õ‰ş¬ï-
+„squid:S1450â"`Remove the "buttonSearchPaper" field and declare it as a local variable in the relevant methods.(à¡Å‡úÿÿÿÿ8Å®ı¬ï-
+Bsquid:S1148ª"#Use a logger to log this exception.(Ç’Çê8Õ‰ş¬ï-
+squid:S1450à"]Remove the "buttonAddPaper" field and declare it as a local variable in the relevant methods.(ÊÇ‰¢ıÿÿÿÿ8›ğı¬ï-
+usquid:S1450æ"VRemove the "label28" field and declare it as a local variable in the relevant methods.(ûÃñÓ8éîí¬ï-
+Qsquid:S1135Ş"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+osquid:CommentedOutCodeLineé"<This block of commented-out lines of code should be removed.(¥¶ûıÿÿÿÿ8Õ‰ş¬ï-
+ysquid:S1450´"URemove the "panel6" field and declare it as a local variable in the relevant methods.(¯­Ï¿ıÿÿÿÿ8Å®ı¬ï-
+Lsquid:S1604"(Make this anonymous inner class a lambda(˜Í¯ˆşÿÿÿÿ8£¥‘­ï-
+xsquid:S1450½"[Remove the "buttonLeft02" field and declare it as a local variable in the relevant methods.(¯°İ…øÿÿÿÿ
+zsquid:S1450×"VRemove the "panel16" field and declare it as a local variable in the relevant methods.(¸³¤°øÿÿÿÿ8éîí¬ï-
+vsquid:S1450Í"YRemove the "textField2" field and declare it as a local variable in the relevant methods.(ˆûÓ‘ûÿÿÿÿ
+Qsquid:S1135·"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+Qsquid:S1199ª"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Æİÿ¬ï-
+dsquid:S1854á"@Remove this useless assignment to local variable "subjectTitle".(—µ±ìüÿÿÿÿ8Õ‰ş¬ï-
+jsquid:CommentedOutCodeLineÛ"<This block of commented-out lines of code should be removed.(ßÑ•Û8Õ‰ş¬ï-
+{squid:S1450ä"^Remove the "buttonEditPaper" field and declare it as a local variable in the relevant methods.(Æ…œÒûÿÿÿÿ
+Qsquid:S1135Ó"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+zsquid:S1450İ"VRemove the "label27" field and declare it as a local variable in the relevant methods.(®ÛŞ»ùÿÿÿÿ8®®Á¬ï-
+…squid:S1450å"aRemove the "buttonPreviewPaper" field and declare it as a local variable in the relevant methods.(­–²«üÿÿÿÿ8¾Ğı¬ï-
+Qsquid:S1199ô"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Æİÿ¬ï-
+€squid:S1450Ü"aRemove the "buttonCheckSubject" field and declare it as a local variable in the relevant methods.(½‘ãÜ8¾Ğı¬ï-
+Usquid:S1481á"1Remove this unused "subjectTitle" local variable.(—µ±ìüÿÿÿÿ8Õ‰ş¬ï-
+Gsquid:S1172§"(Remove this unused method parameter "e".(´«ÿç8Õ‰ş¬ï-
+Qsquid:S1199¥
+"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Õ‰ş¬ï-
+Lsquid:S1172Ã"(Remove this unused method parameter "e".(Ö‹È§øÿÿÿÿ8Õ‰ş¬ï-
+\
+squid:S106ğ"9Replace this use of System.out or System.err by a logger.(™Á€ôûÿÿÿÿ8Õ‰ş¬ï-
+Ssquid:S1481Š"/Remove this unused "columNames" local variable.(¾ñµ÷ÿÿÿÿÿ8§Š¶­ï-
+|squid:S1450»"XRemove the "panelLeft" field and declare it as a local variable in the relevant methods.(°İ˜ıùÿÿÿÿ8Õ‰ş¬ï-
+\
+squid:S106"9Replace this use of System.out or System.err by a logger.(Íš€ñùÿÿÿÿ8Õ‰ş¬ï-
+W
+squid:S106¹"9Replace this use of System.out or System.err by a logger.(³‰°Ä8Õ‰ş¬ï-
+zsquid:S1450Á"[Remove the "buttonLeft06" field and declare it as a local variable in the relevant methods.(›üØ‹8›ğı¬ï-
+Qsquid:S1135¨"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+tsquid:S1192ê"PDefine a constant instead of duplicating this literal "ç¡®å®šè¦åˆ é™¤" 3 times.(›Áú”øÿÿÿÿ8Õ‰ş¬ï-
+Qsquid:S1199Ö"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Õ‰ş¬ï-
+Qsquid:S1199ä"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Õ‰ş¬ï-
+Qsquid:S1135Ê"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+isquid:CommentedOutCodeLineŸ"<This block of commented-out lines of code should be removed.(ŸôÎk8Õ‰ş¬ï-
+Lsquid:S1172¶"(Remove this unused method parameter "e".(›‹Ğ´úÿÿÿÿ8Õ‰ş¬ï-
+Lsquid:S1172Ò"(Remove this unused method parameter "e".(¶æòúÿÿÿÿ8Õ‰ş¬ï-
+Qsquid:S1199›"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Æİÿ¬ï-
+{squid:S1450Ã"\Remove the "panelContent1" field and declare it as a local variable in the relevant methods.(—¡ïğ8Å®ı¬ï-
+Gsquid:S1172–"(Remove this unused method parameter "e".(Ïûøö8Õ‰ş¬ï-
+Qsquid:S1199Ò"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8¾Ğı¬ï-
+Bsquid:S1148ğ"#Use a logger to log this exception.(Ç’Çê8Õ‰ş¬ï-
+zsquid:S1450ì"VRemove the "label29" field and declare it as a local variable in the relevant methods.(õş»•ùÿÿÿÿ8Õ‰ş¬ï-
+xsquid:S1450³"YRemove the "labelTitle" field and declare it as a local variable in the relevant methods.(‚¸—8›ğı¬ï-
+Lsquid:S1172¶"(Remove this unused method parameter "e".(ºûë¢üÿÿÿÿ8Õ‰ş¬ï-
+Qsquid:S1199ô
+"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8¾Ğı¬ï-
+jsquid:CommentedOutCodeLineõ"<This block of commented-out lines of code should be removed.(«íÛ´8Õ‰ş¬ï-
+zsquid:S1450Ù"bRemove the "buttonDeleteSubject" field and declare it as a local variable in the relevant methods.(çÍáí
+Gsquid:S1172Š"(Remove this unused method parameter "e".(Àİ»8Õ‰ş¬ï-
+Gsquid:S1172¤"(Remove this unused method parameter "e".(èÀñ¤8Õ‰ş¬ï-
+Qsquid:S1199ˆ"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Æİÿ¬ï-
+Gsquid:S1172–"(Remove this unused method parameter "e".(Ï®®Ú8Õ‰ş¬ï-
+zsquid:S1450·"[Remove the "panelOther02" field and declare it as a local variable in the relevant methods.(Ğâ€½8éîí¬ï-
+Qsquid:S1068-"3Remove this unused "userPhoneNumber" private field.(€ßÇÎ8ÿ°¬ ï-
+jsquid:CommentedOutCodeLineú"<This block of commented-out lines of code should be removed.(¢¡§8Õ‰ş¬ï-
+Qsquid:S1199®"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Æİÿ¬ï-
+vsquid:S1450Î"YRemove the "textField3" field and declare it as a local variable in the relevant methods.(”€†ğşÿÿÿÿ
+Qsquid:S1135—"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+Qsquid:S1199à"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Æİÿ¬ï-
+jsquid:CommentedOutCodeLineƒ"<This block of commented-out lines of code should be removed.(¦ÂîÖ8Õ‰ş¬ï-
+osquid:CommentedOutCodeLineø"<This block of commented-out lines of code should be removed.(¸Çµ´ùÿÿÿÿ8Õ‰ş¬ï-
+msquid:S1450É"URemove the "label3" field and declare it as a local variable in the relevant methods.(æøÕÄ
+ysquid:S1450¼"[Remove the "buttonLeft01" field and declare it as a local variable in the relevant methods.(Øéä!8¾Ğı¬ï-
+Psquid:S1135g"2Complete the task associated to this TODO comment.(¿‰€ÿ8’ƒÉ¬ï-
+Qsquid:S1135·"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+Qsquid:S1199À"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Æİÿ¬ï-
+usquid:S1450¹"XRemove the "panelTime" field and declare it as a local variable in the relevant methods.(Šşµ•úÿÿÿÿ
+msquid:S1450Ë"URemove the "label5" field and declare it as a local variable in the relevant methods.(—¡¸‘
+bsquid:S1854Š">Remove this useless assignment to local variable "columNames".(¾ñµ÷ÿÿÿÿÿ8§Š¶­ï-
+jsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(›¥Ïà8Õ‰ş¬ï-
+qsquid:S1450Ì"YRemove the "textField1" field and declare it as a local variable in the relevant methods.(×ŒàÌ
+wsquid:S1450º"XRemove the "labelTime" field and declare it as a local variable in the relevant methods.(¶Ğ©œ8Õ‰ş¬ï-
+zsquid:S1450Ó"VRemove the "panel19" field and declare it as a local variable in the relevant methods.(ªÆ ÷ùÿÿÿÿ8¾Ğı¬ï-
+zsquid:S1450è"VRemove the "panel18" field and declare it as a local variable in the relevant methods.(á•ŞËıÿÿÿÿ8éîí¬ï-
+zsquid:S1450ß"VRemove the "panel17" field and declare it as a local variable in the relevant methods.(ºÀÏİşÿÿÿÿ8’ƒÉ¬ï-
+‰squid:S1192²"eDefine a constant instead of duplicating this literal "ä¸€æ¬¡åªèƒ½ç¼–è¾‘ä¸€é“é¢˜ç›®ï¼ï¼" 3 times.(ñœ‰üÿÿÿÿ8Õ‰ş¬ï-
+msquid:S1450Æ"URemove the "panel1" field and declare it as a local variable in the relevant methods.(–¾Ê‰
+Gsquid:S1172İ"(Remove this unused method parameter "e".(½Çâˆ8Õ‰ş¬ï-
+jsquid:CommentedOutCodeLine™"<This block of commented-out lines of code should be removed.(Å°Æè8Õ‰ş¬ï-
+†squid:S1450Ò"bRemove the "panelContentStudent" field and declare it as a local variable in the relevant methods.(å™÷ùÿÿÿÿ8Õ‰ş¬ï-
+osquid:CommentedOutCodeLineÎ"<This block of commented-out lines of code should be removed.(ş¾ìõÿÿÿÿÿ8Õ‰ş¬ï-
+osquid:CommentedOutCodeLineÑ"<This block of commented-out lines of code should be removed.(¸Çµ´ùÿÿÿÿ8Õ‰ş¬ï-
+jsquid:S2142‚"FEither re-interrupt this method or rethrow the "InterruptedException".(è®ã¶øÿÿÿÿ8Õ‰ş¬ï-
+€squid:S1450µ"\Remove the "buttonWelcome" field and declare it as a local variable in the relevant methods.(˜–ô¹ıÿÿÿÿ8Å®ı¬ï-
+Qsquid:S1135¥"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+Hsquid:S00108z")Either remove or fill this block of code.(å¥‡8’ƒÉ¬ï-
+gsquid:S2259ü"CA "NullPointerException" could be thrown; "datas" is nullable here.(õÂçŒúÿÿÿÿ8Õ‰ş¬ï-
+€squid:S1450é"\Remove the "buttonAddExam" field and declare it as a local variable in the relevant methods.(°™ãúÿÿÿÿ8Õ‰ş¬ï-
+Qsquid:S1199½	"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8¾Ğı¬ï-
+Qsquid:S1199¡
+"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8¾Ğı¬ï-
+Qsquid:S1199©	"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Õ‰ş¬ï-
+Qsquid:S1135Å"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+Qsquid:S1199À"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Õ‰ş¬ï-
+€squid:S1450Å"hRemove the "panelContentMyInformation" field and declare it as a local variable in the relevant methods.(ÈĞïŞ
+jsquid:CommentedOutCodeLine‚"<This block of commented-out lines of code should be removed.(ßÑ•Û8Õ‰ş¬ï-
+squid:S1192¯"zDefine a constant instead of duplicating this literal "æ²¡æœ‰é€‰ä¸­é¢˜ç›®ï¼ï¼è¯·å…ˆé€‰ä¸­éœ€è¦ç¼–è¾‘çš„é¢˜ç›®" 4 times.(ÿÑ°Şûÿÿÿÿ8Õ‰ş¬ï-
+tsquid:S1192ê"PDefine a constant instead of duplicating this literal "é¡¹æ•°æ®å—ï¼Ÿ" 3 times.(›Áú”øÿÿÿÿ8Õ‰ş¬ï-
+†squid:S1450Ô"bRemove the "buttonSearchStudent" field and declare it as a local variable in the relevant methods.(ë‡ùãúÿÿÿÿ8¾Ğı¬ï-
+V
+squid:S106»"9Replace this use of System.out or System.err by a logger.(‡İ_8Õ‰ş¬ï-
+vsquid:S1450Ğ"YRemove the "textField5" field and declare it as a local variable in the relevant methods.(ó²ÀÁşÿÿÿÿ
+Qsquid:S1135ñ"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+usquid:S1450Õ"VRemove the "label30" field and declare it as a local variable in the relevant methods.(¨¿ß8èşë¬ï-
+}squid:S1450¶"YRemove the "buttonExit" field and declare it as a local variable in the relevant methods.(Ÿœæ úÿÿÿÿ8Å®ı¬ï-
+Qsquid:S1135Ä"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+Qsquid:S1199ø
+"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Õ‰ş¬ï-
+osquid:CommentedOutCodeLineö"<This block of commented-out lines of code should be removed.(´Æòúıÿÿÿÿ8›ğı¬ï-
+}squid:S1450Û"`Remove the "buttonEditSubject" field and declare it as a local variable in the relevant methods.(Û®îñùÿÿÿÿ
+rsquid:S1450È"URemove the "label2" field and declare it as a local variable in the relevant methods.(äÈ„Áûÿÿÿÿ
+Isquid:S1948."-Make "subjectJDBC" transient or serializable.(º¤ÖÓûÿÿÿÿ
+bsquid:S1854ˆ"CRemove this useless assignment to local variable "userInformation".(–äı¡8’Œ®­ï-
+Qsquid:S1199Á	"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Õ‰ş¬ï-
+\
+squid:S106æ"9Replace this use of System.out or System.err by a logger.(ĞÁÔ—üÿÿÿÿ8Õ‰ş¬ï-
+Qsquid:S1135¨"2Complete the task associated to this TODO comment.(¿‰€ÿ8Õ‰ş¬ï-
+Ssquid:S1481ˆ"4Remove this unused "userInformation" local variable.(–äı¡8’Œ®­ï-
+Zsquid:UselessImportCheck
+"*Remove this unused import 'javabean.User'.(ÁõĞ¬ùÿÿÿÿ8ô¦ ï-
+tsquid:S1450Ç"URemove the "label1" field and declare it as a local variable in the relevant methods.(ÛŠ’Á8Å®ı¬ï-
+osquid:CommentedOutCodeLine„"<This block of commented-out lines of code should be removed.(‰Õ°«ûÿÿÿÿ8Õ‰ş¬ï-
+osquid:CommentedOutCodeLine§"<This block of commented-out lines of code should be removed.(ˆø‰ùÿÿÿÿ8›ğı¬ï-
+„squid:S1450á"`Remove the "buttonDeletePaper" field and declare it as a local variable in the relevant methods.(¡Öÿşÿÿÿÿ8›ğı¬ï-
+}squid:S1450ë"^Remove the "buttonStartExam" field and declare it as a local variable in the relevant methods.(õÕ¼·8Õ‰ş¬ï-
+jsquid:CommentedOutCodeLine«"<This block of commented-out lines of code should be removed.(†ğ‡Æ8Õ‰ş¬ï-
+Qsquid:S1199Ä"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Æİÿ¬ï-
+Gsquid:S1172Ä"(Remove this unused method parameter "e".(¤¹¢8Õ‰ş¬ï-

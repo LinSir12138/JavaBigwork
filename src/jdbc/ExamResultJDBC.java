@@ -1,5 +1,8 @@
 package jdbc;
 
+import javabean.ExamResult;
+import jdk.nashorn.internal.scripts.JD;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,8 +71,120 @@ public class ExamResultJDBC {
             JDBCUtil.close(ps, connection);     // 关闭连接
         }
     }
+    
+    /** 
+    * @Description: 从数据库中读取全部考试成绩，以二维数组的形式返回（不包含 id 哪一列）
+    * @Param: [] 
+    * @return: java.lang.String[][] 
+    * @Author: 林凯
+    * @Date: 2019/12/14 
+    */ 
+    public static String[][] readAllExamResult() {
+        String sql = "select * from examresult";
+        String[][] result = null;
+        int rows = 0;           // 行数
+        int columns = 0;        // 列数
 
+        try {
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
+            ps = connection.prepareStatement(sql);
+            rs = ps.executeQuery();     // 执行 SQL 语句
 
+            // 初始化 二维数组，因为不需要 id 那一列，所以 列数要减 1
+            rows = JDBCUtil.getRows(rs);        // 获得行数
+            columns = JDBCUtil.getColumns(rs);      // 获得列数
+            result = new String[rows][columns - 1];     // 初始化 二维数组 ，注意列数要改变
 
+            int i = 0;
+            while (rs.next()) {
+                for (int j = 0; j < columns - 1; j++) {
+                    result[i][j] = rs.getObject(j + 1 + 1).toString();      // 注意下标，因为不包含id那一列
+                }
+                i++;        // 千万要记得 i++
+            }
+            return result;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    /** 
+    * @Description: 根据 学生姓名 查询对应的考试结果，并以二维数组的形式返回
+    * @Param: [] 
+    * @return: java.lang.String[][] 
+    * @Author: 林凯
+    * @Date: 2019/12/14
+    */ 
+    public static String[][] selectExamResultByUserName(String userName) {
+        String[][] reslut = null;
+        String sql = "select * from examresult where userName = ?";
+        int rows = 0;       // 行数
+        int columns = 0;        // 列数
 
+        try {
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
+            ps = connection.prepareStatement(sql);
+            ps.setObject(1, userName);
+            rs = ps.executeQuery();     // 执行 SQL 语句
+
+            rows = JDBCUtil.getRows(rs);
+            columns = JDBCUtil.getColumns(rs);
+            reslut = new String[rows][columns - 1];     // 减 1 的原因是不需要 id 那一列
+
+            int i = 0;
+            while (rs.next()) {
+                for (int j = 0; j < columns - 1; j++) {
+                    reslut[i][j] = rs.getObject(j + 1 + 1).toString();      // 注意下标
+                    System.out.println(reslut[i][j]);
+                }
+                i++;        // 不要忘了 i++
+            }
+            return reslut;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    /**
+    * @Description: 根据 考试名称  查询对应的考试结果，并以二维数组的形式返回
+    * @Param: []
+    * @return: java.lang.String[][]
+    * @Author: 林凯
+    * @Date: 2019/12/14
+    */
+    public static String[][] selectExamResultByExamName(String examName) {
+        String[][] reslut = null;
+        String sql = "select * from examresult where examName = ?";
+        int rows = 0;       // 行数
+        int columns = 0;        // 列数
+
+        try {
+            connection = JDBCUtil.getMySqlConn("ALY_bigwork");
+            ps = connection.prepareStatement(sql);
+            ps.setObject(1, examName);
+            rs = ps.executeQuery();     // 执行 SQL 语句
+
+            rows = JDBCUtil.getRows(rs);
+            columns = JDBCUtil.getColumns(rs);
+            reslut = new String[rows][columns - 1];     // 不需要 id 那一列
+
+            int i = 0;
+            while (rs.next()) {
+                for (int j = 0; j < columns - 1; j++) {
+                    reslut[i][j] = rs.getObject(j + 1 + 1).toString();      // 注意下标
+                }
+                i++;        // 不要忘了 i++
+            }
+            return reslut;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static void main(String[] args) {
+        ExamResultJDBC.selectExamResultByUserName("linkai");
+    }
 }

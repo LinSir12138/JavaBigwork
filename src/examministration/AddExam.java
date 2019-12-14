@@ -6,6 +6,7 @@ package examministration;
 
 import jdbc.ExamJDBC;
 import jdbc.PaperJDBC;
+import jdbc.UserJDBC;
 import subjectadministration.MyClander;
 
 import java.awt.*;
@@ -145,15 +146,32 @@ public class AddExam extends JFrame {
         tempData[3] = beginTimeStamp.toString();
         tempData[4] = endTimeStamp.toString();
         tableModel.addRow(tempData);
+        // 2.3 同时还要调用 UserJDBC 类的 addColmn() 方法，动态得在 User 表中添加 1 列数据
+        UserJDBC userJDBC = new UserJDBC();
+        userJDBC.addColmn(textFieldExamName.getText().toString());      // 传入的参数为考试的名称
 
         this.dispose();     // 本窗口关闭，释放内存资源
     }
 
+    /**
+    * @Description: 当调用 dispose()  方法后，自动会调用的 窗口关闭 的方法， 里面设置父窗口可操作
+    * @Param: [e]
+    * @return: void
+    * @Author: 林凯
+    * @Date: 2019/12/14
+    */
     private void thisWindowClosed(WindowEvent e) {
         // TODO add your code here
         fatherFrame.setEnabled(true);       // 设置父窗口可见
     }
 
+    /**
+    * @Description:  JFrameDesigner 动态生成的代码
+    * @Param: []
+    * @return: void
+    * @Author: 林凯
+    * @Date: 2019/12/14
+    */
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Lin Kai

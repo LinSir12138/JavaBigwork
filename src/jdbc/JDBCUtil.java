@@ -41,7 +41,49 @@ public class JDBCUtil {
             return null;
         }
     }
-
+    
+    /** 
+    * @Description: 获得结果集中的 列数 
+    * @Param: [] 
+    * @return: int 
+    * @Author: 林凯
+    * @Date: 2019/12/14 
+    */ 
+    public static int getColumns(ResultSet rs) {
+        int columnCount = 0;
+        // 获取列数
+        ResultSetMetaData rsmd = null;             // 用到了 ResultSetMetaData 工具类，可以用来获得ResultSet的列数
+        try {
+            rsmd = rs.getMetaData();
+            columnCount = rsmd.getColumnCount();        // 获取ResultSet的列数
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;       // 抛出异常的话就返回 0
+        }
+        return columnCount;
+    }
+    
+    /** 
+    * @Description: 获得结果集中的 行数
+    * @Param: [] 
+    * @return: int 
+    * @Author: 林凯
+    * @Date: 2019/12/14 
+    */ 
+    public static int getRows(ResultSet rs) {
+        int rows = 0;
+        // 获得总共的行数,用来创建需要返回的二维数组（下面几行代码就是为了获得结果集的行数）
+        try {
+            rs.last();      // 将光标移动到最后一行
+            rows = rs.getRow();         // 返回当前行的行数（可以按 Ctrl + Q 查看快捷文档）
+            rs.beforeFirst();       // 将光标重新置为第一行前面的位置
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;       // 抛出异常的话就返回 0
+        }
+        return rows;
+    }
+    
     public static void close(ResultSet rs, Statement ps, Connection conn) {
         if (rs != null) {
             try {

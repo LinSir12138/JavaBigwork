@@ -1,139 +1,138 @@
 
-xsquid:S14501"\Remove the "tfFocusEmailL" field and declare it as a local variable in the relevant methods.(ö´Ç—øÿÿÿÿ
-rsquid:S1450-"\Remove the "tfFocusTPYZMR" field and declare it as a local variable in the relevant methods.(ÓŞ ^
-Jsquid:S1135‚"2Complete the task associated to this TODO comment.(¿‰€ÿ
-Msquid:S1125Á")Remove the literal "false" boolean value.(‹ñŸ¶ûÿÿÿÿ8Ëª´í-
-Qsquid:S1135¢"2Complete the task associated to this TODO comment.(¿‰€ÿ8Ëª´í-
-Hsquid:S1125İ")Remove the literal "false" boolean value.(¥Áãä8Ëª´í-
-\
-squid:S106¨"9Replace this use of System.out or System.err by a logger.(êà ÿÿÿÿÿ8Ëª´í-
-Isquid:S1135a"2Complete the task associated to this TODO comment.(¿‰€ÿ
-Gsquid:S1172¡"(Remove this unused method parameter "e".(™„8Ëª´í-
-\
-squid:S106„"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ8Ëª´í-
-Qsquid:S1199É"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-?squid:S1172Â"(Remove this unused method parameter "e".(ıçˆn
-ssquid:S14502"\Remove the "tfFocusTPYZML" field and declare it as a local variable in the relevant methods.(»µã©
-{squid:S1450°"^Remove the "labelPasswordR2" field and declare it as a local variable in the relevant methods.(êšÜ¥øÿÿÿÿ
-Jsquid:S1135‘"2Complete the task associated to this TODO comment.(¿‰€ÿ
-ysquid:S1450¨"\Remove the "labelUnClear2" field and declare it as a local variable in the relevant methods.(õã¸øÿÿÿÿ
-Hsquid:S1125Í")Remove the literal "false" boolean value.(ùş…è8Ëª´í-
-Bsquid:S1148"#Use a logger to log this exception.(Ç’Çê8Ëª´í-
-Jsquid:S1135Ç"2Complete the task associated to this TODO comment.(¿‰€ÿ
-|squid:S1450Á"]Remove the "buttonRegister" field and declare it as a local variable in the relevant methods.(õñßÓ8Ëª´í-
-psquid:S1450™"XRemove the "textArea1" field and declare it as a local variable in the relevant methods.(è½¶×
-Esquid:S1948-"/Make "tfFocusTPYZMR" transient or serializable.(ÓŞ ^
-Msquid:S1125×")Remove the literal "false" boolean value.(•‡—¼ÿÿÿÿÿ8Ëª´í-
-\
-squid:S106Ÿ"9Replace this use of System.out or System.err by a logger.(–Ïñúûÿÿÿÿ8Ëª´í-
+Lsquid:S10688"5Remove this unused "emailOrPhoneFlagL" private field.(’²Šº
+Fsquid:S19482"/Make "tfFocusTPYZML" transient or serializable.(»µã©
 Nsquid:S1948,"2Make "tfFocusUserNameR" transient or serializable.(½éé‚øÿÿÿÿ
-W
-squid:S106Ô"9Replace this use of System.out or System.err by a logger.(¿äè¼8Ëª´í-
-Msquid:S1125ã")Remove the literal "false" boolean value.(§£Ëòÿÿÿÿÿ8Ëª´í-
+Jsquid:S1135‘"2Complete the task associated to this TODO comment.(¿‰€ÿ
+rsquid:S1450-"\Remove the "tfFocusTPYZMR" field and declare it as a local variable in the relevant methods.(ÓŞ ^
+Gsquid:S1066Ò"/Merge this if statement with the enclosing one.(·£Š“
+nsquid:S1450>"WRemove the "newTimeL" field and declare it as a local variable in the relevant methods.(ôâ½Ó
+wsquid:S1450¡"ZRemove the "scrollPane1" field and declare it as a local variable in the relevant methods.(Ã¬Ÿ÷øÿÿÿÿ
+Qsquid:S1199»"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+tsquid:S1450 "\Remove the "labelRegister" field and declare it as a local variable in the relevant methods.(¢œ³Û
+Esquid:S1948-"/Make "tfFocusTPYZMR" transient or serializable.(ÓŞ ^
+psquid:S1450¢"XRemove the "textArea1" field and declare it as a local variable in the relevant methods.(è½¶×
+{squid:S1450Å"\Remove the "labelUnClearR" field and declare it as a local variable in the relevant methods.(İã¿»8Œğ ï-
 W
 squid:S106‘"9Replace this use of System.out or System.err by a logger.(ı“É•8Ëª´í-
-Gsquid:S1172ù"(Remove this unused method parameter "e".(Î‚¤˜8Ëª´í-
-@squid:S1172ƒ"(Remove this unused method parameter "e".(ˆ¸ËĞ
-rsquid:S1450¬"ZRemove the "buttonLogin" field and declare it as a local variable in the relevant methods.(¸šÆ
-ysquid:S1450³"ZRemove the "labelDTYZMR" field and declare it as a local variable in the relevant methods.(Şâç8Ëª´í-
-isquid:S3776Â"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ıçˆn
-Hsquid:S1125à")Remove the literal "false" boolean value.(ÿÛ¹¯8Ëª´í-
-csquid:CommentedOutCodeLineí"<This block of commented-out lines of code should be removed.(ùø‘¬
-jsquid:MaximumInheritanceDepth#"<This class has 6 parents which is greater than 5 authorized.(ØéÓ®ùÿÿÿÿ
-wsquid:S1450›"XRemove the "textArea2" field and declare it as a local variable in the relevant methods.(¦†àÔ8Ëª´í-
-~squid:S1450¡"ZRemove the "labelDTYZML" field and declare it as a local variable in the relevant methods.(£¡ş§ıÿÿÿÿ8Ëª´í-
-Qsquid:S1199â"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-rsquid:S1450"ZRemove the "labelEmailL" field and declare it as a local variable in the relevant methods.(ÿİ§”
-Qsquid:S1199­"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-Hsquid:S1125İ")Remove the literal "false" boolean value.(¥Áãä8Ëª´í-
-Isquid:S1135r"2Complete the task associated to this TODO comment.(¿‰€ÿ
-Qsquid:S1135"2Complete the task associated to this TODO comment.(¿‰€ÿ8Ëª´í-
-Jsquid:S1135§"2Complete the task associated to this TODO comment.(¿‰€ÿ
-Qsquid:S1199Ï"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-P
-squid:S106È"9Replace this use of System.out or System.err by a logger.(Õåñ“
-Nsquid:S1066¢"/Merge this if statement with the enclosing one.(²€Õ¼8Ëª´í-
-{squid:S1450,"_Remove the "tfFocusUserNameR" field and declare it as a local variable in the relevant methods.(½éé‚øÿÿÿÿ
-Gsquid:S1172œ"(Remove this unused method parameter "e".(İäéÖ8Ëª´í-
-Asquid:S1125Ä")Remove the literal "false" boolean value.(êª²
-Dsquid:S1172`"(Remove this unused method parameter "e".(ºÎ”Òüÿÿÿÿ
-ssquid:S1450."\Remove the "tfFocusEmailR" field and declare it as a local variable in the relevant methods.(Óİªâ
-Hsquid:S1125Ê")Remove the literal "false" boolean value.(Ó•í8Ëª´í-
-jsquid:CommentedOutCodeLine¬"<This block of commented-out lines of code should be removed.(ÇÂÏ“8Ëª´í-
-Csquid:S1068$",Remove this unused "userName" private field.(‘™Äæ
-tsquid:S1450—"\Remove the "labelRegister" field and declare it as a local variable in the relevant methods.(¢œ³Û
-Qsquid:S1199²"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-usquid:S1450®"]Remove the "labelUserNameR" field and declare it as a local variable in the relevant methods.(İì¬Õ
-Gsquid:S1066Ò"/Merge this if statement with the enclosing one.(·£Š“
-xsquid:S1192±"TDefine a constant instead of duplicating this literal "Microsoft YaHei UI" 21 times.(†Á§Ğşÿÿÿÿ8Ëª´í-
-qsquid:S1450"YRemove the "panelLogin" field and declare it as a local variable in the relevant methods.(Şùæà
-Lsquid:S10688"5Remove this unused "emailOrPhoneFlagL" private field.(’²Šº
-Qsquid:S1199Ö"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-Lsquid:S1066Ú"/Merge this if statement with the enclosing one.(ÍÄÛ«ÿÿÿÿÿ
-W
-squid:S106ª"9Replace this use of System.out or System.err by a logger.(À‘ä8Ëª´í-
-Qsquid:S1199ß"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-wsquid:S1450²"ZRemove the "labelEmailR" field and declare it as a local variable in the relevant methods.(úøÒ…ıÿÿÿÿ
-Ksquid:S19483"/Make "tfFocusDTYZML" transient or serializable.(à®âüÿÿÿÿ
-osquid:CommentedOutCodeLine®"<This block of commented-out lines of code should be removed.(ÔšÒëùÿÿÿÿ8Ëª´í-
-Jsquid:S1135Ã"2Complete the task associated to this TODO comment.(¿‰€ÿ
-Nsquid:S1066§"/Merge this if statement with the enclosing one.(¯Ç‘¦8Ëª´í-
-Ksquid:S1612‡",Replace this lambda with a method reference.(âíÑÔ8Ëª´í-
 ƒsquid:S1192÷"kDefine a constant instead of duplicating this literal "è¯·å…ˆè¾“å…¥æ­£ç¡®çš„é‚®ç®±æˆ–æ‰‹æœºå·ï¼" 4 times.(¿ÖÂ¤
-osquid:S1450("XRemove the "password2" field and declare it as a local variable in the relevant methods.(­·Š€
-Psquid:S1612Ä",Replace this lambda with a method reference.(•½âØÿÿÿÿÿ8Ëª´í-
-Qsquid:S10689"5Remove this unused "emailOrPhoneFlagR" private field.(«„­ªıÿÿÿÿ
-Lsquid:S1604Ú"(Make this anonymous inner class a lambda(Ô·µÉûÿÿÿÿ8Ëª´í-
-vsquid:S1450–"YRemove the "labelLogin" field and declare it as a local variable in the relevant methods.(ä·ŞÅúÿÿÿÿ
-psquid:S1450«"XRemove the "labelURLL" field and declare it as a local variable in the relevant methods.(Æ¢”ä
-Qsquid:S1199Û"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-ksquid:S00112Û"FDefine and throw a dedicated exception instead of using a generic one.(†ö€Îùÿÿÿÿ8Ëª´í-
-xsquid:S1450/"\Remove the "tfFocusDTYZMR" field and declare it as a local variable in the relevant methods.(‹Úˆúûÿÿÿÿ
-psquid:S1450±"XRemove the "labelYZMR" field and declare it as a local variable in the relevant methods.(úÚïÎ
-qsquid:S1450»"ZRemove the "labelHintR1" field and declare it as a local variable in the relevant methods.(ËÀ‘.
-P
-squid:S106†"9Replace this use of System.out or System.err by a logger.(âìÃÑ
-Hsquid:S1125Ú")Remove the literal "false" boolean value.(‡¥û‰8Ëª´í-
-~squid:S1450½"ZRemove the "labelHintR2" field and declare it as a local variable in the relevant methods.(ôÈÀñıÿÿÿÿ8Ëª´í-
+ssquid:S14502"\Remove the "tfFocusTPYZML" field and declare it as a local variable in the relevant methods.(»µã©
+Qsquid:S1135†"2Complete the task associated to this TODO comment.(¿‰€ÿ8Œğ ï-
+csquid:CommentedOutCodeLineí"<This block of commented-out lines of code should be removed.(ùø‘¬
+xsquid:S1192º"TDefine a constant instead of duplicating this literal "Microsoft YaHei UI" 21 times.(†Á§Ğşÿÿÿÿ8Œğ ï-
+Lsquid:S1066Ú"/Merge this if statement with the enclosing one.(ÍÄÛ«ÿÿÿÿÿ
+\
+squid:S106—"9Replace this use of System.out or System.err by a logger.(´èè³úÿÿÿÿ8Œğ ï-
+xsquid:S14501"\Remove the "tfFocusEmailL" field and declare it as a local variable in the relevant methods.(ö´Ç—øÿÿÿÿ
+~squid:S1450£"ZRemove the "scrollPane2" field and declare it as a local variable in the relevant methods.(ÜËÌúÿÿÿÿ8Œğ ï-
 P
 squid:S106—"9Replace this use of System.out or System.err by a logger.(®‘Óÿ
 W
-squid:S106É"9Replace this use of System.out or System.err by a logger.(óÃ°8Ëª´í-
-Fsquid:S19482"/Make "tfFocusTPYZML" transient or serializable.(»µã©
-nsquid:S1450@"WRemove the "newTimeR" field and declare it as a local variable in the relevant methods.(‰åå’
-wsquid:S1450š"ZRemove the "scrollPane2" field and declare it as a local variable in the relevant methods.(ÜËÌúÿÿÿÿ
-zsquid:S1450Ÿ"]Remove the "labelPasswordL" field and declare it as a local variable in the relevant methods.(àè‡üüÿÿÿÿ
-Ksquid:S19481"/Make "tfFocusEmailL" transient or serializable.(ö´Ç—øÿÿÿÿ
-Qsquid:S1199ô"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-ysquid:S1450­"\Remove the "panelRegister" field and declare it as a local variable in the relevant methods.(¼áÓÿÿÿÿÿ
-W
-squid:S106ğ"9Replace this use of System.out or System.err by a logger.(®‘Óÿ8Ëª´í-
-Qsquid:S1199Å"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-Qsquid:S1199˜"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-Fsquid:S1948."/Make "tfFocusEmailR" transient or serializable.(Óİªâ
-psquid:S1450 "XRemove the "labelYZML" field and declare it as a local variable in the relevant methods.(ı»…Ÿ
-W
-squid:S106Ø"9Replace this use of System.out or System.err by a logger.(•éòø8Ëª´í-
-Qsquid:S1135ı"2Complete the task associated to this TODO comment.(¿‰€ÿ8Ëª´í-
-nsquid:S1450>"WRemove the "newTimeL" field and declare it as a local variable in the relevant methods.(ôâ½Ó
-~squid:S1450©"ZRemove the "labelHintL1" field and declare it as a local variable in the relevant methods.(Ï§ö³şÿÿÿÿ8Ëª´í-
-Msquid:S1125Á")Remove the literal "false" boolean value.(‹ñŸ¶ûÿÿÿÿ8Ëª´í-
-W
-squid:S106¤"9Replace this use of System.out or System.err by a logger.(İƒ¢ÿ8Ëª´í-
-Ksquid:S1948/"/Make "tfFocusDTYZMR" transient or serializable.(‹Úˆúûÿÿÿÿ
-`squid:S1854§"<Remove this useless assignment to local variable "userJDBC".(£©õùÿÿÿÿ8Ëª´í-
-psquid:S1450¿"XRemove the "labelURLR" field and declare it as a local variable in the relevant methods.(”ÈÄŸ
-usquid:S1450À"XRemove the "checkBoxR" field and declare it as a local variable in the relevant methods.(ğÓÍøÿÿÿÿ
-Hsquid:S1125Ç")Remove the literal "false" boolean value.(‡é•»8Ëª´í-
-tsquid:S1450¼"\Remove the "labelUnClearR" field and declare it as a local variable in the relevant methods.(İã¿»
+squid:S106á"9Replace this use of System.out or System.err by a logger.(•éòø8Œğ ï-
 xsquid:S14503"\Remove the "tfFocusDTYZML" field and declare it as a local variable in the relevant methods.(à®âüÿÿÿÿ
-Qsquid:S1199È"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ëª´í-
-zsquid:S1450¯"]Remove the "labelPasswordR" field and declare it as a local variable in the relevant methods.(©ñíÄşÿÿÿÿ
-Hsquid:S1125Ê")Remove the literal "false" boolean value.(Ó•í8Ëª´í-
-Qsquid:S1481§"-Remove this unused "userJDBC" local variable.(£©õùÿÿÿÿ8Ëª´í-
-Msquid:S1125ú")Remove the literal "false" boolean value.(æÖêÂúÿÿÿÿ8Ëª´í-
-wsquid:S1450˜"ZRemove the "scrollPane1" field and declare it as a local variable in the relevant methods.(Ã¬Ÿ÷øÿÿÿÿ
-?squid:S1172q"(Remove this unused method parameter "e".(şÊ†¨
-Qsquid:S1135…"2Complete the task associated to this TODO comment.(¿‰€ÿ8Ëª´í-
+Hsquid:S1125æ")Remove the literal "false" boolean value.(¥Áãä8Œğ ï-
+Gsquid:S1172‚"(Remove this unused method parameter "e".(Î‚¤˜8Œğ ï-
+Jsquid:S1135§"2Complete the task associated to this TODO comment.(¿‰€ÿ
+rsquid:S1450§"ZRemove the "labelEmailL" field and declare it as a local variable in the relevant methods.(ÿİ§”
+ssquid:S1450."\Remove the "tfFocusEmailR" field and declare it as a local variable in the relevant methods.(Óİªâ
+Msquid:S1125Ç")Remove the literal "false" boolean value.(‹ñŸ¶ûÿÿÿÿ8Œğ ï-
+nsquid:S1450@"WRemove the "newTimeR" field and declare it as a local variable in the relevant methods.(‰åå’
+ysquid:S1450¶"\Remove the "panelRegister" field and declare it as a local variable in the relevant methods.(¼áÓÿÿÿÿÿ
 \
-squid:S106"9Replace this use of System.out or System.err by a logger.(´èè³úÿÿÿÿ8Ëª´í-
+squid:S106±"9Replace this use of System.out or System.err by a logger.(êà ÿÿÿÿÿ8Œğ ï-
+ksquid:S00112ä"FDefine and throw a dedicated exception instead of using a generic one.(†ö€Îùÿÿÿÿ8Œğ ï-
+Ksquid:S19481"/Make "tfFocusEmailL" transient or serializable.(ö´Ç—øÿÿÿÿ
+Ksquid:S1948/"/Make "tfFocusDTYZMR" transient or serializable.(‹Úˆúûÿÿÿÿ
+~squid:S1450Æ"ZRemove the "labelHintR2" field and declare it as a local variable in the relevant methods.(ôÈÀñıÿÿÿÿ8Ëª´í-
+Qsquid:S1199Î"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+W
+squid:S106Ò"9Replace this use of System.out or System.err by a logger.(óÃ°8Œğ ï-
+\
+squid:S106„"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ8Ëª´í-
+psquid:S1450È"XRemove the "labelURLR" field and declare it as a local variable in the relevant methods.(”ÈÄŸ
+Jsquid:S1135‚"2Complete the task associated to this TODO comment.(¿‰€ÿ
+Lsquid:S1604ã"(Make this anonymous inner class a lambda(Ô·µÉûÿÿÿÿ8Œğ ï-
+Qsquid:S1199¡"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+Qsquid:S1199¶"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+Bsquid:S1148"#Use a logger to log this exception.(Ç’Çê8Ëª´í-
+Hsquid:S1125Ğ")Remove the literal "false" boolean value.(Ó•í8Œğ ï-
+osquid:S1450("XRemove the "password2" field and declare it as a local variable in the relevant methods.(­·Š€
+Qsquid:S1199ë"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+rsquid:S1450µ"ZRemove the "buttonLogin" field and declare it as a local variable in the relevant methods.(¸šÆ
+?squid:S1172q"(Remove this unused method parameter "e".(şÊ†¨
+Qsquid:S1135"2Complete the task associated to this TODO comment.(¿‰€ÿ8Ëª´í-
+Hsquid:S1125ã")Remove the literal "false" boolean value.(‡¥û‰8Œğ ï-
+ysquid:S1450¼"ZRemove the "labelDTYZMR" field and declare it as a local variable in the relevant methods.(Şâç8Œğ ï-
+\
+squid:S106Ÿ"9Replace this use of System.out or System.err by a logger.(–Ïñúûÿÿÿÿ8Ëª´í-
+Hsquid:S1125Ğ")Remove the literal "false" boolean value.(Ó•í8Œğ ï-
+Nsquid:S1066¦"/Merge this if statement with the enclosing one.(²€Õ¼8Ëª´í-
+Qsquid:S1199ı"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+Msquid:S1125à")Remove the literal "false" boolean value.(•‡—¼ÿÿÿÿÿ8Œğ ï-
+isquid:S3776Â"RRefactor this method to reduce its Cognitive Complexity from 17 to the 15 allowed.(ıçˆn
+Asquid:S1125Ä")Remove the literal "false" boolean value.(êª²
+Csquid:S1068$",Remove this unused "userName" private field.(‘™Äæ
+jsquid:MaximumInheritanceDepth#"<This class has 6 parents which is greater than 5 authorized.(ØéÓ®ùÿÿÿÿ
+W
+squid:S106Ú"9Replace this use of System.out or System.err by a logger.(¿äè¼8Œğ ï-
+Hsquid:S1125Ó")Remove the literal "false" boolean value.(ùş…è8Œğ ï-
+Qsquid:S1199Ø"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+Msquid:S1125ì")Remove the literal "false" boolean value.(§£Ëòÿÿÿÿÿ8Œğ ï-
+{squid:S1450¹"^Remove the "labelPasswordR2" field and declare it as a local variable in the relevant methods.(êšÜ¥øÿÿÿÿ
+W
+squid:S106­"9Replace this use of System.out or System.err by a logger.(İƒ¢ÿ8Œğ ï-
+Qsquid:S10689"5Remove this unused "emailOrPhoneFlagR" private field.(«„­ªıÿÿÿÿ
+?squid:S1172Â"(Remove this unused method parameter "e".(ıçˆn
+|squid:S1450É"XRemove the "checkBoxR" field and declare it as a local variable in the relevant methods.(ğÓÍøÿÿÿÿ8Œğ ï-
+Jsquid:S1135Ã"2Complete the task associated to this TODO comment.(¿‰€ÿ
+~squid:S1450²"ZRemove the "labelHintL1" field and declare it as a local variable in the relevant methods.(Ï§ö³şÿÿÿÿ8Ëª´í-
+W
+squid:S106ù"9Replace this use of System.out or System.err by a logger.(®‘Óÿ8Œğ ï-
+psquid:S1450º"XRemove the "labelYZMR" field and declare it as a local variable in the relevant methods.(úÚïÎ
+vsquid:S1450Ÿ"YRemove the "labelLogin" field and declare it as a local variable in the relevant methods.(ä·ŞÅúÿÿÿÿ
+Hsquid:S1125é")Remove the literal "false" boolean value.(ÿÛ¹¯8Œğ ï-
+wsquid:S1450¤"XRemove the "textArea2" field and declare it as a local variable in the relevant methods.(¦†àÔ8Ëª´í-
+Hsquid:S1125Í")Remove the literal "false" boolean value.(‡é•»8Œğ ï-
+|squid:S1450Ê"]Remove the "buttonRegister" field and declare it as a local variable in the relevant methods.(õñßÓ8Œğ ï-
+Qsquid:S1135«"2Complete the task associated to this TODO comment.(¿‰€ÿ8Œğ ï-
+Hsquid:S1125æ")Remove the literal "false" boolean value.(¥Áãä8Œğ ï-
+Qsquid:S1481¨"-Remove this unused "userJDBC" local variable.(£©õùÿÿÿÿ8Ëª´í-
+qsquid:S1450Ä"ZRemove the "labelHintR1" field and declare it as a local variable in the relevant methods.(ËÀ‘.
+Gsquid:S1172ª"(Remove this unused method parameter "e".(™„8Œğ ï-
+xsquid:S1450/"\Remove the "tfFocusDTYZMR" field and declare it as a local variable in the relevant methods.(‹Úˆúûÿÿÿÿ
+€squid:S1450±"\Remove the "labelUnClear2" field and declare it as a local variable in the relevant methods.(õã¸øÿÿÿÿ8Œğ ï-
+{squid:S1450,"_Remove the "tfFocusUserNameR" field and declare it as a local variable in the relevant methods.(½éé‚øÿÿÿÿ
+Fsquid:S1948."/Make "tfFocusEmailR" transient or serializable.(Óİªâ
+Isquid:S1135r"2Complete the task associated to this TODO comment.(¿‰€ÿ
+Dsquid:S1172`"(Remove this unused method parameter "e".(ºÎ”Òüÿÿÿÿ
+Gsquid:S1172œ"(Remove this unused method parameter "e".(İäéÖ8Ëª´í-
+~squid:S1450ª"ZRemove the "labelDTYZML" field and declare it as a local variable in the relevant methods.(£¡ş§ıÿÿÿÿ8Œğ ï-
+Qsquid:S1199Ñ"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+zsquid:S1450¸"]Remove the "labelPasswordR" field and declare it as a local variable in the relevant methods.(©ñíÄşÿÿÿÿ
+P
+squid:S106†"9Replace this use of System.out or System.err by a logger.(âìÃÑ
+esquid:S1858²"A"getText" returns a string, there's no need to call "toString()".(Çäã’øÿÿÿÿ8Œğ ï-
+Isquid:S1135a"2Complete the task associated to this TODO comment.(¿‰€ÿ
+Jsquid:S1135Ç"2Complete the task associated to this TODO comment.(¿‰€ÿ
+Ksquid:S1612",Replace this lambda with a method reference.(âíÑÔ8Œğ ï-
+Qsquid:S1199Ò"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+Nsquid:S1066°"/Merge this if statement with the enclosing one.(¯Ç‘¦8Œğ ï-
+Qsquid:S1199è"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+~squid:S1450»"ZRemove the "labelEmailR" field and declare it as a local variable in the relevant methods.(úøÒ…ıÿÿÿÿ8Œğ ï-
+W
+squid:S106Ñ"9Replace this use of System.out or System.err by a logger.(Õåñ“8Œğ ï-
+qsquid:S1450¦"YRemove the "panelLogin" field and declare it as a local variable in the relevant methods.(Şùæà
+@squid:S1172ƒ"(Remove this unused method parameter "e".(ˆ¸ËĞ
+`squid:S1854¨"<Remove this useless assignment to local variable "userJDBC".(£©õùÿÿÿÿ8Ëª´í-
+Msquid:S1125Ç")Remove the literal "false" boolean value.(‹ñŸ¶ûÿÿÿÿ8Œğ ï-
+wsquid:S1450©"XRemove the "labelYZML" field and declare it as a local variable in the relevant methods.(ı»…Ÿ8Œğ ï-
+psquid:S1450´"XRemove the "labelURLL" field and declare it as a local variable in the relevant methods.(Æ¢”ä
+zsquid:S1450¨"]Remove the "labelPasswordL" field and declare it as a local variable in the relevant methods.(àè‡üüÿÿÿÿ
+Qsquid:S1199ä"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+Qsquid:S1135…"2Complete the task associated to this TODO comment.(¿‰€ÿ8Ëª´í-
+Msquid:S1125ƒ")Remove the literal "false" boolean value.(æÖêÂúÿÿÿÿ8Œğ ï-
+Psquid:S1612Í",Replace this lambda with a method reference.(•½âØÿÿÿÿÿ8Œğ ï-
+usquid:S1450·"]Remove the "labelUserNameR" field and declare it as a local variable in the relevant methods.(İì¬Õ
+Qsquid:S1199ß"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Œğ ï-
+W
+squid:S106¬"9Replace this use of System.out or System.err by a logger.(À‘ä8Ëª´í-
+Ksquid:S19483"/Make "tfFocusDTYZML" transient or serializable.(à®âüÿÿÿÿ

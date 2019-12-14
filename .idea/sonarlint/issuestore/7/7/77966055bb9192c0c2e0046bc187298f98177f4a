@@ -1,0 +1,11 @@
+
+?squid:S1148q"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+‡squid:S1192["iDefine a constant instead of duplicating this literal "select * from user where phoneNumber = ?" 3 times.(÷¦ïŸ8ıá” ï-
+@squid:S1148™"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+Esquid:S1168„"&Return an empty array instead of null.(¥¹ï8ÛÑ¥­ï-
+Gsquid:S1148Ø"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8¼ı– ï-
+jsquid:S1192"LDefine a constant instead of duplicating this literal "ALY_bigwork" 6 times.(Ûê8ÿ›ø î-
+@squid:S1148¶"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
+squid:S3923Ç"[Remove this conditional structure or edit its code blocks so that they're not all the same.(ìÅšªıÿÿÿÿ8ıá” ï-
+Gsquid:S1148ƒ"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ8ÛÑ¥­ï-
+?squid:S1148H"#Use a logger to log this exception.(€ÉÔ…ıÿÿÿÿ
