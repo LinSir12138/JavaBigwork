@@ -207,7 +207,7 @@ public class UIFrame extends JFrame {
             UserJDBC userJDBC = new UserJDBC();
 
             if (phoneFlag) {
-                if (userJDBC.checkUserByPhoneNumber(textFieldEmailR.getText(), "0") == 2) {
+                if (userJDBC.checkUserByPhoneNumber(textFieldEmailL.getText(), "0") == 2) {
                     // 说明 手机号 在数据库中找不到
                     JOptionPane.showMessageDialog(this, "手机号还未注册，请先注册后在登录！", "错误", JOptionPane.ERROR_MESSAGE);
                     return;
@@ -215,7 +215,7 @@ public class UIFrame extends JFrame {
             }
 
             if (emailFlag) {
-                if (userJDBC.checkUserByEmail(textFieldEmailR.getText(), "0") == 2) {
+                if (userJDBC.checkUserByEmail(textFieldEmailL.getText(), "0") == 2) {
                     // 说明 邮箱账号 在数据库中找不到
                     JOptionPane.showMessageDialog(this, "邮箱号还未注册，请先注册后在登录！", "错误", JOptionPane.ERROR_MESSAGE);
                     return;
@@ -236,7 +236,7 @@ public class UIFrame extends JFrame {
                 JOptionPane.showMessageDialog(this, "验证码已经发送到您的手机！", "成功", JOptionPane.PLAIN_MESSAGE);
 //                SendByThread messageThread = new SendByThread(2, textFieldEmailR.getText());
 //                new Thread(messageThread).start();
-                SendMessage sendMessage = new SendMessage(textFieldEmailR.getText());
+                SendMessage sendMessage = new SendMessage(textFieldEmailL.getText());
                 sendMessage.send();
                 dynamicCode = String.valueOf(sendMessage.getRandomNumber());   // 获得对应的验证码，转换成字符串保存
             }
@@ -324,6 +324,7 @@ public class UIFrame extends JFrame {
          * */
 
         // 检测用户是否输入登录信息
+        System.out.println("1---->" + textFieldEmailL.getText());
         if (CheckEmailOrPhone.checkEmail(textFieldEmailL.getText()) == false && CheckEmailOrPhone.checkPhoneNumber(textFieldEmailL.getText()) == false) {
             JOptionPane.showMessageDialog(this, "请先输入正确的邮箱或手机号！", "错误", 0);
             return false;
@@ -357,6 +358,8 @@ public class UIFrame extends JFrame {
             /**
              *      将 手机号 和 密码 作为参数传入，在方法内部会 自动将密码加盐和和数据库中的对比，判断是否正确
              * */
+            System.out.println("2---->" + textFieldEmailL.getText());
+
             int flag = userJDBC.checkUserByPhoneNumber(textFieldEmailL.getText(), userPwd);
             if (flag == 2) {
                 // 手机号未注册

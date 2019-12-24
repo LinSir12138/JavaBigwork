@@ -5,9 +5,11 @@ import com.github.sarxos.webcam.WebcamPanel;
 import com.github.sarxos.webcam.WebcamResolution;
 import com.github.sarxos.webcam.WebcamUtils;
 import com.github.sarxos.webcam.util.ImageUtils;
-import com.sun.jna.platform.unix.X11;
+import com.spire.barcode.BarcodeScanner;
+import javabean.User;
 import jdbc.ImageJDBC;
 import jdbc.UserJDBC;
+import jdbc.UserJDBC02;
 import main.MainUI;
 
 import javax.swing.*;
@@ -19,7 +21,9 @@ import java.awt.event.WindowListener;
 
 
 /**
- *         相机测试
+ *      ---》人脸识别和二维码/条形码识别的关键类
+ *
+ *      相机测试
  *          功能：
  *          1. 可以调用摄像头拍照并保存到本地 ------》 takePhote() 方法
  *          2. 可以从数据库中读取用户的图片进行人脸识别验证-------》 startRecognition() 方法
@@ -48,17 +52,19 @@ public class WebcamCapture {
 
     /**
     * @Description: 调用摄像头进行拍照 ，然后将拍照完成的图片保存到本地（利用到了IO流）
+     *               返回的 String 类型的字符串是对应图片的名称
     * @Param: [mainUIFrame, userName]
     * @return: void
     * @Author: 林凯
     * @Date: 2019/12/13
     */
-    public static void takePhote(JFrame mainUIFrame, String userName) throws InterruptedException {
+    public static void takePhote(JFrame mainUIFrame, String userName, int type) throws InterruptedException {
         /**
          *      循环判断条件，为false时，会一直停留在循环里面，方法不会执行完毕
          *      只有当按下拍照按钮时，拍照完成才结束方法
          * */
         final long[] randomNumber = {0};          // 生成的随机数，作为拍照生成图片的名称
+        String[] imageName = new String[10];      //  对应图片的名称，需要最为函数返回值返回
         Webcam webcam = Webcam.getDefault();
         webcam.setViewSize(WebcamResolution.VGA.getSize());
 //        webcam.close()
@@ -134,9 +140,11 @@ public class WebcamCapture {
             @Override
             public void actionPerformed(ActionEvent e) {
                 button.setEnabled(false);  //设置按钮不可点击
+
                 //实现拍照保存-------start（存放的路径为src/images）
                 randomNumber[0] = System.currentTimeMillis();
-                String fileName = "src//images//" + randomNumber[0] + ".png";       //保存路径即图片名称（不用加后缀）
+                imageName[0] = String.valueOf(randomNumber[0]);     // 将 long 类型转换成为 String 类型
+                String fileName = "src//images//" + imageName[0] + ".png";       //保存路径即图片名称（不用加后缀）
                 System.out.println(fileName);
 
                 /**
@@ -154,14 +162,41 @@ public class WebcamCapture {
                     {
                         JOptionPane.showMessageDialog(null, "拍照成功");
                         button.setEnabled(true);    //设置按钮可点击
-                        startRecognition(mainUIFrame ,userName, randomNumber[0]);
-
+                        if (type ==1) {
+                            // 如果 Type == 1，说明是进行人脸识别的时候调用的 takePhoto，所以要进行人脸比对
+                            startRecognition(mainUIFrame ,userName, randomNumber[0]);
+                        } else {
+                            // 如果 Type == 2，说明需要进行二维码识别/条形码识别
+                            String[] result = null;      // 返回一个 String 数组，如果只有一个条形码，那么对应的下标为0
+                            // 因为经过上面的操作，图片已经保存在本地了,图片名称就是 imageName[0]
+                            try {
+                                // 返回的是一个 String 数组，因为可能是二维码或者其他类型的条形码，这里只要取第一个元素就可以了
+                                result = BarcodeScanner.scan(fileName);
+                            } catch (Exception ex) {
+                                ex.printStackTrace();
+                            }
+                            // 2. 根据当前登录的状态，获得当前的用户对应的学号。
+                            User user = UserJDBC02.getUserByName(userName);
+                            String schoolNumber = user.getSchoolNumber();
+                            System.out.println("SchoolNumber：" + schoolNumber);
+                            MainUI mainUI = (MainUI) mainUIFrame;
+                            if (schoolNumber.equals(result[0]) == false) {
+                                // 如果二维码中扫描出来的 学号 和该用户对应的学号不一致，那么表示识别失败直接返回，如何识别成的话，继续执行后面的操作，开始考试
+                                System.out.println("识别出来的条形码数字为：" + result[0]);
+                                mainUI.matchResult(false);
+                            } else {
+                                /**
+                                 *      2. 识别成功的话，直接调用 MainUI 里面的  matchResult() 方法
+                                 *      因为已经获得了 mainUI 类的引用，强制类型转换一下就可以了
+                                 * */
+                                mainUI.matchResult(true);
+                            }
+                        }
                         /**
                          *       // 释放资源，拍照摄像头关闭，窗口关闭
                          * */
                         webcam.close();
                         window.dispose();
-                        return;
                     }
                 });
                 // 到这里拍照完毕
@@ -209,9 +244,9 @@ public class WebcamCapture {
         MainUI mainUI = (MainUI) mainUIFrame;
 
         if (score >= 80) {
-            mainUI.faceMatching(true);
+            mainUI.matchResult(true);
         } else {
-            mainUI.faceMatching(false);
+            mainUI.matchResult(false);
         }
 
 

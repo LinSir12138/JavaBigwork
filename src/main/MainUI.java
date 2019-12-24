@@ -4,6 +4,8 @@
 
 package main;
 
+import com.spire.barcode.BarcodeScanner;
+import com.spire.barcode.implementation.generator.generation.BarcodeCreator;
 import examministration.AddExam;
 import examministration.StartExam;
 import facerecognition.WebcamCapture;
@@ -140,9 +142,9 @@ public class MainUI extends JFrame {
      * @Author: 林凯
      * @Date: 2019/12/5
      */
-    public void faceMatching(boolean flag) {
+    public void matchResult(boolean flag) {
         if (flag) {
-            JOptionPane.showMessageDialog(this, "人脸验证成功！", "成功", JOptionPane.PLAIN_MESSAGE);
+            JOptionPane.showMessageDialog(this, "验证成功！", "成功", JOptionPane.PLAIN_MESSAGE);
 
             /**
              *      下面执行开始考试的代码
@@ -168,7 +170,7 @@ public class MainUI extends JFrame {
 
 
         } else {
-            JOptionPane.showMessageDialog(this, "人脸验证失败!", "失败", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "验证失败!", "失败", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -463,8 +465,6 @@ public class MainUI extends JFrame {
         this.setEnabled(false);
 
     }
-
-
 
 //######################  下面是   试卷管理   #########################################################################
 
@@ -826,12 +826,16 @@ public class MainUI extends JFrame {
     }
 
     /**
-     * @Description: 在   “考试管理”  界面点击   “开始考试”  按钮对应的点击事件   ----》 开始考试
+     * @Description: 在   “考试管理”  界面点击   “开始考试” 和 “开始考试(校园卡认证)”  按钮对应的点击事件   ----》 开始考试
      * @Param: [e]
      * @return: void
      * @Author: 林凯
      * @Date: 2019/11/30
      */
+    /**
+     *      注：因为拍照算法是利用多线程实现的，所以不能在本方法内部执行开始考试的代码，的根据识别结果，在 takePhoto 方法中决定是否开始考试
+     *      即在 takePhoto() 方法中选择是否调用 matchResult() 方法
+     **/
     private void buttonStartExamMouseReleased(MouseEvent e) {
         // TODO add your code here
         String examName;        // 考试名称，需要从表格中获取
@@ -882,29 +886,60 @@ public class MainUI extends JFrame {
             return;
         }
 
-        // 2.3.1   根据用户的选择，判断是否要进行人脸识别检测
-        int faceFlag = JOptionPane.showConfirmDialog(this, "是否要进行人脸识别验证？", "人脸识别验证", 0);
-        if (faceFlag == 0) {
-            try {
-                // 调用 摄像头 拍照
-                System.out.println("当前用户为：" + userName);
-                WebcamCapture.takePhote(this, userName);
+        // 2.3.0    因为这是2个按钮共用一个点击事件，所以要在这里进行区分判断一下，不同的按钮进行不同的操作
 
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
+        /**
+         *      原本这部分代码有复杂的 if~else 嵌套，优化之后可读性提高了很多
+         * */
+        JButton sourceButton = (JButton) e.getSource();
+
+        if (sourceButton.getText().contentEquals("开始考试")) {
+            // 2.3.1   根据用户的选择，判断是否要进行人脸识别检测
+            int faceFlag = JOptionPane.showConfirmDialog(this, "是否要进行人脸识别验证？", "人脸识别验证", 0);
+            if (faceFlag == 0) {
+                try {
+                    // 调用 摄像头 拍照
+                    System.out.println("当前用户为：" + userName);
+                    //  第 3 个参数为 1 表示：是进行人脸识别的时候调用的 takePhoto
+                    WebcamCapture.takePhote(this, userName, 1);
+                    // 不过有没有识别成功，本函数的功能已经完成了，是否需要开始开始考试的看 takePhoto 里面具体的函数调用
+                    return;
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
             }
         } else {
-            // 选择了 否，不进行人脸识别,直接开始考试
-            // 2.4 如果在考试时间范围内，获得 考试名称，考试对应试卷名称，试卷里题目的标题数组
-            examName = tableModel.getValueAt(tableSubject.getSelectedRow(), 0).toString();
-            examPaperName = tableModel.getValueAt(tableSubject.getSelectedRow(), 1).toString();
-            paperTitles = PaperJDBC.getPaperSubjectTitles(examPaperName);
-
-            StartExam startExam = new StartExam(this, examName, paperTitles, startTime, endTime);
-            this.setEnabled(false);         // 设置当前窗体不可编辑
-            startExam.setVisible(true);
+            // 2.32    根据用户的选择，判断是否要进行 校园卡识别检测
+            int barCodeFlag = JOptionPane.showConfirmDialog(this, "是否要进行校园卡认证？", "校园卡认证", 0);
+            if (barCodeFlag == 0) {
+                try {
+                    // 调用 摄像头 拍照
+                    System.out.println("当前用户为：" + userName);
+                    // 第 3 个参数为 2 表示：是进行二维码/条形码验证的时候调用的 takePhoto
+                    WebcamCapture.takePhote(this, userName, 2);
+                    // 注：二维码识别放在 takePhoto() 方法内部执行，本方法功能已经完成
+                    return;
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
 
+
+//        /**
+//         *      只要用户点击了取消识别，或者人脸识别失败，二维码验证失败，该函数都会直接返回，执行不到这一步。
+//         *      所以前面的代码可以去掉很多的 if~else 嵌套
+//         * */
+//        // 2.4   下面的代码就是开始考试。如果在考试时间范围内，获得 考试名称，考试对应试卷名称，试卷里题目的标题数组
+//        examName = tableModel.getValueAt(tableSubject.getSelectedRow(), 0).toString();
+//        examPaperName = tableModel.getValueAt(tableSubject.getSelectedRow(), 1).toString();
+//        paperTitles = PaperJDBC.getPaperSubjectTitles(examPaperName);
+//
+//        StartExam startExam = new StartExam(this, examName, paperTitles, startTime, endTime);
+//        this.setEnabled(false);         // 设置当前窗体不可编辑
+//        startExam.setVisible(true);
     }
 
 // ###################################    下面是 “成绩查询”  界面 ###############################################
@@ -981,11 +1016,6 @@ public class MainUI extends JFrame {
 
 // #####################################    下面是  “JFormDesigner 自动生成的代码”  #############################
 
-
-
-
-
-
     /** 
     * @Description: 初始化主界面  JFormdesigner 自动生成的 
     * @Param: [] 
@@ -995,7 +1025,7 @@ public class MainUI extends JFrame {
     */ 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Lin Kai
+        // Generated using JFormDesigner Evaluation license - unknown
         panelTop = new JPanel();
         labelTitle = new JLabel();
         panel6 = new JPanel();
@@ -1056,6 +1086,7 @@ public class MainUI extends JFrame {
         buttonDeleteExam = new JButton();
         buttonStartExam = new JButton();
         label29 = new JLabel();
+        buttonStartExamWithCard = new JButton();
         panelContentExamResult = new JPanel();
         panel20 = new JPanel();
         buttonSearchExamResult = new JButton();
@@ -1072,12 +1103,13 @@ public class MainUI extends JFrame {
         //======== panelTop ========
         {
             panelTop.setBackground(new Color(66, 143, 185));
-            panelTop.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
-            EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing
-            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
-            java. awt. Color. red) ,panelTop. getBorder( )) ); panelTop. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
-            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
-            throw new RuntimeException( ); }} );
+            panelTop.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+            . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder
+            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .
+            awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelTop. getBorder( )) )
+            ; panelTop. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+            ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+            ;
             panelTop.setLayout(new BorderLayout());
 
             //---- labelTitle ----
@@ -1616,6 +1648,17 @@ public class MainUI extends JFrame {
                     label29.setText(" ");
                     label29.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
                     panel18.add(label29);
+
+                    //---- buttonStartExamWithCard ----
+                    buttonStartExamWithCard.setText("\u5f00\u59cb\u8003\u8bd5(\u6821\u56ed\u5361\u8ba4\u8bc1)");
+                    buttonStartExamWithCard.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    buttonStartExamWithCard.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            buttonStartExamMouseReleased(e);
+                        }
+                    });
+                    panel18.add(buttonStartExamWithCard);
                 }
                 panelContentExam.add(panel18, BorderLayout.NORTH);
             }
@@ -1683,7 +1726,7 @@ public class MainUI extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Lin Kai
+    // Generated using JFormDesigner Evaluation license - unknown
     private JPanel panelTop;
     private JLabel labelTitle;
     private JPanel panel6;
@@ -1744,6 +1787,7 @@ public class MainUI extends JFrame {
     private JButton buttonDeleteExam;
     private JButton buttonStartExam;
     private JLabel label29;
+    private JButton buttonStartExamWithCard;
     private JPanel panelContentExamResult;
     private JPanel panel20;
     private JButton buttonSearchExamResult;
@@ -1751,7 +1795,6 @@ public class MainUI extends JFrame {
     private JButton buttonSearchExamResult2;
     private JButton buttonSearchExamResult3;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
-
 
     public static void main(String[] args) {
         MainUI test1 = new MainUI("18170098712");

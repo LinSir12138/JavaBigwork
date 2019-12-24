@@ -90,6 +90,7 @@ public class UserJDBC {
     */
     public int checkUserByPhoneNumber(String phoneNumber, String pwd) {
         String sql = "select * from user where phoneNumber = ?";
+        System.out.println("SQL-->" + sql + phoneNumber);
 
         try {
             conn = JDBCUtil.getMySqlConn("ALY_bigwork");
@@ -290,6 +291,8 @@ public class UserJDBC {
             JDBCUtil.close(ps, conn);
         }
     }
+
+
 
     public static void main(String[] args) {
         UserJDBC userJDBC = new UserJDBC();

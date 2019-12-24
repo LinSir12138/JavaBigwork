@@ -17,6 +17,7 @@ public class User {
     private String emailNumber;
     private Date regTime;       // 是 java.sql 包下的 Date
 //    private byte[] headImag;
+    private String schoolNumber;
 
 
     // javabean对象一定要有无参构造方法
@@ -82,5 +83,13 @@ public class User {
 
     public void setRegTime(Date regTime) {
         this.regTime = regTime;
+    }
+
+    public String getSchoolNumber() {
+        return schoolNumber;
+    }
+
+    public void setSchoolNumber(String schoolNumber) {
+        this.schoolNumber = schoolNumber;
     }
 }
