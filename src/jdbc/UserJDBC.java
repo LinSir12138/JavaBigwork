@@ -243,17 +243,22 @@ public class UserJDBC {
 
             // 获取列数，调用已经封装好了的方法
             columnCount = JDBCUtil.getColumns(rs);
-            result = new String[rows][columnCount - 1];      // 返回的数组不包含图片那一列
+            result = new String[rows][6];      // 返回的数组不包含图片那一列,不包含id那列
 
             // 将 结果集 的数据转换成为 二维数组 返回
             int index = 0;
             while (rs.next()) {
                 /**
                  *      这里的 columnCount - 1 的原因是最后面的图片不能转换成为 String 字符串，所以不需要返回
+                 *      7 行
                  * */
-                for (int i = 0; i < columnCount - 1; i++) {
-                    result[index][i] = rs.getObject(i + 1).toString();
-                }
+                result[index][0] = rs.getObject("userName").toString();
+                result[index][1] = rs.getObject("pwd").toString();
+                result[index][2] = rs.getObject("phoneNumber").toString();
+                result[index][3] = rs.getObject("emailNumber").toString();
+                result[index][4] = rs.getObject("regTime").toString();
+                result[index][5] = rs.getObject("schoolNumber").toString();
+
                 index++;
             }
 
@@ -275,27 +280,27 @@ public class UserJDBC {
     * @Author: 林凯
     * @Date: 2019/12/14 
     */ 
-    public void addColmn(String examName) {
-        /**
-         *      根据传入的 考试名称 ，动态得生成 SQL 语句，本来是想用占位符 ？ 的，后来发现好像实现不了
-         * */
-        String sql = "alter table user add column " + examName + " varchar(100) not null";
-
-        try {
-            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
-            ps = conn.prepareStatement(sql);
-            ps.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            JDBCUtil.close(ps, conn);
-        }
-    }
+//    public void addColmn(String examName) {
+//        /**
+//         *      根据传入的 考试名称 ，动态得生成 SQL 语句，本来是想用占位符 ？ 的，后来发现好像实现不了
+//         * */
+//        String sql = "alter table user add column " + examName + " varchar(100) not null";
+//
+//        try {
+//            conn = JDBCUtil.getMySqlConn("ALY_bigwork");
+//            ps = conn.prepareStatement(sql);
+//            ps.execute();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } finally {
+//            JDBCUtil.close(ps, conn);
+//        }
+//    }
 
 
 
     public static void main(String[] args) {
-        UserJDBC userJDBC = new UserJDBC();
-        userJDBC.addColmn("test1");
+//        UserJDBC userJDBC = new UserJDBC();
+//        userJDBC.addColmn("test1");
     }
 }

@@ -293,6 +293,12 @@ new FormModel {
 							"font": new java.awt.Font( "Dialog", 1, 18 )
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonCheckSubjectMouseReleased", true ) )
 						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "button2"
+							"text": "导出当前表格中的学生信息"
+							"font": new java.awt.Font( "Dialog", 1, 18 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonToExcel", true ) )
+						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label30"
 							"text": " "
@@ -341,6 +347,12 @@ new FormModel {
 							"text": "查看试题"
 							"font": &Font7 new java.awt.Font( "Dialog", 1, 16 )
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonCheckSubjectMouseReleased", true ) )
+						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonSubjectToExcel"
+							"text": "导出当前表格中显示的试题"
+							"font": new java.awt.Font( "Dialog", 1, 18 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonToExcel", true ) )
 						} )
 						add( new FormComponent( "javax.swing.JLabel" ) {
 							name: "label27"
@@ -482,6 +494,12 @@ new FormModel {
 							"font": #Font8
 							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonSearchExamResultMouseReleased", true ) )
 						} )
+						add( new FormComponent( "javax.swing.JButton" ) {
+							name: "buttonToExcel"
+							"text": "导出当前表格中显示的成绩"
+							"font": new java.awt.Font( "Dialog", 1, 18 )
+							addEvent( new FormEvent( "java.awt.event.MouseListener", "mouseReleased", "buttonToExcel", true ) )
+						} )
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "North"
 					} )
@@ -493,7 +511,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 970, 595 )
+			"size": new java.awt.Dimension( 1100, 595 )
 		} )
 	}
 }

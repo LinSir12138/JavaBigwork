@@ -148,7 +148,7 @@ public class AddExam extends JFrame {
         tableModel.addRow(tempData);
         // 2.3 同时还要调用 UserJDBC 类的 addColmn() 方法，动态得在 User 表中添加 1 列数据
         UserJDBC userJDBC = new UserJDBC();
-        userJDBC.addColmn(textFieldExamName.getText().toString());      // 传入的参数为考试的名称
+//        userJDBC.addColmn(textFieldExamName.getText().toString());      // 传入的参数为考试的名称
 
         this.dispose();     // 本窗口关闭，释放内存资源
     }

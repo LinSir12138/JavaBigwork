@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/lib/cglib-3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/commons-collections4-4.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/easyexcel-1.1.2-beta5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/junit-4.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/poi-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/poi-ooxml-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/poi-ooxml-schemas-3.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/lib/xmlbeans-2.6.0.jar!/" />
+      <root url="file://$PROJECT_DIR$/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/lib" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/lib" recursive="false" type="SOURCES" />
+  </library>
+</component>

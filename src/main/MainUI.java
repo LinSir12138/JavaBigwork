@@ -8,6 +8,9 @@ import com.spire.barcode.BarcodeScanner;
 import com.spire.barcode.implementation.generator.generation.BarcodeCreator;
 import examministration.AddExam;
 import examministration.StartExam;
+import excel.SubjectToExcel;
+import excel.ToExcel;
+import excel.UserScoreToExcel;
 import facerecognition.WebcamCapture;
 import javabean.User;
 import jdbc.*;
@@ -30,6 +33,7 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /*
 *       2019年11月10日09:17:23
@@ -224,7 +228,7 @@ public class MainUI extends JFrame {
          *       因为数据库放在云上，所以连接的时候和网络有关系。
          **/
 
-        String[] columNames = {"用户名", "手机号", "邮箱账号", "注册日期"};
+        String[] columNames = {"用户名", "手机号", "邮箱账号", "注册日期", "学号"};
 
         UserJDBC userJDBC = new UserJDBC();
         // 获得数据，存放到 datas 二维数组里面
@@ -233,12 +237,13 @@ public class MainUI extends JFrame {
          *      上面的只是一个临时的数据，包含了处理图片以外的所有数据
          *      下面的二维数组要从临时数据里面选取需要的数据，因为不展示 id，和 pwd，所以列数还有减2
          * */
-        String[][] datas = new String[tempDates.length][4];
+        String[][] datas = new String[tempDates.length][columNames.length];
         for (int i = 0; i < datas.length; i++) {
-            datas[i][0] = tempDates[i][1];
-            datas[i][1] = tempDates[i][3];
-            datas[i][2] = tempDates[i][4];
-            datas[i][3] = tempDates[i][5];
+            datas[i][0] = tempDates[i][0];
+            datas[i][1] = tempDates[i][2];
+            datas[i][2] = tempDates[i][3];
+            datas[i][3] = tempDates[i][4];
+            datas[i][4] = tempDates[i][5];
         }
 
         /**
@@ -962,6 +967,7 @@ public class MainUI extends JFrame {
         if (table05 == null && scrollPane05 == null && tableModel05 == null) {
             System.out.println("new 了一个对象");
             tableModel05 = new DefaultTableModel(datas, columnNames);
+//            tableModel05.getColumnName();
             table05 = new JTable(tableModel05);     // 通过 表格模型 来创建 表格 对象
             tableModel05.setRowCount(datas.length);       // 设置表格行数
             table05.setRowHeight(50);     // 设置行高50像素
@@ -981,6 +987,13 @@ public class MainUI extends JFrame {
         scrollPaneSubject = scrollPane05;
     }
 
+    /**
+    * @Description:  在 “成绩查询” 界面点击 “成绩查询（按姓名）” / 按学号 / 显示全部成绩  按钮对应的点击事件
+    * @Param: [e]
+    * @return: void
+    * @Author: 林凯
+    * @Date: 2019/12/24
+    */
     private void buttonSearchExamResultMouseReleased(MouseEvent e) {
         // TODO add your code here
         JButton tempButton = (JButton) e.getSource();
@@ -1012,6 +1025,50 @@ public class MainUI extends JFrame {
             }
         }
         tableModel.fireTableDataChanged();      // 更新表格的信息，十分必要，否则可能显示错误
+    }
+
+    /** 
+    * @Description: 将表格中的信息导出为 Excel 对应的实现方法，有3个按钮的点击事件会调用此方法。
+     *              分别是：“用户管理界面”， “试题管理界面”， “成绩查询界面”
+    * @Param: [e] 
+    * @return: void 
+    * @Author: 林凯
+    * @Date: 2019/12/24 
+    */ 
+    private void buttonToExcel(MouseEvent e) {
+        // TODO add your code here
+        JButton tempButton = (JButton) e.getSource();
+        String excelName = null;
+
+        switch (tempButton.getText()) {
+            case "导出当前表格中的学生信息":
+                excelName = JOptionPane.showInputDialog(this,"请输入Excel表格名称(不需要后缀)：", "输入Excel名称", 1);
+                if (excelName != null) {
+                    ToExcel.saveToExcel(excelName, tableModel);
+                }
+                break;
+            case "导出当前表格中显示的试题":
+                excelName = JOptionPane.showInputDialog(this,"请输入Excel表格名称(不需要后缀)：", "输入Excel名称", 1);
+                if (excelName != null) {
+                    SubjectToExcel.saveToExcel(excelName, tableModel);
+                }
+                break;
+            case "导出当前表格中显示的成绩":
+                excelName = JOptionPane.showInputDialog(this,"请输入Excel表格名称(不需要后缀)：", "输入Excel名称", 1);
+                // 调用静态方法，将 Excel名称，表格模型，表格的引用作为参数传递
+                if (excelName != null) {        // 如果 excelName 为空，说明用户点击的取消
+                    // 因为在切换选项卡时，tableModel所指向的对象也发生了改变，所以直接传入 tableModel，也可以找到对应的表格
+                    UserScoreToExcel.saveToExcel(excelName, tableModel);
+                    JTableHeader jTableHeader = tableSubject.getTableHeader();
+//                    jTableHeader.get
+
+                }
+                break;
+            default:
+
+        }
+
+
     }
 
 // #####################################    下面是  “JFormDesigner 自动生成的代码”  #############################
@@ -1062,6 +1119,7 @@ public class MainUI extends JFrame {
         panelContentStudent = new JPanel();
         panel19 = new JPanel();
         buttonSearchStudent = new JButton();
+        button2 = new JButton();
         label30 = new JLabel();
         panelContentSubject = new JPanel();
         panel16 = new JPanel();
@@ -1070,6 +1128,7 @@ public class MainUI extends JFrame {
         buttonSearchSubject = new JButton();
         buttonEditSubject = new JButton();
         buttonCheckSubject = new JButton();
+        buttonSubjectToExcel = new JButton();
         label27 = new JLabel();
         panleContentPaper = new JPanel();
         panel17 = new JPanel();
@@ -1093,6 +1152,7 @@ public class MainUI extends JFrame {
         label31 = new JLabel();
         buttonSearchExamResult2 = new JButton();
         buttonSearchExamResult3 = new JButton();
+        buttonToExcel = new JButton();
 
         //======== this ========
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -1103,13 +1163,13 @@ public class MainUI extends JFrame {
         //======== panelTop ========
         {
             panelTop.setBackground(new Color(66, 143, 185));
-            panelTop.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-            . border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border. TitledBorder
-            . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg" ,java .
-            awt .Font .BOLD ,12 ), java. awt. Color. red) ,panelTop. getBorder( )) )
-            ; panelTop. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-            ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-            ;
+            panelTop.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
+            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax
+            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
+            . awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,panelTop. getBorder () ) ); panelTop. addPropertyChangeListener( new java. beans .
+            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .
+            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             panelTop.setLayout(new BorderLayout());
 
             //---- labelTitle ----
@@ -1439,6 +1499,17 @@ public class MainUI extends JFrame {
                     });
                     panel19.add(buttonSearchStudent);
 
+                    //---- button2 ----
+                    button2.setText("\u5bfc\u51fa\u5f53\u524d\u8868\u683c\u4e2d\u7684\u5b66\u751f\u4fe1\u606f");
+                    button2.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    button2.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            buttonToExcel(e);
+                        }
+                    });
+                    panel19.add(button2);
+
                     //---- label30 ----
                     label30.setText(" ");
                     label30.setFont(new Font(Font.DIALOG, Font.BOLD, 36));
@@ -1510,6 +1581,17 @@ public class MainUI extends JFrame {
                         }
                     });
                     panel16.add(buttonCheckSubject);
+
+                    //---- buttonSubjectToExcel ----
+                    buttonSubjectToExcel.setText("\u5bfc\u51fa\u5f53\u524d\u8868\u683c\u4e2d\u663e\u793a\u7684\u8bd5\u9898");
+                    buttonSubjectToExcel.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    buttonSubjectToExcel.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            buttonToExcel(e);
+                        }
+                    });
+                    panel16.add(buttonSubjectToExcel);
 
                     //---- label27 ----
                     label27.setText(" ");
@@ -1709,6 +1791,17 @@ public class MainUI extends JFrame {
                         }
                     });
                     panel20.add(buttonSearchExamResult3);
+
+                    //---- buttonToExcel ----
+                    buttonToExcel.setText("\u5bfc\u51fa\u5f53\u524d\u8868\u683c\u4e2d\u663e\u793a\u7684\u6210\u7ee9");
+                    buttonToExcel.setFont(new Font(Font.DIALOG, Font.BOLD, 18));
+                    buttonToExcel.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseReleased(MouseEvent e) {
+                            buttonToExcel(e);
+                        }
+                    });
+                    panel20.add(buttonToExcel);
                 }
                 panelContentExamResult.add(panel20, BorderLayout.NORTH);
             }
@@ -1763,6 +1856,7 @@ public class MainUI extends JFrame {
     private JPanel panelContentStudent;
     private JPanel panel19;
     private JButton buttonSearchStudent;
+    private JButton button2;
     private JLabel label30;
     private JPanel panelContentSubject;
     private JPanel panel16;
@@ -1771,6 +1865,7 @@ public class MainUI extends JFrame {
     private JButton buttonSearchSubject;
     private JButton buttonEditSubject;
     private JButton buttonCheckSubject;
+    private JButton buttonSubjectToExcel;
     private JLabel label27;
     private JPanel panleContentPaper;
     private JPanel panel17;
@@ -1794,10 +1889,11 @@ public class MainUI extends JFrame {
     private JLabel label31;
     private JButton buttonSearchExamResult2;
     private JButton buttonSearchExamResult3;
+    private JButton buttonToExcel;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public static void main(String[] args) {
-        MainUI test1 = new MainUI("18170098712");
+        MainUI test1 = new MainUI("15970819628");
         test1.setVisible(true);
     }
 }
