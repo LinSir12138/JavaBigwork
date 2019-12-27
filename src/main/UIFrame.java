@@ -63,6 +63,7 @@ public class UIFrame extends JFrame {
     private long oldTimeR;       // 点击 登录 时，记录的当前时间 （验证码10分钟有效）----> 注册界面
     private long newTimeR;       // 点击 登录 时，记录的当前时间 （验证码10分钟有效）
     private int minute;
+    private String imageName;       // 从 Bing.com 下载的图片的名称
 
 
     /**
@@ -84,6 +85,34 @@ public class UIFrame extends JFrame {
          * */
         oldTimeL = System.currentTimeMillis();
         initComponents();
+        setBackgroundImage();       // 从网络上获取 Bing.com 的背景图片
+    }
+
+    /**
+     * @Description: 给主界面设置背景图片
+     * @Param: []
+     * @return: void
+     * @Author: 林凯
+     * @Date: 2019/12/27
+     */
+    private void setBackgroundImage() {
+        // 创建一个局部内部类，实现Runnable接口，利用多线程来下载网络图片
+        class MyDownLoad implements Runnable {
+            String myImageName;
+
+            public MyDownLoad(String myImageName) {
+                this.myImageName = myImageName;
+            }
+
+            @Override
+            public void run() {
+                DownLoadImageFromBing.downloadImageFromBing(myImageName);
+            }
+        }
+
+        imageName = "Download" + String.valueOf(System.currentTimeMillis()) + ".jpg";
+        Thread thread = new Thread(new MyDownLoad(imageName));
+        thread.start();
     }
 
     /**
@@ -303,7 +332,7 @@ public class UIFrame extends JFrame {
                 /**
                  *      启动主界面，传入的参数为用户输入的 手机号（每个用户只有唯一的一个手机号）
                  * */
-                MainUI mainUI = new MainUI(textFieldEmailL.getText().toString());
+                MainUI mainUI = new MainUI(textFieldEmailL.getText().toString(), imageName);
                 mainUI.setVisible(true);
                 this.dispose();
 
@@ -447,7 +476,7 @@ public class UIFrame extends JFrame {
                 /**
                  *      让主界面显示出来，传递的参数为用户名
                  * */
-                MainUI mainUI = new MainUI(textFieldUserNameR.getText());
+                MainUI mainUI = new MainUI(textFieldUserNameR.getText(), imageName);
                 mainUI.setVisible(true);
             }
         }
@@ -513,7 +542,7 @@ public class UIFrame extends JFrame {
     */
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - Lin Kai
+        // Generated using JFormDesigner Evaluation license - unknown
         labelLogin = new JLabel();
         labelRegister = new JLabel();
         scrollPane1 = new JScrollPane();
@@ -608,11 +637,12 @@ public class UIFrame extends JFrame {
 
         //======== cardPanel ========
         {
-            cardPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-            0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-            . BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-            red) ,cardPanel. getBorder( )) ); cardPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-            beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+            cardPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,cardPanel. getBorder( )) ); cardPanel. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
             cardPanel.setLayout(new CardLayout());
 
             //======== panelLogin ========
@@ -1054,7 +1084,7 @@ public class UIFrame extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - Lin Kai
+    // Generated using JFormDesigner Evaluation license - unknown
     private JLabel labelLogin;
     private JLabel labelRegister;
     private JScrollPane scrollPane1;

@@ -23,6 +23,7 @@ import subjectadministration.SearchSubject;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -73,15 +74,29 @@ public class MainUI extends JFrame {
     private JScrollPane scrollPane04, scrollPane05;
     private DefaultTableModel tableModel04, tableModel05;
 
-    public MainUI(String phoneNumber) {
+    public MainUI(String phoneNumber, String imageName) {
         this.userPhoneNumber = phoneNumber;     // 保存用户名对应的手机号
         UserJDBC userJDBC = new UserJDBC();     // 创建 JDBC 对象，执行对应的 JDBC操作，可以封装成为工具类的
         this.userName = userJDBC.readNameByPhoneNumber(phoneNumber);   // 根据手机号查找用户名
         initComponents();
 
+        // 设置背景图片
+        String relativelyPath = System.getProperty("user.dir");     // 获得当前工程的绝对路径
+        String imagePath = relativelyPath + "\\src\\images\\" + imageName;      // 获得图片的路径
+
+        File file = new File(imagePath);        // 如果图片下载失败，就是用另一张图片
+        if (file.exists()) {
+            System.out.println("文件存在");
+            label20.setIcon(new ImageIcon(imagePath));
+        } else {
+            System.out.println("文件不存在");
+            label20.setIcon(new ImageIcon(relativelyPath +"\\src\\images\\view3.jpg"));
+        }
+
         // 初始化用户，根据用户类型（学生，教师）来更改界面的设计
         initUser();
     }
+
 
     /**
     * @Description: 根据不同的用户设置不同的权限
@@ -1163,13 +1178,13 @@ public class MainUI extends JFrame {
         //======== panelTop ========
         {
             panelTop.setBackground(new Color(66, 143, 185));
-            panelTop.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax
-            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-            . awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,panelTop. getBorder () ) ); panelTop. addPropertyChangeListener( new java. beans .
-            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .
-            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            panelTop.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+            javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax
+            . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+            .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,panelTop. getBorder( )) ); panelTop. addPropertyChangeListener (new java. beans.
+            PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .
+            equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
             panelTop.setLayout(new BorderLayout());
 
             //---- labelTitle ----
@@ -1382,7 +1397,7 @@ public class MainUI extends JFrame {
                 panelContent1.setLayout(new BorderLayout());
 
                 //---- label20 ----
-                label20.setIcon(new ImageIcon(getClass().getResource("/images/view3.png")));
+                label20.setIcon(null);
                 panelContent1.add(label20, BorderLayout.CENTER);
             }
             panelCenter.add(panelContent1, "card1");
@@ -1893,7 +1908,7 @@ public class MainUI extends JFrame {
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
     public static void main(String[] args) {
-        MainUI test1 = new MainUI("15970819628");
+        MainUI test1 = new MainUI("15970819628", null);
         test1.setVisible(true);
     }
 }

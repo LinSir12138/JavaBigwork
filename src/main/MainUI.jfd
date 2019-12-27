@@ -152,7 +152,7 @@ new FormModel {
 					name: "panelContent1"
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label20"
-						"icon": new com.jformdesigner.model.SwingIcon( 0, "/images/view3.png" )
+						"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					}, new FormLayoutConstraints( class java.lang.String ) {
 						"value": "Center"
 					} )
