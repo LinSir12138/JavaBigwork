@@ -4,15 +4,15 @@
 
 ## 项目预览
 - 用户登录界面
-![登录注册界面](src\images\readme_1.png)
--试题管理界面
-![试题管理界面](src\images\readme_2.png)
+![登录注册界面](https://github.com/LinSir12138/JavaBigwork/blob/master/src/images/readme_1.png)
+- 试题管理界面
+![试题管理界面](https://github.com/LinSir12138/JavaBigwork/blob/master/src/images/readme_2.png)
 - 考试前人脸识别验证界面
-![人脸识别验证界面](src\images\readme_4.png)
+![人脸识别验证界面](https://github.com/LinSir12138/JavaBigwork/blob/master/src/images/readme_4.png)
 - 考试界面
-![考试界面](src\images\readme_5.png)
+![考试界面](https://github.com/LinSir12138/JavaBigwork/blob/master/src/images/readme_5.png)
 - 考试成绩导出为图表
-![考试成绩导出为图表](src\images\readme_6.png)
+![考试成绩导出为图表](https://github.com/LinSir12138/JavaBigwork/blob/master/src/images/readme_6.png)
 
 ## 项目用到的主要技术
 1. 利用阿里云的短信API服务提供登录注册时的短信发送
